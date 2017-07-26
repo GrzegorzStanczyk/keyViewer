@@ -1,20 +1,37 @@
 <header class="header">
-  <div class="app-title-container">
+  <md-toolbar color="primary">
+    <span>{{content.title}}</span>
+
+    <!-- This fills the remaining space of the current row -->
+     <span class="example-fill-remaining-space"></span> 
+
+    <!-- <span>|||</span> -->
+
+    <button md-fab color="accent">btn</button>
+    <md-button-toggle>Toggle me!
+      <md-icon aria-hidden="true">ic_person_black</md-icon>
+       <!-- <span class="nav-toggler__icon" aria-hidden="true"></span> -->
+      <span class="cdk-visually-hidden">Open/close menu</span> 
+    </md-button-toggle>
+    <button 
+      class="btn-action hamburger-menu"
+      type="button"
+      aria-label="toggle navigation" 
+      aria-controls="navigation" 
+      aria-expand="false"
+      (click)="toggleNav = !toggleNav">
+      <!--(click)="toggleNav? gotoProfile() : gotoMain()">-->
+      <span class="nav-toggler__icon" aria-hidden="true"></span> 
+      <span class="nav-toggler__label">Open/close menu</span>
+    </button>  
+  </md-toolbar>
+  <!-- <div class="app-title-container">
     <h1 class="app-title">
       {{content.title}}
     </h1>
-  </div>
-  <button 
-    class="btn-action hamburger-menu"
-    type="button"
-    aria-label="toggle navigation" 
-    aria-controls="navigation" 
-    aria-expand="false"
-    (click)="toggleNav = !toggleNav">
-    <!--(click)="toggleNav? gotoProfile() : gotoMain()">-->
-    <span class="nav-toggler__icon" aria-hidden="true"></span>
-    <span class="nav-toggler__label">Open/close menu</span>
-  </button>    
+  </div> -->
+    
 </header>
 <app-menu *ngIf="toggleNav" (closeMenu)="isCloseMenu($event)"></app-menu>
 <router-outlet></router-outlet>
+<md-icon aria-hidden="true">ic_person_black</md-icon>
