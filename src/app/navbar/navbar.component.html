@@ -1,0 +1,22 @@
+<header class="header">  
+  <md-toolbar color="primary">
+    <span>{{content.title}}</span>
+    <span class="example-fill-remaining-space"></span> 
+
+     <!-- <button md-fab >btn</button>    
+    <button 
+      class="btn-action hamburger-menu"
+      type="button"
+      aria-label="toggle navigation" 
+      aria-controls="navigation" 
+      aria-expand="false"
+      (click)="toggleNav = !toggleNav">
+      <span class="nav-toggler__icon" aria-hidden="true"></span> 
+      <span class="nav-toggler__label">Open/close menu</span>
+    </button>    -->
+    <!-- <app-sidenav #f></app-sidenav> -->
+    <button type="button" md-button (click)="sidenavOpen()">
+      Open sidenav
+    </button>    
+  </md-toolbar>
+</header>
