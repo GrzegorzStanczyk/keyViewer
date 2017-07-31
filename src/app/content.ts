@@ -1,5 +1,5 @@
 export const AppContent = {
-    "title": "KeySHOW",
+    "title": "keyViewer",
     "main": {
         
     },
