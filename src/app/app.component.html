@@ -1,24 +1,2 @@
-<md-sidenav-container>
-
-<md-sidenav #sidenav opened="false">
-  <app-menu></app-menu>
-</md-sidenav>
-  <!-- primary content -->
-  <app-navbar (open)="sidenav.open()"></app-navbar>
-  <!-- <header class="header"> -->
-  <!-- <md-button-toggle>Toggle me! -->
-    <!-- <md-icon aria-hidden="true">ic_person_black</md-icon> -->
-    <!-- <span class="nav-toggler__icon" aria-hidden="true"></span> -->
-    <!-- <span class="cdk-visually-hidden">Open/close menu</span> -->
-  <!-- </md-button-toggle> -->
-  <!-- <div class="app-title-container">
-    <h1 class="app-title">
-      {{content.title}}
-    </h1>
-  </div> -->
-
-  <!-- </header> -->
-  <!-- <app-menu *ngIf="toggleNav" (closeMenu)="isCloseMenu($event)"></app-menu> -->
-  <!-- <router-outlet></router-outlet> -->
-  <!-- <md-icon aria-hidden="true">ic_person_black</md-icon> -->
-</md-sidenav-container>
+<app-navbar></app-navbar>
+<app-sidenav></app-sidenav>
