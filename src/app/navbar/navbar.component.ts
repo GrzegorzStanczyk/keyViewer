@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SidenavComponent } from '../sidenav/sidenav.component';
+import { Component, OnInit  } from '@angular/core';
+
 import { AppContent } from '../content';
 
+import { SidenavOpenService } from '../sidenav/sidenav-open.service'
 
 @Component({
   selector: 'app-navbar',
@@ -9,14 +10,12 @@ import { AppContent } from '../content';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  @Output() open: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
   content: Object = AppContent;
 
-  constructor() { }
+  constructor(private sidenavOpenService: SidenavOpenService) {}
   
-  sidenavOpen() {
-    this.open.emit(true);
+  openSidenav(): void {
+    this.sidenavOpenService.sendMessage('open');
   }
 
   ngOnInit() {

@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+
+import { SidenavOpenService } from './sidenav-open.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-sidenav',
@@ -7,15 +12,18 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class SidenavComponent implements OnInit {
   @ViewChild('sidenav') sidenav; 
+  subscription: Subscription;
 
-  constructor() { }
-
-  sidenavOpen() {
-    console.log(this.sidenav)
-    this.sidenav.open();
+  constructor(private sidenavOpenService: SidenavOpenService) { 
+    this.subscription = this.sidenavOpenService.getMessage()
+      .subscribe(() => { this.sidenav.open(); })
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }
