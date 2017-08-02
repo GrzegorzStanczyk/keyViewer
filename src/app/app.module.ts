@@ -15,6 +15,7 @@ import { MyOwnCustomMaterialModuleModule } from './material-module/my-own-custom
 import { AppRoutingModule } from './app-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
+import { ComponentViewerComponent } from './component-viewer/component-viewer.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SidenavComponent } from './sidenav/sidenav.component';
     AboutComponent,
     MenuComponent,
     NavbarComponent,
-    SidenavComponent
+    SidenavComponent,
+    ComponentViewerComponent
   ],
   imports: [
     BrowserModule,
