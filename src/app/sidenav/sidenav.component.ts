@@ -16,7 +16,7 @@ export class SidenavComponent implements OnInit {
 
   constructor(private sidenavOpenService: SidenavOpenService) { 
     this.subscription = this.sidenavOpenService.getMessage()
-      .subscribe(() => { this.sidenav.open(); })
+      .subscribe(value => { this.sidenav.toggle(); });
   }
 
   ngOnInit() {
@@ -25,5 +25,4 @@ export class SidenavComponent implements OnInit {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 }

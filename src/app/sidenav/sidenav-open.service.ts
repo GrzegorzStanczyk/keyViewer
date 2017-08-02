@@ -5,10 +5,10 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 export class SidenavOpenService {
 
-  private subjectSource = new Subject<string>();
+  private subjectSource = new Subject<any>();
 
-  sendMessage(open: string): void {
-    this.subjectSource.next(open);
+  sendMessage(): void {
+    this.subjectSource.next();
   }
 
   getMessage(): Observable<any> {

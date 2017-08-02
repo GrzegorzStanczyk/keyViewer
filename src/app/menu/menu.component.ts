@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+
+import { SidenavComponent } from '../sidenav/sidenav.component';
+import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 
 @Component({
   selector: 'app-menu',
@@ -6,12 +9,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-  @Output() closeMenu: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private sidenavComponent: SidenavComponent, private sidenavOpenService: SidenavOpenService) { }
   
   closeSidenav() {
-    this.closeMenu.emit(true);
+    this.sidenavOpenService.sendMessage();
   }
 
   ngOnInit() {

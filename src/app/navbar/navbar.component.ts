@@ -14,8 +14,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private sidenavOpenService: SidenavOpenService) {}
   
-  openSidenav(): void {
-    this.sidenavOpenService.sendMessage('open');
+  toggleSidenav(): void {
+    this.sidenavOpenService.sendMessage();
   }
 
   ngOnInit() {
