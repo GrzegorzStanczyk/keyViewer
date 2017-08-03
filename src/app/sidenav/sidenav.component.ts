@@ -20,6 +20,25 @@ export class SidenavComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isMobile();
+  }
+
+  mode(): string {
+    if(!this.isMobile()) {
+      return "side";
+    }
+  }
+
+  opened(): string {
+    if(!this.isMobile()) {
+      return "true";
+    }
+  }
+
+  isMobile(): boolean {
+    if(window.innerWidth <= 960) {
+      return true;
+    }
   }
 
   ngOnDestroy() {

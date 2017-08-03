@@ -2,7 +2,7 @@
   <div class="example-sidenav-content">
     <app-component-viewer></app-component-viewer>
   </div>
-  <md-sidenav #sidenav class="example-sidenav">
+  <md-sidenav #sidenav class="example-sidenav" [mode]=mode() [opened]=opened()>
     <app-menu></app-menu>
   </md-sidenav>
 </md-sidenav-container>
