@@ -13,7 +13,9 @@ export class MenuComponent {
   constructor(private sidenavComponent: SidenavComponent, private sidenavOpenService: SidenavOpenService) { }
   
   closeSidenav() {
-    this.sidenavOpenService.sendMessage();
+    if(window.innerWidth <= 960) {
+      this.sidenavOpenService.sendMessage();
+    }
   }
 
   ngOnInit() {

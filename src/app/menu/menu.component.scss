@@ -13,7 +13,7 @@ li {
   padding: 0;
 }
 
-a {
+a {  
   color: rgba(0,0,0,.54);
   box-sizing: border-box;
   display: block;
@@ -28,4 +28,10 @@ a {
 
 .active {
   font-weight: 600;
+}
+
+@media(max-width: 600px) {
+  a {
+    text-align: center;
+  }
 }
