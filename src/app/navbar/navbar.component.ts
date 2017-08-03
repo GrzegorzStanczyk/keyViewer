@@ -18,12 +18,6 @@ export class NavbarComponent implements OnInit {
     this.sidenavOpenService.sendMessage();
   }
 
-  isMobile(): boolean {
-    if(window.innerWidth <= 960) {
-      return true;
-    }
-  }
-
   ngOnInit() {
   }
 
