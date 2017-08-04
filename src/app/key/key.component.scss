@@ -1,0 +1,14 @@
+.key-code {
+    font-size: 16px;
+    height: auto;
+    margin-top: 20px;
+    word-wrap: normal;
+    word-break: break-all;
+    white-space: normal;
+    text-align: center;
+    @media(max-width: 600px) {
+        line-height: 1.4;
+        font-size: calc(4vw + 4vh + 2vmin);
+         margin-top: 0px;        
+    }
+}

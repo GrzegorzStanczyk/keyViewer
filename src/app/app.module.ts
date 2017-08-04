@@ -10,12 +10,13 @@ import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { KeySettingsComponent } from './key-settings/key-settings.component';
 import { AboutComponent } from './about/about.component';
 import { MenuComponent } from './menu/menu.component'
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { ComponentViewerComponent } from './component-viewer/component-viewer.component';
+import { KeyComponent } from './key/key.component';
 
 import { MyOwnCustomMaterialModuleModule } from './material-module/my-own-custom-material-module.module';
 import { AppRoutingModule } from './app-routing.module';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SidenavComponent } from './sidenav/sidenav.component';
-import { ComponentViewerComponent } from './component-viewer/component-viewer.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ComponentViewerComponent } from './component-viewer/component-viewer.co
     MenuComponent,
     NavbarComponent,
     SidenavComponent,
-    ComponentViewerComponent
+    ComponentViewerComponent,
+    KeyComponent
   ],
   imports: [
     BrowserModule,
