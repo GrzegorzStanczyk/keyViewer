@@ -6,7 +6,9 @@ import {
   MdToolbarModule, 
   MdIconModule, 
   MdButtonToggleModule, 
-  MdSidenavModule } from '@angular/material';
+  MdSidenavModule,
+  MdTooltipModule,
+  MdCardModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -16,7 +18,9 @@ import {
     MdToolbarModule,
     MdIconModule,
     MdButtonToggleModule, 
-    MdSidenavModule
+    MdSidenavModule,
+    MdTooltipModule,
+    MdCardModule
   ],
   exports: [
     MdButtonModule, 
@@ -24,7 +28,9 @@ import {
     MdToolbarModule,
     MdIconModule,
     MdButtonToggleModule, 
-    MdSidenavModule
+    MdSidenavModule,
+    MdTooltipModule,
+    MdCardModule
   ],
   declarations: []
 })
