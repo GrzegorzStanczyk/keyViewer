@@ -1,0 +1,15 @@
+:host {
+    @media (max-width: 600px) {
+    padding: 0px;
+}
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    font-weight: 400;
+    padding: 20px 70px 50px;
+}
+
+.map {    
+    display: flex;
+    flex: 1;
+}
