@@ -17,6 +17,7 @@ import { KeyComponent } from './key/key.component';
 
 import { MyOwnCustomMaterialModuleModule } from './material-module/my-own-custom-material-module.module';
 import { AppRoutingModule } from './app-routing.module';
+import { MapComponent } from './map/map.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
     NavbarComponent,
     SidenavComponent,
     ComponentViewerComponent,
-    KeyComponent
+    KeyComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

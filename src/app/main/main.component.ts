@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-declare var google: any;
+
+import { MapLoaderService } from '../map/map-loader.service';
 
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
+  providers: [MapLoaderService]
 })
 export class MainComponent implements OnInit {
+  mapReady: boolean;
 
-  constructor() {}
+  constructor(private mapLoaderService: MapLoaderService) {
+    mapLoaderService.load()
+      .then((res) => {
+        console.log('mapLoaderService.load.then', res);
+        this.mapReady = true;
+      });
+  }
 
-  ngOnInit() {
-
-    var mapProp = {
-            center: new google.maps.LatLng(51.508742, -0.120850),
-            zoom: 5,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    }
-
+  ngOnInit() {}
 }
