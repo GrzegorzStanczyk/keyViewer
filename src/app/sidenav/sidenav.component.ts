@@ -20,7 +20,7 @@ export class SidenavComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isMobile();
+    // this.isMobile();
   }
 
   mode(): string {

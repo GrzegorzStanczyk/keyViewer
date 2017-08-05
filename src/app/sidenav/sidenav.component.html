@@ -1,8 +1,6 @@
 <md-sidenav-container class="example-container">
-  <div class="example-sidenav-content">
-    <app-component-viewer></app-component-viewer>
-  </div>
-  <md-sidenav #sidenav class="example-sidenav" [mode]=mode() [opened]=opened()>
+  <app-component-viewer></app-component-viewer>
+  <md-sidenav #sidenav class="example-sidenav" [mode]="mode()" [opened]="opened()">
     <app-menu></app-menu>
   </md-sidenav>
 </md-sidenav-container>
