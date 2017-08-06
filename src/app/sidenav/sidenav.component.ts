@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 import { SidenavOpenService } from './sidenav-open.service';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -11,12 +12,17 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit {
-  @ViewChild('sidenav') sidenav; 
+  @ViewChild('sidenav') sidenav;
+  @ViewChild('sidenavKey') sidenavKey;  
   subscription: Subscription;
+  subscriptionToKeySettings: Subscription;
 
-  constructor(private sidenavOpenService: SidenavOpenService) { 
+  constructor(private sidenavOpenService: SidenavOpenService,
+              private router: Router) { 
+    this.subscriptionToKeySettings = this.sidenavOpenService.getKeySettings()
+      .subscribe(() => { this.router.navigate(['/main']); })
     this.subscription = this.sidenavOpenService.getMessage()
-      .subscribe(value => { this.sidenav.toggle(); });
+      .subscribe(() => { this.sidenav.toggle(); });
   }
 
   ngOnInit() {
@@ -43,5 +49,6 @@ export class SidenavComponent implements OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.subscriptionToKeySettings.unsubscribe();
   }
 }
