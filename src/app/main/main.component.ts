@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MapLoaderService } from '../map/map-loader.service';
+import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 
 
 @Component({
@@ -12,12 +14,18 @@ import { MapLoaderService } from '../map/map-loader.service';
 export class MainComponent implements OnInit {
   mapReady: boolean;
 
-  constructor(private mapLoaderService: MapLoaderService) {
+  constructor(private mapLoaderService: MapLoaderService, 
+              private sidenavOpenService: SidenavOpenService,
+              private router: Router) {
     mapLoaderService.load()
       .then((res) => {
         console.log('mapLoaderService.load.then', res);
         this.mapReady = true;
       });
+  }
+
+  goToKeySettings(): void {
+    this.router.navigate(['/key-settings']);
   }
 
   ngOnInit() {}
