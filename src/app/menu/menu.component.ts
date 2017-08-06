@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-import { SidenavComponent } from '../sidenav/sidenav.component';
 import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 })
 export class MenuComponent {
 
-  constructor(private sidenavComponent: SidenavComponent, private sidenavOpenService: SidenavOpenService) { }
+  constructor(private sidenavOpenService: SidenavOpenService) { }
   
   closeSidenav() {
     if(window.innerWidth <= 960) {
