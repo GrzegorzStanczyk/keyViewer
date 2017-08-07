@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { KeysDependentOnLocalisation } from '../key/key-mock';
 import { Key } from '../key/key.model';
 
-const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&callback=__onGoogleLoaded';
+const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places&callback=__onGoogleLoaded';
 
 @Injectable()
 export class MapLoaderService {
