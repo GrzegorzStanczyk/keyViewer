@@ -1,3 +1,24 @@
- div {
-    flex: 1;
- }
+:host {
+  position: relative;
+}
+
+.map-full-size {
+  flex: 1;
+}
+
+.search-form {
+  padding: 0px;
+  min-width: 200px;
+  z-index: 10;
+  position: absolute;
+  right: 50%;
+  transform: translate(50%, 10px);
+}
+
+.search-full-width {
+  width: 100%;
+}
+
+.search-adjust-padding {
+  padding: 8px;
+}

@@ -1,1 +1,12 @@
-<div id="googleMap"></div>
+<md-card class="search-form">
+    <input 
+        class="search-full-width search-adjust-padding"
+        #LocationCtrl
+        appAutocomplete    
+        (onSelect)="getPlaceOnChange($event)"
+        type="search" 
+        mdInput 
+        placeholder="Wyszukaj..." 
+        aria-label="Wyszukaj w Mapach Google">
+</md-card>
+<div id="googleMap" class="map-full-size"></div>
