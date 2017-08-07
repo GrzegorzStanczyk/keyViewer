@@ -8,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 export class MapComponent implements OnInit {
   constructor() { }
 
+  getPlaceOnChange(e) {
+    console.log(e)
+  }
+
   loadMap() {
       var mapProp = {
             center: new google.maps.LatLng(51.508742, -0.120850),
             zoom: 5,
+            streetViewControl: false,
+            mapTypeControl: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
