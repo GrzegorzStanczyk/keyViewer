@@ -19,6 +19,7 @@ import { KeyComponent } from './key/key.component';
 import { MyOwnCustomMaterialModuleModule } from './material-module/my-own-custom-material-module.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './map/map.component';
+import { AutocompleteDirective } from './map/autocomplete.directive';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { MapComponent } from './map/map.component';
     SidenavComponent,
     ComponentViewerComponent,
     KeyComponent,
-    MapComponent
+    MapComponent,
+    AutocompleteDirective
   ],
   imports: [
     BrowserModule,
