@@ -1,7 +1,6 @@
 <md-card class="search-form">
     <input 
         class="search-full-width search-adjust-padding"
-        #LocationCtrl
         appAutocomplete    
         (onSelect)="getPlaceOnChange($event)"
         type="search" 
@@ -9,4 +8,5 @@
         placeholder="Wyszukaj..." 
         aria-label="Wyszukaj w Mapach Google">
 </md-card>
-<div id="googleMap" class="map-full-size"></div>
+<md-icon>my_location</md-icon>
+<div id="googleMap" #googleMap class="map-full-size"></div>
