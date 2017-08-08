@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { KeysDependentOnLocalisation } from '../key/key-mock';
+import { KEYS } from '../key/key-mock';
 import { Key } from '../key/key.model';
 
-const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places&callback=__onGoogleLoaded';
+const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
 
 @Injectable()
 export class MapLoaderService {
   public static promise: Promise<any>; 
-  markersFiltered;
+  // markersFiltered: ;
   lat: number = 52.176585;
   lng: number = 20.996074;
   zoom: number = 19;
@@ -21,7 +21,7 @@ export class MapLoaderService {
   //               this.lat = position.coords.latitude;
   //               this.lng = position.coords.longitude;
   //               this.zoom = 18;
-  //               this.findNearest()
+  //               // this.findNearest()
   //           }, this.showError, { enableHighAccuracy: true });
   //       }
   //       // })
