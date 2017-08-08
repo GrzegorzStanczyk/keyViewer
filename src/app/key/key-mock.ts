@@ -1,6 +1,6 @@
 import { Key } from './key.model';
 
-export const KeysDependentOnLocalisation: Key[] = [
+export const KEYS: Array<Key> = [
     new Key('Lazurowa 40, 01-315 Warszawa', 52.238957, 20.897390, 10, 'Orlen'),
     new Key('Postępu 12A', 52.176506, 20.996255, 10, 'Schindler'),
     new Key('Amfiteatr im. Michaela Jacksona', 52.233631, 20.906177, 10, '100#2580'),
