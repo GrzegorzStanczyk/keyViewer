@@ -1,5 +1,7 @@
-<md-card 
+<md-card
     class="key-code" 
     aria-label="access key" 
-    tabindex="0">#12345# #123#3123#
+    tabindex="0"
+    (click)="findNearest({lat: 52.176585, lng: 20.996074})"
+    >{{markersFiltered ? markersFiltered.key : '###'}}
 </md-card>
