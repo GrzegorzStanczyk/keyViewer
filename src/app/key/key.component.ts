@@ -12,28 +12,27 @@ import { Key } from './key.model';
 })
 export class KeyComponent implements OnInit {
   
-  markersFiltered: Key;
-  
+  markersFiltered: Promise<Key> | null = null;  
+  key: Promise<string>;  
 
   constructor(private keyService: KeyService) { }
 
-  public findNearest(cords): Key {
+  public findNearest(cords) {
     const userLatLng = new google.maps.LatLng(cords.lat, cords.lng);
-    this.keyService.getKeys()
+    this.markersFiltered = this.keyService.getKeys()
       .then(keys => {
-        let value;
-        return this.markersFiltered = keys.reduce(function (prev, curr) {
+         return keys.reduce(function (prev, curr) {          
           let location1 = new google.maps.LatLng(prev.lat, prev.lng)
           let location2 = new google.maps.LatLng(curr.lat, curr.lng)
           var ppos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location1);
           var cpos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location2);
-          return cpos < ppos ? curr : prev;;
+          return cpos < ppos ? curr : prev;
         })
       })
-      console.log(this.markersFiltered)
-      return this.markersFiltered;
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.findNearest({lat: 52.235981, lng: 20.902539})
+  }
 
 }
