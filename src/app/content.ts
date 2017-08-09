@@ -1,18 +1,45 @@
 export const AppContent = {
-    "title": "keyViewer",
-    "main": {
-        
-    },
-    "profile": {
+    "en": {
+        "title": "keyViewer",
+        "main": {
+            
+        },
+        "profile": {
+    
+        },
+        "app-settings": {
+    
+        },
+        "key-settings": {
+    
+        },
+        "about": {
+            
+        },
+        "alert": {
+            "placeNotFound": "Returned place contains no geometry"
+        }
 
     },
-    "app-settings": {
-
-    },
-    "key-settings": {
-
-    },
-    "about": {
-        
+    "pl": {
+        "title": "keyViewer",
+        "main": {
+            
+        },
+        "profile": {
+    
+        },
+        "app-settings": {
+    
+        },
+        "key-settings": {
+    
+        },
+        "about": {
+            
+        },
+        "alert": {
+            "placeNotFound": "Nie udało nam się znaleźć wyników dla zapytania"
+        }
     }
 }
