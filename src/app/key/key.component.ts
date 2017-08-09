@@ -12,14 +12,14 @@ import { Key } from './key.model';
 })
 export class KeyComponent implements OnInit {
   
-  markersFiltered: Promise<Key> | null = null;  
-  key: Promise<string>;  
+  markerFiltered: Promise<Key> | null = null;  
+  // key: Promise<string>;  
 
   constructor(private keyService: KeyService) { }
 
   public findNearest(cords) {
     const userLatLng = new google.maps.LatLng(cords.lat, cords.lng);
-    this.markersFiltered = this.keyService.getKeys()
+    this.markerFiltered = this.keyService.getKeys()
       .then(keys => {
          return keys.reduce(function (prev, curr) {          
           let location1 = new google.maps.LatLng(prev.lat, prev.lng)
