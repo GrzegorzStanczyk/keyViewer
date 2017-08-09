@@ -11,7 +11,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss']
 })
-export class SidenavComponent implements OnInit {
+export class SidenavComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav') sidenav;
   @ViewChild('sidenavKey') sidenavKey;  
   subscription: Subscription;
