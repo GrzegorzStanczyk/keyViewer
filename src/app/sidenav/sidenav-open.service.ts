@@ -8,19 +8,19 @@ export class SidenavOpenService {
   private subjectSource = new Subject<any>();
   private keySettingsSource = new Subject<any>();
 
-  sendMessage(): void {
+  public sendMessage(): void {
     this.subjectSource.next();
   }
 
-  sendKeySettings(): void {
+  public sendKeySettings(): void {
     this.keySettingsSource.next();
   }
 
-  getMessage(): Observable<any> {
+  public getMessage(): Observable<any> {
     return this.subjectSource.asObservable();
   }
 
-  getKeySettings(): Observable<any> {
+  public getKeySettings(): Observable<any> {
     return this.keySettingsSource.asObservable();
   }
 
