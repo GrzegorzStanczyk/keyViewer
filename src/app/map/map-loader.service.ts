@@ -6,54 +6,7 @@ const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWs
 
 @Injectable()
 export class MapLoaderService {
-  public static promise: Promise<any>; 
-  // markersFiltered: ;
-  lat: number = 52.176585;
-  lng: number = 20.996074;
-  zoom: number = 19;
-
-  constructor() { }
-
-  // public setCurrentPosition(): any {
-  //       // return new Promise(resolve=>{
-  //       if ("geolocation" in navigator) {
-  //           return navigator.geolocation.getCurrentPosition((position) => {
-  //               this.lat = position.coords.latitude;
-  //               this.lng = position.coords.longitude;
-  //               this.zoom = 18;
-  //               // this.findNearest()
-  //           }, this.showError, { enableHighAccuracy: true });
-  //       }
-  //       // })
-  //   }
-
-  // public showError(error): void {
-  //     switch (error.code) {
-  //         case error.PERMISSION_DENIED:
-  //             console.log("User denied the request for Geolocation.")
-  //             break;
-  //         case error.POSITION_UNAVAILABLE:
-  //             console.log("Location information is unavailable.")
-  //             break;
-  //         case error.TIMEOUT:
-  //             console.log("The request to get user location timed out.")
-  //             break;
-  //         case error.UNKNOWN_ERROR:
-  //             console.log("An unknown error occurred.")
-  //             break;
-  //     }
-  // }
-
-  // public findNearest(): any {
-  //       var userLatLng = new google.maps.LatLng(this.lat, this.lng);
-  //       return this.markersFiltered = this.KeysDependentOnLocalisation.reduce(function (prev, curr) {
-  //           let location1 = new google.maps.LatLng(prev.lat, prev.lng)
-  //           let location2 = new google.maps.LatLng(curr.lat, curr.lng)
-  //           var ppos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location1);
-  //           var cpos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location2);
-  //           return cpos < ppos ? curr : prev;
-  //       }) 
-  //   }
+  public static promise: Promise<any>;
 
   public load(): Promise<any> {
     // First time 'load' is called?
