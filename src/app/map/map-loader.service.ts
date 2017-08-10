@@ -1,12 +1,25 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject }    from 'rxjs/Subject';
+
 import { KEYS } from '../key/key-mock';
 import { Key } from '../key/key.model';
+
 
 const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
 
 @Injectable()
 export class MapLoaderService {
   public static promise: Promise<any>;
+  public mapSubjectSource = new Subject<any>();
+  
+  public sendCoords(obj): void {
+    this.mapSubjectSource.next(obj);
+  }
+
+  public getCoords(): Observable<{}> {
+    return this.mapSubjectSource.asObservable();
+  }
 
   public load(): Promise<any> {
     // First time 'load' is called?
