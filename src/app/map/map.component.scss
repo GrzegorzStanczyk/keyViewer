@@ -22,3 +22,41 @@
 .search-adjust-padding {
   padding: 8px;
 }
+
+.my-location__button--posiiton {
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px; // margin: 0;
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 0;
+  transform: translate(-10px, -82px);
+  padding: 0;
+  margin: 0;
+  min-width: 28px;
+  height: 27px;
+  line-height: 0px;
+}
+
+.my_location__icon {
+  transform: scale(.8);
+  color: rgba(0,0,0,.55);
+  &:hover {
+    color: rgba(0,0,0,.75);
+  }
+}
+
+
+// .my-location__button---posiiton.mat-button {
+//   background-color: rgba(255,255,255,1);
+//     // box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+//     box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px -1px;
+//     // display: block;
+//     width: 28px;
+//     height: 27px;
+//     overflow: hidden;
+// }
+// .icon {
+//   width: 10px;
+//   height: 10px;
+// }

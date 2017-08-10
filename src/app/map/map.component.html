@@ -5,8 +5,16 @@
         (onSelect)="getPlaceOnChange($event)"
         type="search" 
         mdInput 
-        placeholder="Wyszukaj..." 
+        placeholder={{this.content.pl.map.inputPlaceholder}} 
         aria-label="Wyszukaj w Mapach Google">
 </md-card>
-<md-icon>my_location</md-icon>
+<button 
+    type="button" 
+    md-button 
+    aria-label="toggle navigation"
+    class="my-location__button--posiiton"
+    mdTooltip={{this.content.pl.tooltip.myLocation}}>
+    <md-icon class="my_location__icon">my_location</md-icon>
+    <span class="cdk-visually-hidden">Pokaż swoją lokalizację</span>
+  </button> 
 <div id="googleMap" #googleMap class="map-full-size"></div>
