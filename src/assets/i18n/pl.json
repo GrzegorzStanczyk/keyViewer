@@ -1,0 +1,28 @@
+{
+  "title": "keyViewerPL",
+  "main": {
+
+  },
+  "profile": {
+
+  },
+  "app-settings": {
+
+  },
+  "key-settings": {
+
+  },
+  "about": {
+
+  },
+  "map": {
+    "inputPlaceholder": "Wyszukaj..."
+  },
+  "alert": {
+    "placeNotFound": "Nie udało nam się znaleźć wyników dla zapytania"
+  },
+  "tooltip": {
+    "myLocation": "Pokaż swoją lokalizację",
+    "menu": "Navigacja"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "title": "keyViewerEN",
+  "main": {},
+  "profile": {
+
+  },
+  "app-settings": {
+
+  },
+  "key-settings": {
+
+  },
+  "about": {
+
+  },
+  "map": {
+    "inputPlaceholder": "Search..."
+  },
+  "alert": {
+    "placeNotFound": "Returned place contains no geometry"
+  },
+  "tooltip": {
+    "myLocation": "Show your location ",
+    "menu": "Menu"
+  }
+}
