@@ -1,5 +1,9 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
+import { AppContent } from '../content';
+
+import { MapLoaderService } from './map-loader.service';
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -7,38 +11,39 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class MapComponent implements OnInit {
   @ViewChild('googleMap') el: ElementRef;
+  content = AppContent;
 
-  lat: number = 52.176585;
-  lng: number = 20.996074;
-  constructor() { }
+  lat: number;
+  lng: number;
 
+  constructor(private mapLoaderService: MapLoaderService) { }
+
+  // Get place from autocomplete search input provided by google api
   getPlaceOnChange(place) {
-    console.log(place)
+
+    if (!place) {
+      window.alert(this.content.pl.alert.placeNotFound);
+      return;
+    }
 
     const map = new google.maps.Map(this.el.nativeElement)
-    var marker = new google.maps.Marker();
+    const marker = new google.maps.Marker();
     marker.set('map', map);
     marker.set('anchorPoint', new google.maps.Point(0, -29));
 
-    if (!place.geometry) {
-      // User entered the name of a Place that was not suggested and
-      // pressed the Enter key, or the Place Details request failed.
-      window.alert("No details available for input: '" + place.name + "'");
-      return;
-    }
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
-      map.setZoom(17);  // Why 17? Because it looks good.
     }
-
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
+
+    //Send coordinates to the key.component    
+    this.mapLoaderService.sendCoords({ lat: place.geometry.location.lat(), lng: place.geometry.location.lng() });
   }
 
-  loadMap(coords) {
-    console.log("loadmap()")
+  loadMap(coords): void {
     const mapProp = {
       center: new google.maps.LatLng(coords.lat, coords.lng),
       zoom: 17,
@@ -49,9 +54,7 @@ export class MapComponent implements OnInit {
     const map = new google.maps.Map(this.el.nativeElement, mapProp);
   }
 
-  setCurrentPosition(): any {
-    console.log("setCurrentPosition()")
-
+  getCurrentPosition(): Promise<any> {
     return new Promise(resolve => {
       if ("geolocation" in navigator) {
         return navigator.geolocation.getCurrentPosition((position) => {
@@ -83,10 +86,11 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     if (typeof google !== 'undefined') {
       console.log('MapComponent.ngOnInit');
-      this.setCurrentPosition()
-        .then(v => {
-          console.log(v)
-          return this.loadMap(v);
+      this.getCurrentPosition()
+        .then(coords => {
+          //Send coordinates to the key.component
+          this.mapLoaderService.sendCoords({ lat: coords.lat, lng: coords.lng });
+          this.loadMap(coords);
         });
     }
   }
