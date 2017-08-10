@@ -13,11 +13,11 @@ export class AutocompleteDirective {
   }
 
   ngOnInit() {
-    const autocomplete = new google.maps.places.Autocomplete(this.element);
-
-    google.maps.event.addListener(autocomplete, 'place_changed', () => {
-      const place = autocomplete.getPlace();
-      this.onSelect.emit(place);
-    });
+    const searchBox = new google.maps.places.SearchBox(this.element);
+    
+    searchBox.addListener('places_changed', () => {
+          const places = searchBox.getPlaces();
+          this.onSelect.emit(places[0]);
+    })
   }
 }
