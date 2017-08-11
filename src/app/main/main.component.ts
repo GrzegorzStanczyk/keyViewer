@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MapLoaderService } from '../map/map-loader.service';
-import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 
 
 @Component({
@@ -15,7 +14,6 @@ export class MainComponent implements OnInit {
   mapReady: boolean;
 
   constructor(private mapLoaderService: MapLoaderService, 
-              private sidenavOpenService: SidenavOpenService,
               private router: Router) {
     mapLoaderService.load()
       .then((res) => {

@@ -25,7 +25,8 @@ import { MapComponent } from './map/map.component';
 import { AutocompleteDirective } from './map/autocomplete.directive';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-	import { ConnectionBackend } from '@angular/http';
+import { ConnectionBackend } from '@angular/http';
+
 
 export function createTranslateLoader(http: Http) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -56,13 +57,12 @@ export function createTranslateLoader(http: Http) {
     HttpModule, 
     TranslateModule.forRoot({
       loader: {
-          provide: TranslateLoader,
-          useFactory: (createTranslateLoader),
-          deps: [Http]
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
       }
     })
   ],
-  schemas: [],
   providers: [],
   bootstrap: [AppComponent]
 })

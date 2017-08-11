@@ -46,7 +46,6 @@ Explain your code style and show how to check it.
 
 If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters.
 
-
 ## Database
 
 Explaining what database (and version) has been used. Provide download links.
