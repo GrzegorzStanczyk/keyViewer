@@ -9,8 +9,8 @@
     aria-label="toggle navigation"
     (click)="toggleSidenav()"
     class="sidenav-toggle"
-    mdTooltip="Menu">
+    mdTooltip="{{'navbar.tooltip.menu' | translate}}">
     <md-icon>menu</md-icon>
-    <span class="cdk-visually-hidden">Open/close menu</span>
+    <span class="cdk-visually-hidden">{{'navbar.accessibilityInfo' | translate}}</span>
   </button>    
 </md-toolbar>

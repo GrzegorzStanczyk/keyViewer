@@ -1,28 +1,34 @@
 {
   "title": "keyViewerPL",
   "main": {
-
+    "title": "Główny"
   },
   "profile": {
-
+    "title": "Profil"
   },
   "app-settings": {
-
+    "title": "Ustawienia aplikacji"
   },
   "key-settings": {
-
+    "title": "Ustawienia klucza"
   },
   "about": {
-
+    "title": "O programie"
   },
   "map": {
-    "inputPlaceholder": "Wyszukaj..."
+    "inputPlaceholder": "Wyszukaj...",
+    "inputAriaLabel": "Wyszukaj w Mapach Google",
+    "tooltip": {
+      "myLocation": "Pokaż swoją lokalizację"
+    }
   },
   "alert": {
     "placeNotFound": "Nie udało nam się znaleźć wyników dla zapytania"
   },
-  "tooltip": {
-    "myLocation": "Pokaż swoją lokalizację",
-    "menu": "Navigacja"
-  }
+  "navbar" : {
+    "accessibilityInfo": "Otwórz/Zamknij nawigację",
+    "tooltip": {
+      "menu": "Navigacja"
+    }
+  } 
 }

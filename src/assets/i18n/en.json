@@ -1,26 +1,34 @@
 {
   "title": "keyViewerEN",
-  "main": {},
+  "main": {
+    "title": "Main"
+  },
   "profile": {
-
+    "title": "Profile"
   },
   "app-settings": {
-
+    "title": "App settings"
   },
   "key-settings": {
-
+    "title": "Key settings"
   },
   "about": {
-
+    "title": "About"
   },
   "map": {
-    "inputPlaceholder": "Search..."
+    "inputPlaceholder": "Search...",
+    "inputAriaLabel": "Search ing Google Maps",
+    "tooltip": {
+      "myLocation": "Show your location"
+    }
   },
   "alert": {
     "placeNotFound": "Returned place contains no geometry"
   },
-  "tooltip": {
-    "myLocation": "Show your location ",
-    "menu": "Menu"
+  "navbar" : {
+    "accessibilityInfo": "Open/close menu",
+    "tooltip": {
+      "menu": "Menu"
+    }
   }
 }
