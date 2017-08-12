@@ -26,7 +26,8 @@ export class MapComponent implements OnInit {
       return;
     }
 
-    const map = new google.maps.Map(this.el.nativeElement)
+    const map = new google.maps.Map(this.el.nativeElement, { streetViewControl: false, mapTypeControl: false });
+
     const marker = new google.maps.Marker();
     marker.set('map', map);
     marker.set('anchorPoint', new google.maps.Point(0, -29));
@@ -83,15 +84,19 @@ export class MapComponent implements OnInit {
     }
   }
 
+  localizateMe() {
+    this.getCurrentPosition()
+    .then(coords => {
+      //Send coordinates to the key.component
+      this.mapLoaderService.sendCoords({ lat: coords.lat, lng: coords.lng });
+      this.loadMap(coords);
+    });
+  }
+
   ngOnInit() {
     if (typeof google !== 'undefined') {
       console.log('MapComponent.ngOnInit');
-      this.getCurrentPosition()
-        .then(coords => {
-          //Send coordinates to the key.component
-          this.mapLoaderService.sendCoords({ lat: coords.lat, lng: coords.lng });
-          this.loadMap(coords);
-        });
+      this.localizateMe()
     }
   }
 
