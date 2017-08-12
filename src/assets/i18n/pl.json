@@ -10,7 +10,16 @@
     "title": "Ustawienia aplikacji"
   },
   "key-settings": {
-    "title": "Ustawienia klucza"
+    "title": "Ustawienia klucza",
+    "streetInputPlaceholder" : "Ulica",
+    "keyInputPlaceholder": "Klucz",
+    "latitudePlaceholder": "Szerokość geograficzna",
+    "longitudePlaceholder": "Długość geograficzna",
+    "accessibilityInfo": "Zamknij ustawienia",
+    "note": "Notatka",
+    "tooltip": {
+      "close": "Zamknij"
+    }    
   },
   "about": {
     "title": "O programie"

@@ -10,7 +10,16 @@
     "title": "App settings"
   },
   "key-settings": {
-    "title": "Key settings"
+    "title": "Key settings",
+    "streetInputPlaceholder" : "Street",
+    "keyInputPlaceholder": "Key",
+    "latitudePlaceholder": "Latitude",
+    "longitudePlaceholder": "Longitude",
+    "accessibilityInfo": "Close key settings",
+    "note": "Note",
+    "tooltip": {
+      "close": "Close"
+    }
   },
   "about": {
     "title": "About"

@@ -1,14 +1,39 @@
-<p>
-  key-settings works!
-</p>
-<div>
-  <button 
-    type="button"
-    md-button
-    aria-label="close key settings"
-    (click)=closeAndGoToMain()
-    mdTooltip="Close">
-    <md-icon>close</md-icon>
-    <span class="cdk-visually-hidden">close key settings</span>
-  </button>
-</div>
+<md-card>
+  <md-card-header>
+    <md-card-title>{{'key-settings.title' | translate}}</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <form>
+      <md-input-container class="key--fotn-size">
+        <input mdInput placeholder="{{'key-settings.keyInputPlaceholder' | translate}}" value="KEY">
+      </md-input-container>
+      <md-input-container>
+        <input mdInput placeholder="{{'key-settings.streetInputPlaceholder' | translate}}" value="STREET">
+      </md-input-container>
+      <md-input-container class="example-full-width">
+        <input mdInput #message maxlength="256" placeholder="{{'key-settings.note' | translate}}">
+        <md-hint align="end">{{message.value.length}} / 256</md-hint>
+      </md-input-container>
+      <table cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container>
+              <input mdInput placeholder="{{'key-settings.latitudePlaceholder' | translate}}" disabled value="lat">
+            </md-input-container>
+          </td>
+          <td>
+            <md-input-container>
+              <input mdInput placeholder="{{'key-settings.longitudePlaceholder' | translate}}" disabled value="lng">
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </md-card-content>
+  <md-card-actions>
+    <button type="button" class="button--pos-right" md-button aria-label="close key settings" (click)=closeAndGoToMain() mdTooltip="{{'key-settings.tooltip.close' | translate}}">
+      <md-icon>close</md-icon>
+      <span class="cdk-visually-hidden">{{'key-settings.accessibilityInfo' | translate}}</span>
+    </button>
+  </md-card-actions>
+</md-card>
