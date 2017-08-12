@@ -1,10 +1,46 @@
 :host {
+    
     @media (max-width: 600px) {
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 10px 0;
 }
     display: flex;
-    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    // flex: 1;
+    flex-direction: column;
     font-weight: 400;
-    padding: 20px 70px 50px;
+    // padding: 20px 70px 50px;
+    max-width: 940px;
+    
+}
+
+.form--max-width {
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        // display: block;
+        // margin: 0 auto;
+               
+        
+             }
+    @media (max-width: 600px) {
+            // padding-left: 15px;
+            // padding-right: 15px;
+        }
+    display: block;
+    // padding: 20px 70px 50px;
+    
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+.from--full-width{
+    width: 100%;
+}
+
+md-input-container {
+    @media (max-width: 600px) {
+    margin-bottom: 5px;
+    
+    }
+    margin-bottom: 20px;
 }
