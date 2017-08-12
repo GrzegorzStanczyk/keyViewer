@@ -3,22 +3,14 @@
     padding: 0px;
   }
   display: flex;
-  justify-content: center;  
+  justify-content: center;
   flex-grow: 1;
   font-weight: 400;
   height: 100%;
 }
 
 .component-viewer {
-  // CSS hack for Internet Explorer 10
-  &.ie {
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
-    display: block;
-    margin: 0 auto;
-  }
+    display: flex;
+    width: 1220px;
+    box-sizing: border-box;
 }
-  display: flex;
-  justify-content: center;
-  width: 1080px;
-}
-
