@@ -1,16 +1,18 @@
 <md-card class="search-form">
-    <input 
-        class="search-full-width search-adjust-padding"
-        appAutocomplete    
-        (onSelect)="getPlaceOnChange($event)"
-        type="search" 
-        mdInput 
-        placeholder="{{'map.inputPlaceholder' | translate}}">
+    <md-input-container>
+        <input mdInput
+            class="search-full-width"
+            appAutocomplete    
+            (onSelect)="getPlaceOnChange($event)"
+            type="search" 
+            placeholder="{{'map.inputPlaceholder' | translate}}">
+    </md-input-container>
 </md-card>
 <button 
     type="button" 
     md-button 
     aria-label="toggle navigation"
+    (click)="localizateMe()"
     class="my-location__button--posiiton"
     mdTooltip="{{'map.tooltip.myLocation' | translate}}">
     <md-icon class="my_location__icon">my_location</md-icon>
