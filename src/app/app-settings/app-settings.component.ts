@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app-settings.component.scss']
 })
 export class AppSettingsComponent implements OnInit {
-
+  isDarkTheme: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
+  changeTheme(): void {
+    if (this.isDarkTheme) {
+       this.isDarkTheme = false;
+    } else {
+       this.isDarkTheme = true;
+    }
+ }
 
 }
