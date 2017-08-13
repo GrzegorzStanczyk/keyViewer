@@ -4,7 +4,34 @@
     padding-right: 15px;
 }
     display: flex;
+    flex-direction: column;
+    align-items: center;
     flex-grow: 1;
     font-weight: 400;
     padding: 20px 70px 50px;
 }
+
+@mixin md-icon-size($size: 24px) {
+    font-size: $size;
+    height: $size;
+    width: $size;
+  }
+  
+.personal-icon--size {
+@include md-icon-size(200px);
+}
+
+// :host {
+//     @media (max-width: 600px) {
+//       padding: 0;
+//     }
+//     padding-top: 50px;
+//     max-width: 1220px;
+//     display: flex;
+//   }
+
+//   md-icon {
+//     font-size: 200px;
+//       width: 200px;
+//       height: 200px;
+//   }
