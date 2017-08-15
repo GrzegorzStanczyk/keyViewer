@@ -18,6 +18,13 @@ export class MapComponent implements OnInit {
 
   constructor(private mapLoaderService: MapLoaderService) { }
 
+  setMarker(map) {
+    const marker = new google.maps.Marker();
+    marker.set('map', map);
+    marker.set('anchorPoint', new google.maps.Point(0, -29));
+    return marker;
+  }
+
   // Get place from autocomplete search input provided by google api
   getPlaceOnChange(place) {
 
@@ -28,15 +35,14 @@ export class MapComponent implements OnInit {
 
     const map = new google.maps.Map(this.el.nativeElement, { streetViewControl: false, mapTypeControl: false });
 
-    const marker = new google.maps.Marker();
-    marker.set('map', map);
-    marker.set('anchorPoint', new google.maps.Point(0, -29));
-
     if (place.geometry.viewport) {
       map.fitBounds(place.geometry.viewport);
     } else {
       map.setCenter(place.geometry.location);
     }
+
+    const marker = this.setMarker(map);
+
     marker.setPosition(place.geometry.location);
     marker.setVisible(true);
 
@@ -52,7 +58,12 @@ export class MapComponent implements OnInit {
       mapTypeControl: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
+    
     const map = new google.maps.Map(this.el.nativeElement, mapProp);
+    const marker = this.setMarker(map);
+
+    marker.setPosition(mapProp.center);
+    marker.setVisible(true);
   }
 
   getCurrentPosition(): Promise<any> {
