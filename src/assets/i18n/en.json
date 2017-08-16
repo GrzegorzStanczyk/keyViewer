@@ -15,9 +15,15 @@
     "keyInputPlaceholder": "Key",
     "latitudePlaceholder": "Latitude",
     "longitudePlaceholder": "Longitude",
-    "accessibilityInfo": "Close key settings",
+    "accessibilityInfo": {
+      "save": "Save key",
+      "edit": "Edit key",
+      "close": "Close key settings"
+    },
     "note": "Note",
     "tooltip": {
+      "save": "Save",
+      "edit": "Edit",
       "close": "Close"
     }
   },

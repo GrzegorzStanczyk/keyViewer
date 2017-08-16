@@ -15,9 +15,15 @@
     "keyInputPlaceholder": "Klucz",
     "latitudePlaceholder": "Szerokość geograficzna",
     "longitudePlaceholder": "Długość geograficzna",
-    "accessibilityInfo": "Zamknij ustawienia",
+    "accessibilityInfo": {
+      "save": "Zapisz ustawienia",
+      "edit": "Edytuj ustawienia",
+      "close": "Zamknij ustawienia"
+    },
     "note": "Notatka",
     "tooltip": {
+      "save": "Zapisz",
+      "edit": "Edytuj",
       "close": "Zamknij"
     }    
   },
