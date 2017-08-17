@@ -7,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppSettingsComponent implements OnInit {
   isDarkTheme: boolean = false;
+  isOpen: boolean = false;
+
   constructor() { }
+
+  toggle() {
+    this.isOpen = !this.isOpen;
+  }
 
   ngOnInit() {
   }
