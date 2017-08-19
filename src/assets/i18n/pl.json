@@ -7,11 +7,13 @@
     "title": "Profil"
   },
   "app-settings": {
-    "title": "Ustawienia aplikacji"
+    "title": "Ustawienia aplikacji",
+    "accessibilityInfoToggler": "Otwórz/Zamknij listę motywów",
+    "tooltip": "Lista motywów"
   },
   "key-settings": {
     "title": "Ustawienia klucza",
-    "streetInputPlaceholder" : "Ulica",
+    "streetInputPlaceholder": "Ulica",
     "keyInputPlaceholder": "Klucz",
     "latitudePlaceholder": "Szerokość geograficzna",
     "longitudePlaceholder": "Długość geograficzna",
@@ -28,7 +30,10 @@
     }    
   },
   "about": {
-    "title": "O programie"
+    "title": "O programie",
+    "p1": "Witaj drogi użytkowiku.",
+    "p2": "Aplikacja została stworzona w celu pokazywania kodów dostępu do drzwi wejściowych, w zależności od lokalizacji w której się obecnie znajdujesz. Oczywiście bazę kluczy musisz stworzyć samemu w czym pomoże Ci przyjazny interfejs użytkownika.",
+    "p3": "W zakładce \"Głowny\", w przeważającej części ekranu widnieje mapa pokazująca twoją aktualną pozycję. W górnej części mapy jest pole \"Szukaj\" w którym możesz wyszukajć interesujące cię miejsce i przenieść w nie aktualną pozycje mapy. W zalezności od twojej aktualnej pozycji na mapie, w dolnej częsci strony będzie widniał wyszukany klucz do najbliższej lokalizacji wzgledem twojego położenia."
   },
   "map": {
     "inputPlaceholder": "Wyszukaj...",
