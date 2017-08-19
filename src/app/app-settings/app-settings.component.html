@@ -3,24 +3,25 @@
     <md-card-title>{{'app-settings.title' | translate}}</md-card-title>
   </md-card-header>
 </md-card>
-    <nav class="theme-menu" [class.open]="isOpen">
+  <nav class="theme-menu" [class.open]="isOpen">
   <!-- <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
   <label class="menu-open-button" for="menu-open">
     <div class="shake-effect">
       <md-icon class="theme-icon">color_lens</md-icon>
     </div>
   </label> -->
-
-  <button 
-    type="button" 
-    md-button 
-    attr.aria-label="{{'app-settings.accessibilityInfoToggler' | translate}}"
-    (click)="toggle()"
-    class="sidenav-toggle"
-    mdTooltip="{{'app-settings.tooltip' | translate}}">
-    <md-icon class="theme-icon">color_lens</md-icon>
-    <span class="cdk-visually-hidden">{{'app-settings.accessibilityInfoToggler' | translate}}</span>
-  </button> 
+  <!-- <div class="shake-effect"> -->
+    <button 
+      type="button" 
+      md-fab
+      attr.aria-label="{{'app-settings.accessibilityInfoToggler' | translate}}"
+      (click)="toggle()"
+      class="theme-toggle"
+      mdTooltip="{{'app-settings.tooltip' | translate}}">
+      <md-icon class="theme-icon">color_lens</md-icon>
+      <span class="cdk-visually-hidden">{{'app-settings.accessibilityInfoToggler' | translate}}</span>
+    </button> 
+  <!-- </div> -->
 
   <button 
     class="btn theme-button--picker" 
