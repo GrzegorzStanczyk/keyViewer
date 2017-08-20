@@ -1,6 +1,18 @@
-<md-icon>language</md-icon>
-<select id="seclect" #langSelect (change)="translate.use(langSelect.value)">
-  <option class="option" *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+<label class="flex" for="select">
+  <md-icon>language</md-icon>
+</label>  
+<select 
+  class="select--background"
+  id="select"
+  #langSelect
+  (change)="translate.use(langSelect.value)" 
+  name="language-select">
+  <option 
+    class="option" 
+    *ngFor="let lang of translate.getLangs()" 
+    [value]="lang" 
+    [selected]="lang === translate.currentLang">{{ lang }}
+  </option>
 </select> 
 
  
