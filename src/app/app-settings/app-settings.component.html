@@ -3,13 +3,7 @@
     <md-card-title>{{'app-settings.title' | translate}}</md-card-title>
   </md-card-header>
 </md-card>
-  <nav class="theme-menu" [class.open]="isOpen">
-  <!-- <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open" />
-  <label class="menu-open-button" for="menu-open">
-    <div class="shake-effect">
-      <md-icon class="theme-icon">color_lens</md-icon>
-    </div>
-  </label> -->
+<nav class="theme-menu" [class.open]="isOpen">
   <div class="shake-effect">
     <button 
       type="button" 
@@ -24,51 +18,34 @@
   </div>
 
   <button 
-    (click)="setTheme('andy-theme')"
+    (click)="setColorTheme('candy')"
     class="btn theme-button--picker" 
     md-fab>A</button>
   <button 
-    (click)="setTheme('unicorn-dark-theme')"
+    (click)="setColorTheme('unicorn')"
     class="btn theme-button--picker" 
     md-fab color="warn">B</button>
   <button 
-    (click)="setTheme('deeppurple-amber')"
+    (click)="setColorTheme('deeppurple-amber')"
     class="btn theme-button--picker" 
     md-fab>C</button>
   <button 
-    (click)="setTheme('pink-bluegrey')"
+    (click)="setColorTheme('pink-bluegrey')"
     class="btn theme-button--picker" 
     md-fab color="primary">D</button>
   <button 
-    (click)="setTheme('purple-green')"
-    class="btn theme-button--picker" 
+    (click)="setColorTheme('purple-green')"
+    class="btn theme-button--picker"
     md-fab color="acent">E</button>
+  <button 
+    (click)="setTheme('light-theme')"
+    class="btn theme-button--picker" 
+    md-fab color="primary">light</button>
+  <button 
+    (click)="setTheme('dark-theme')"
+    class="btn theme-button--picker" 
+    md-fab color="acent">dark</button>
 </nav>
-
-<!-- <nav class="theme-menu">
-    <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
-    <label class="menu-open-button" for="menu-open">
-        <md-icon class="theme-icon">color_lens</md-icon>
-      <span class="hamburger hamburger-1"></span>
-      <span class="hamburger hamburger-2"></span>
-      <span class="hamburger hamburger-3"></span>
-    </label>
-    
-    <a href="#" class="btn"> <i class="fa fa-bar-chart"></i> </a>
-    <a href="#" class="btn"> <i class="fa fa-plus"></i> </a>
-    <a href="#" class="btn"> <i class="fa fa-heart"></i> </a>
-    <a href="#" class="btn"> <i class="fa fa-envelope"></i> </a>
-    <a href="#" class="btn"> <i class="fa fa-cog"></i> </a>
-  
-  </nav> -->
-
-
-<!-- type="button" 
-md-button 
-aria-label="toggle navigation"
-(click)="toggleSidenav()"
-class="sidenav-toggle"
-mdTooltip="{{'navbar.tooltip.menu' | translate}}"> -->
 
 <!-- filters -->
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -78,7 +55,7 @@ mdTooltip="{{'navbar.tooltip.menu' | translate}}"> -->
       <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
       <feGaussianBlur in="goo" stdDeviation="3" result="shadow" />
       <feColorMatrix in="shadow" mode="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 -0.2" result="shadow" />
-      <feOffset in="shadow" dx="1" dy="1" result="shadow" />
+      <!-- <feOffset in="shadow" dx="1" dy="1" result="shadow" /> -->
       <feBlend in2="shadow" in="goo" result="goo" />
       <feBlend in2="goo" in="SourceGraphic" result="mix" />
     </filter>
