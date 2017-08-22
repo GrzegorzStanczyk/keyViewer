@@ -5,8 +5,8 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 export class SidenavOpenService {
 
-  private subjectSource = new Subject<any>();
-  private keySettingsSource = new Subject<any>();
+  public subjectSource = new Subject<any>();
+  public keySettingsSource = new Subject<any>();
 
   public sendMessage(): void {
     this.subjectSource.next();
