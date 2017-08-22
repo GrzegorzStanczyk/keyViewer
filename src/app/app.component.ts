@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { AppContent } from './content';
 import { OverlayContainer } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
 
@@ -16,10 +15,9 @@ import { ThemePickerService } from './app-settings/theme-picker.service';
 })
 
 export class AppComponent implements OnInit, OnDestroy {
-  content: Object = AppContent;
-  isDarkTheme: boolean = false;
+  // Default theme
   themeClass: string;
-  newThemeClass: string = "unicorn-dark-theme";
+  newThemeClass: string;
   subscription: Subscription;
 
   constructor(
@@ -29,14 +27,13 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.themeClass = this.themePickerService.getFullThemeFromLocalStorage();
     this.subscription = this.themePickerService.getPickedtheme()
       .subscribe(theme => {
         this.newThemeClass = theme;
-        console.log("newThemeClass", this.newThemeClass)
         this.themeClass = this.newThemeClass;
         this.overlayContainer.themeClass = this.newThemeClass;
       });
-    // this.themeClass = "pink-bluegrey";
   }
 
   ngOnDestroy(): void {
