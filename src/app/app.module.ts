@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import 'hammerjs';
 import {} from '@types/googlemaps';
-// import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { Http, HttpModule }       from '@angular/http';
+import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -25,7 +24,6 @@ import { MapComponent } from './map/map.component';
 import { AutocompleteDirective } from './map/autocomplete.directive';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ConnectionBackend } from '@angular/http';
 
 
 export function createTranslateLoader(http: Http) {
