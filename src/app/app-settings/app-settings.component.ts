@@ -8,7 +8,8 @@ import { ThemePickerService } from './theme-picker.service';
   styleUrls: ['./app-settings.component.scss']
 })
 export class AppSettingsComponent implements OnInit {
-  isDarkTheme: boolean = false;
+  color: string = 'candy';
+  theme: string = 'light-theme';
   isOpen: boolean = false;
 
   constructor(private themePickerService: ThemePickerService) { }
@@ -17,19 +18,16 @@ export class AppSettingsComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
+  setColorTheme(color: string) {
+    this.color = color;
+    this.themePickerService.sendPickedTheme(this.color + "-" + this.theme);
+  }
+
   setTheme(theme: string): void {
-    this.themePickerService.sendPickedTheme(theme);
+    this.theme = theme;
+    this.themePickerService.sendPickedTheme(this.color + "-" + this.theme);
   }
 
   ngOnInit() {
   }
-  
-  changeTheme(): void {
-    if (this.isDarkTheme) {
-       this.isDarkTheme = false;
-    } else {
-       this.isDarkTheme = true;
-    }
- }
-
 }
