@@ -1,7 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
 
-import { AppContent } from '../content';
-
 import { SidenavOpenService } from '../sidenav/sidenav-open.service'
 
 @Component({
@@ -10,7 +8,6 @@ import { SidenavOpenService } from '../sidenav/sidenav-open.service'
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  content: Object = AppContent;
 
   constructor(private sidenavOpenService: SidenavOpenService) {}
   

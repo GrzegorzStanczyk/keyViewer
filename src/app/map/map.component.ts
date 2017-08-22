@@ -1,7 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 
-import { AppContent } from '../content';
-
 import { MapLoaderService } from './map-loader.service';
 
 @Component({
@@ -11,7 +9,6 @@ import { MapLoaderService } from './map-loader.service';
 })
 export class MapComponent implements OnInit {
   @ViewChild('googleMap') el: ElementRef;
-  content = AppContent;
 
   lat: number;
   lng: number;
@@ -29,7 +26,7 @@ export class MapComponent implements OnInit {
   getPlaceOnChange(place) {
 
     if (!place) {
-      window.alert(this.content.pl.alert.placeNotFound);
+      window.alert("Returned place contains no geometry\nNie udało nam się znaleźć wyników dla zapytania");
       return;
     }
 
