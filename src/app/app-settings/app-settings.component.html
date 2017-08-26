@@ -17,34 +17,18 @@
     </button> 
   </div>
 
-  <button 
-    (click)="setColorTheme('candy')"
+  <button
+    *ngFor="let color of colorButtons"
+    (click)="setColorTheme(color.name)"
     class="btn theme-button--picker" 
+    [ngStyle]="{'background-color': color.color}"
     md-fab>A</button>
   <button 
-    (click)="setColorTheme('unicorn')"
+    *ngFor="let theme of themeButtons"
+    (click)="setTheme(theme.name)"
     class="btn theme-button--picker" 
-    md-fab color="warn">B</button>
-  <button 
-    (click)="setColorTheme('deeppurple-amber')"
-    class="btn theme-button--picker" 
-    md-fab>C</button>
-  <button 
-    (click)="setColorTheme('pink-bluegrey')"
-    class="btn theme-button--picker" 
-    md-fab color="primary">D</button>
-  <button 
-    (click)="setColorTheme('purple-green')"
-    class="btn theme-button--picker"
-    md-fab color="acent">E</button>
-  <button 
-    (click)="setTheme('light-theme')"
-    class="btn theme-button--picker" 
-    md-fab color="primary">light</button>
-  <button 
-    (click)="setTheme('dark-theme')"
-    class="btn theme-button--picker" 
-    md-fab color="acent">dark</button>
+    [ngStyle]="{'background-color': theme.color}"    
+    md-fab>A</button>
 </nav>
 
 <!-- filters -->
