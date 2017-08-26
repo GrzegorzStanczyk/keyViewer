@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ThemePickerService } from './theme-picker.service';
 
@@ -6,14 +6,6 @@ import { Theme } from './theme';
 import { COLORBUTTONS } from './mock-theme';
 import { THEMEBUTTONS } from './mock-theme';
 
-// class THEMEmock {
-//   name: string;
-//   color: string;
-//   translateX: number;
-//   translateY: number;
-//   scale: number;
-//   transitionDuration: number;
-// }
 
 @Component({
   selector: 'app-settings',
@@ -26,83 +18,51 @@ export class AppSettingsComponent implements OnInit {
   isOpen: boolean = false;
   colorButtons = COLORBUTTONS;
   themeButtons = THEMEBUTTONS;
-  
-
-  @ViewChild('chooseRing') chooseRing: ElementRef;
-  
-  // colorButtons: THEMEmock[] = [
-  //   {
-  //     name: "candy",
-  //     color: "#3F51B5",
-  //     translateX: 114.5,
-  //     translateY: 147.7,
-  //     scale: 1.1,
-  //     transitionDuration: 160
-  //   },
-  //   {
-  //     name: "unicorn",
-  //     color: "#607D8B",
-  //     translateX: 77.2,
-  //     translateY: 220.2,
-  //     scale: 1.1,
-  //     transitionDuration: 240
-  //   },
-  //   {
-  //     name: "deeppurple-amber",
-  //     color: "#673AB7",
-  //     translateX: 0,
-  //     translateY: 250,
-  //     scale: 1.1,
-  //     transitionDuration: 320
-  //   },
-  //   {
-  //     name: "pink-bluegrey",
-  //     color: "#E91E63",
-  //     translateX: -77.2,
-  //     translateY: 220.2,
-  //     scale: 1.1,
-  //     transitionDuration: 400
-  //   },
-  //   {
-  //     name: "purple-green",
-  //     color: "#9C27B0",
-  //     translateX: 114.5,
-  //     translateY: 147.7,
-  //     scale: 1.1,
-  //     transitionDuration: 480
-  //   }   
-  // ];
-  
-  // themeButtons: THEMEmock[] = [    
-  //   {
-  //     name: "light-theme",
-  //     color: "#ffffff",
-  //     translateX: 0,
-  //     translateY: 85,
-  //     scale: 0.7,
-  //     transitionDuration: 560
-  //   },
-  //   {
-  //     name: "dark-theme",
-  //     color: "#000000",
-  //     translateX: 0,
-  //     translateY: 150,
-  //     scale: 0.7,
-  //     transitionDuration: 640
-  //   } 
-  // ]
+  spanGoToTargetColor: {};
+  spanGoToTargetTheme: {};
 
   constructor(private themePickerService: ThemePickerService) { }
 
   toggle() {
+    !this.isOpen ? this.setRingOnSavedColor(this.color) : this.spanGoToTargetColor = null;
+    !this.isOpen ? this.setRingOnSavedTheme(this.theme) : this.spanGoToTargetTheme = null;    
     this.isOpen = !this.isOpen;
   }
 
-  moveChooseRing(obj, index) {
-    console.log("obj: ", obj, "chooseRing", this.chooseRing, "index: ", index);
+  moveSelectedColorCircle(color): void {
+    this.spanGoToTargetColor = {
+      'transition-duration': `480ms`,
+      'transform': `translate3d(${color.translateX}px, ${color.translateY}px, 0) scale(1.15)`
+    };
   }
 
-  setColorTheme(color: string) {
+  moveSelectedThemeCircle(theme): void {
+    this.spanGoToTargetTheme = {
+      'transition-duration': `${theme.transitionDuration}ms`,
+      'transform': `translate3d(${theme.translateX}px, ${theme.translateY}px, 0) scale(0.8)`
+    };
+  }
+
+  setRingOnSavedColor(colorName: string): void {
+    this.colorButtons.forEach((color)=>{
+      if(color.name === colorName) {
+        this.spanGoToTargetColor = {
+          'transition-duration': `${color.transitionDuration}ms`,
+          'transform': `translate3d(${color.translateX}px, ${color.translateY}px, 0) scale(1.15)`
+        };
+      }
+    });    
+  }
+
+  setRingOnSavedTheme(themeName: string): void {
+    this.themeButtons.forEach((theme)=>{
+      if(theme.name === themeName) {
+        this.moveSelectedThemeCircle(theme);
+      }
+    });    
+  }
+
+  setColorTheme(color: string): void {
     this.color = color;
     this.themePickerService.sendPickedTheme(this.color + "-" + this.theme);
     this.themePickerService.storeThemeInLocalStorage({color: this.color, theme: this.theme});    

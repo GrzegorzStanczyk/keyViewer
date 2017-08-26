@@ -1,5 +1,3 @@
-$h: 135px;
-
 :host {
   max-width: 1220px;
   width: 100%;
@@ -54,40 +52,27 @@ $h: 135px;
   .theme-icon {
     transform: rotate(180deg);
   }
-  .picked {
-    position: absolute; 
-    top: 10%;
-    left: 50%;
-    margin-left: -40px; 
-    width: 80px;
-    height: 80px;
-    background-color: #FFEA00;
-    border-radius: 100%;
-    transition-duration: 480ms;
-    transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
-    transform: translate3d(-114.40705px, $h + 11.66307px, 0) scale(1.15);
-  }
   & .btn {
     transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
     &:nth-child(2) {
       transition-duration: 160ms;
-      transform: translate3d(114.42548px, $h + 11.48084px, 0);
+      transform: translate3d(114.5px, 147.7px, 0);
     }
     &:nth-child(3) {
       transition-duration: 240ms;
-      transform: translate3d(77.18543px, $h + 85.2491px, 0);
+      transform: translate3d(77.2px, 220.2px, 0);
     }
     &:nth-child(4) {
       transition-duration: 320ms;
-      transform: translate3d(0.09158px, $h + 114.40705px, 0);
+      transform: translate3d(0px, 250px, 0);
     }
     &:nth-child(5) {
       transition-duration: 400ms;
-      transform: translate3d(-77.04956px, $h + 85.37192px, 0);
+      transform: translate3d(-77.2px, 220.2px, 0);
     }
     &:nth-child(6) {
       transition-duration: 480ms;
-      transform: translate3d(-114.40705px, $h + 11.66307px, 0);
+      transform: translate3d(-114.5px, 147.7px, 0);
     }
     &:nth-child(7) {
       transition-duration: 560ms;
@@ -111,9 +96,7 @@ $h: 135px;
   display: flex;
   justify-content: center;
   align-items: center;
-  // transform: scale(1.1, 1.1) translate3d(0, 0, 0);
   transform: scale(1.1);
-  // animation: shake 3s cubic-bezier(.36,.07,.19,.97) both infinite;
 }
 
 .theme-toggle:hover {
@@ -126,7 +109,6 @@ $h: 135px;
   z-index: 2;
   transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
   transition-duration: 400ms;
-  // transform: scale(1.1, 1.1) translate3d(0, 0, 0);
   color: #fff;
   line-height: 80px;
   padding: 0;
@@ -136,7 +118,6 @@ $h: 135px;
 }
 
 .btn {
-  // background:rgba(255,0,0,0.2);
   position: absolute;
   box-shadow: none;
   z-index: 1;
@@ -148,8 +129,6 @@ $h: 135px;
   margin-left: -40px;
   color: white;
   text-align: center;
-  // line-height: 80px;
-  // transform: translate3d(-50%, 0, 0);
   transition: transform ease-out 200ms;
   @for $i from 1 through 5 {
     &:nth-child(#{$i+2}) {
@@ -197,4 +176,17 @@ $h: 135px;
   left: 50%;
   margin-left: -40px;
   animation: shake 3s cubic-bezier(.36,.07,.19,.97) both infinite;
+}
+
+.pickedColor, .pickedTheme {
+  position: absolute; 
+  top: 10%;
+  left: 50%;
+  margin-left: -40px; 
+  width: 80px;
+  height: 80px;
+  background-color: #FFEA00;
+  border-radius: 100%;
+  transition-timing-function: cubic-bezier(0.935, 0.000, 0.340, 1.330);
+  transform: translate3d(0, 0, 0) scale(0.5);
 }

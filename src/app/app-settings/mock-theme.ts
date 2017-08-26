@@ -36,7 +36,7 @@ export const COLORBUTTONS: Theme[] = [
   {
     name: "purple-green",
     color: "#9C27B0",
-    translateX: 114.5,
+    translateX: -114.5,
     translateY: 147.7,
     scale: 1.1,
     transitionDuration: 480

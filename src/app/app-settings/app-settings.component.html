@@ -17,14 +17,14 @@
     </button> 
   </div>
   <button
-  *ngFor="let color of colorButtons"
-  type="button"
-  md-fab
-  attr.aria-label="{{'app-settings.accessibilityInfoColorPicker' | translate}} {{color.name}}"    
-  (click)="setColorTheme(color.name)"
-  (click)="moveChooseRing(color)"
-  class="btn theme-button--picker" 
-  [ngStyle]="{'background-color': color.color}">
+    *ngFor="let color of colorButtons"
+    type="button"
+    md-fab
+    attr.aria-label="{{'app-settings.accessibilityInfoColorPicker' | translate}} {{color.name}}"    
+    (click)="setColorTheme(color.name)"
+    (click)="moveSelectedColorCircle(color)"
+    class="btn theme-button--picker" 
+    [ngStyle]="{'background-color': color.color}">    
   </button>
   <button 
     *ngFor="let theme of themeButtons"
@@ -32,10 +32,16 @@
     md-fab
     attr.aria-label="{{'app-settings.accessibilityInfoThemePicker' | translate}} {{theme.name}}"    
     (click)="setTheme(theme.name)"
+    (click)="moveSelectedThemeCircle(theme)"    
     class="btn theme-button--picker" 
     [ngStyle]="{'background-color': theme.color}">
   </button>
-  <span class="picked" #chooseRing></span>
+  <span 
+    class="pickedColor" 
+    [ngStyle]="spanGoToTargetColor"></span>
+  <span 
+    class="pickedTheme" 
+    [ngStyle]="spanGoToTargetTheme"></span>
 </nav>
 
 <!-- filters -->
