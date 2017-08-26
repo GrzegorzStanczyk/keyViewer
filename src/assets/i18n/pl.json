@@ -9,6 +9,8 @@
   "app-settings": {
     "title": "Ustawienia aplikacji",
     "accessibilityInfoToggler": "Otwórz/Zamknij listę motywów",
+    "accessibilityInfoThemePicker": "Wybierz kolor tła",
+    "accessibilityInfoColorPicker": "Wybierz kolor motywu",
     "tooltip": "Lista motywów"
   },
   "key-settings": {

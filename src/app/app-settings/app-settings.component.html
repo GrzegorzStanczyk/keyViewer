@@ -19,16 +19,22 @@
 
   <button
     *ngFor="let color of colorButtons"
+    type="button"
+    md-fab
+    attr.aria-label="{{'app-settings.accessibilityInfoColorPicker' | translate}} {{color.name}}"    
     (click)="setColorTheme(color.name)"
     class="btn theme-button--picker" 
-    [ngStyle]="{'background-color': color.color}"
-    md-fab>A</button>
+    [ngStyle]="{'background-color': color.color}">
+  </button>
   <button 
     *ngFor="let theme of themeButtons"
+    type="button"
+    md-fab
+    attr.aria-label="{{'app-settings.accessibilityInfoThemePicker' | translate}} {{theme.name}}"    
     (click)="setTheme(theme.name)"
     class="btn theme-button--picker" 
-    [ngStyle]="{'background-color': theme.color}"    
-    md-fab>A</button>
+    [ngStyle]="{'background-color': theme.color}">
+  </button>
 </nav>
 
 <!-- filters -->

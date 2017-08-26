@@ -9,6 +9,8 @@
   "app-settings": {
     "title": "App settings",
     "accessibilityInfoToggler": "Open/Close theme list",
+    "accessibilityInfoThemePicker": "Choose Theme background",
+    "accessibilityInfoColorPicker": "Choose Theme color",
     "tooltip": "Theme list"
   },
   "key-settings": {
