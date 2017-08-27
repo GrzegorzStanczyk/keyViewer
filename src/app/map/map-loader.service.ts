@@ -6,7 +6,7 @@ import { KEYS } from '../key/key-mock';
 import { Key } from '../key/key.model';
 
 
-const url = 'http://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
+const url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
 
 @Injectable()
 export class MapLoaderService {
