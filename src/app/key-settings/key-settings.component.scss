@@ -10,14 +10,9 @@
   max-width: 500px;
   margin: 0 auto;
   box-sizing: border-box;
-  
 }
 
 .card__title {
-  @media (max-width: 600px) {
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
   @extend %card;
   margin-top: 50px;
   margin-bottom: 35px;
@@ -29,22 +24,10 @@
 }
 
 .card__key-settings {
-  @media (max-width: 600px) {
-    height: 100%;
-  }
   @extend %card;
 }
 
-.key--fotn-size {
-  @media (max-width: 600px) {
-    font-size: 20px;
-  }
-}
-
 md-input-container {
-  @media (max-width: 600px) {
-    margin-bottom: 5px;
-  }
   width: 100%;
 }
 
@@ -55,5 +38,26 @@ md-card-actions {
 
 table {
   width: 100%;
-  padding-bottom: 8px;
+}
+
+@media (max-width: 600px) {
+  .card__title {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .card__key-settings {
+    height: 100%;
+  }
+  .key--fotn-size {
+    font-size: 20px;
+  }
+  md-card-content {
+    margin: 0;
+  }
+  md-input-container {
+    margin-bottom: 5px;
+  }
+  md-card-actions {
+    padding: 0;
+  }
 }
