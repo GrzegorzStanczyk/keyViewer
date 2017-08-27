@@ -44,19 +44,14 @@ export class AppSettingsComponent implements OnInit {
   }
 
   moveSelectedColorRing(color: Theme, i: number): void {
-    // console.log('this.ringIndex przed wyborem', this.ringIndex);
     // Assign chosen index of button to the variable
     this.selectedColorIndex = i;
-    // console.log('this.selectedColorIndex', this.selectedColorIndex);
     // Check on which direction to move color ring
     if(this.selectedColorIndex > this.ringIndex) {
-      // console.log('to the left', this.selectedColorIndex - this.ringIndex);
       for(let i = this.ringIndex+1; i<=(this.selectedColorIndex); i++) {
         this.moveStepByStep(i);
-        // console.log('this.spanGoToTargetColor', this.spanGoToTargetColor)          
       }
     } else if (this.selectedColorIndex < this.ringIndex) {
-      console.log('to the right', Math.abs(this.selectedColorIndex - this.ringIndex));
       this.spanGoToTargetColor = {
         'transition-duration': `480ms`,
         'transform': `translate3d(${color.translateX}px, ${color.translateY}px, 0) scale(1.15)`
@@ -64,7 +59,6 @@ export class AppSettingsComponent implements OnInit {
     }
     // Set ring index to index of selected color 
     this.ringIndex = this.selectedColorIndex;
-    // console.log('this.ringIndex po wyborze', this.ringIndex);
   }
 
   moveSelectedThemeRing(theme: Theme): void {
@@ -95,16 +89,20 @@ export class AppSettingsComponent implements OnInit {
     });    
   }
 
-  setColorTheme(color: string): void {
-    this.color = color;
-    this.themePickerService.sendPickedTheme(this.color + "-" + this.theme);
-    this.themePickerService.storeThemeInLocalStorage({color: this.color, theme: this.theme});    
-  }
-
-  setTheme(theme: string): void {
-    this.theme = theme;
+  setColorTheme(color: Theme, index: number): void {
+    this.color = color.name;
     this.themePickerService.sendPickedTheme(this.color + "-" + this.theme);
     this.themePickerService.storeThemeInLocalStorage({color: this.color, theme: this.theme});
+    
+    this.moveSelectedColorRing(color, index);
+  }
+
+  setTheme(theme: Theme): void {
+    this.theme = theme.name;
+    this.themePickerService.sendPickedTheme(this.color + "-" + this.theme);
+    this.themePickerService.storeThemeInLocalStorage({color: this.color, theme: this.theme});
+
+    this.moveSelectedThemeRing(theme);
   }
 
   ngOnInit() {

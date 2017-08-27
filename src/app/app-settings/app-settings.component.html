@@ -21,8 +21,7 @@
     type="button"
     md-fab
     attr.aria-label="{{'app-settings.accessibilityInfoColorPicker' | translate}} {{color.name}}"    
-    (click)="setColorTheme(color.name)"
-    (click)="moveSelectedColorRing(color, i)"
+    (click)="setColorTheme(color, i)"
     class="btn theme-button--picker" 
     [ngStyle]="{'background-color': color.color}">    
   </button>
@@ -31,8 +30,7 @@
     type="button"
     md-fab
     attr.aria-label="{{'app-settings.accessibilityInfoThemePicker' | translate}} {{theme.name}}"    
-    (click)="setTheme(theme.name)"
-    (click)="moveSelectedThemeRing(theme)"    
+    (click)="setTheme(theme)"
     class="btn theme-button--picker" 
     [ngStyle]="{'background-color': theme.color}">
   </button>
