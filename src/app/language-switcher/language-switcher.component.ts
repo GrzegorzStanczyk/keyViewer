@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class LanguageSwitcherComponent implements OnInit {
 
-  constructor(private translate: TranslateService) {
+  constructor(public translate: TranslateService) {
         this.translate.addLangs(["en", "pl"]);
         this.translate.setDefaultLang('en');
 
