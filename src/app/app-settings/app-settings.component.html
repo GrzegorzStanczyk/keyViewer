@@ -17,12 +17,12 @@
     </button> 
   </div>
   <button
-    *ngFor="let color of colorButtons"
+    *ngFor="let color of colorButtons; let i=index"
     type="button"
     md-fab
     attr.aria-label="{{'app-settings.accessibilityInfoColorPicker' | translate}} {{color.name}}"    
     (click)="setColorTheme(color.name)"
-    (click)="moveSelectedColorCircle(color)"
+    (click)="moveSelectedColorRing(color, i)"
     class="btn theme-button--picker" 
     [ngStyle]="{'background-color': color.color}">    
   </button>
@@ -32,12 +32,12 @@
     md-fab
     attr.aria-label="{{'app-settings.accessibilityInfoThemePicker' | translate}} {{theme.name}}"    
     (click)="setTheme(theme.name)"
-    (click)="moveSelectedThemeCircle(theme)"    
+    (click)="moveSelectedThemeRing(theme)"    
     class="btn theme-button--picker" 
     [ngStyle]="{'background-color': theme.color}">
   </button>
   <span 
-    class="pickedColor" 
+    class="pickedColor"
     [ngStyle]="spanGoToTargetColor"></span>
   <span 
     class="pickedTheme" 
