@@ -4,7 +4,10 @@
     "title": "Główny"
   },
   "profile": {
-    "title": "Profil"
+    "title": "Profil",
+    "signIn": "Zaloguj",
+    "signUp": "Dodaj konto",
+    "signOut": "Wyloguj"
   },
   "app-settings": {
     "title": "Ustawienia aplikacji",

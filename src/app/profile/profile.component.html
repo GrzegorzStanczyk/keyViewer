@@ -1,6 +1,23 @@
-<md-card class="card__title card--center">
+<md-card class="card__title">
   <md-card-header>
-    <md-card-title>{{'key-settings.title' | translate}}</md-card-title>
+    <md-card-title>{{'profile.title' | translate}}</md-card-title>
   </md-card-header>
 </md-card>
-<md-icon class="personal-icon--size">person</md-icon>
+<md-icon class="personal-icon">person</md-icon>
+<div class="sign-in-container">
+  <button
+    type="button"
+    md-raised-button
+    attr.aria-label="{{'profile.signIn' | translate}}">{{'profile.signIn' | translate}} 
+  </button>
+  <button 
+    type="button"
+    md-raised-button
+    attr.aria-label="{{'profile.signUp' | translate}}">{{'profile.signUp' | translate}}
+  </button>
+  <button
+    type="button"
+    md-raised-button
+    attr.aria-label="{{'profile.signOut' | translate}}">{{'profile.signOut' | translate}}
+  </button>
+</div>
