@@ -12,6 +12,7 @@ export class MapComponent implements OnInit {
 
   lat: number;
   lng: number;
+  mapReady: boolean = null;
 
   constructor(private mapLoaderService: MapLoaderService) { }
 
@@ -57,6 +58,7 @@ export class MapComponent implements OnInit {
     };
     
     const map = new google.maps.Map(this.el.nativeElement, mapProp);
+    this.mapReady = true;
     const marker = this.setMarker(map);
 
     marker.setPosition(mapProp.center);

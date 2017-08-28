@@ -24,7 +24,6 @@ export class KeyComponent implements OnInit, OnDestroy {
 
     this.subscriptionToGetCoords = this.mapLoaderService.getCoords()
       .subscribe(coords => { 
-        // this.findNearest(coords)
         this.zone.run(() => this.findNearest(coords));
       })
   }

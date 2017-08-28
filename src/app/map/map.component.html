@@ -18,3 +18,6 @@
     <span class="cdk-visually-hidden">{{'map.tooltip.myLocation' | translate}}</span>
 </button> 
 <div id="googleMap" #googleMap class="map--full-size"></div>
+<div *ngIf="!mapReady" class="spiner-container">
+    <md-spinner ></md-spinner>
+</div>

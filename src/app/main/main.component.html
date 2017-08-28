@@ -1,7 +1,2 @@
-<app-map *ngIf='mapReady; else spiner' class="map"></app-map>
+<app-map *ngIf='mapReady' class="map"></app-map>
 <app-key *ngIf='mapReady' (dblclick)="goToKeySettings()"></app-key>
-<ng-template #spiner>
-    <div class="spiner-container">
-        <md-spinner ></md-spinner>
-    </div>
-</ng-template>
