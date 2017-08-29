@@ -1,9 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MyOwnCustomMaterialModuleModule } from './material-module/my-own-custom-material-module.module';
+import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 import 'hammerjs';
 import {} from '@types/googlemaps';
-import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -17,16 +20,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ComponentViewerComponent } from './component-viewer/component-viewer.component';
 import { KeyComponent } from './key/key.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
-
-import { MyOwnCustomMaterialModuleModule } from './material-module/my-own-custom-material-module.module';
-import { AppRoutingModule } from './app-routing.module';
 import { MapComponent } from './map/map.component';
+
 import { AutocompleteDirective } from './map/autocomplete.directive';
+
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 
-export function createTranslateLoader(http: Http) {
+export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -52,12 +54,12 @@ export function createTranslateLoader(http: Http) {
     AppRoutingModule,
     BrowserAnimationsModule,
     MyOwnCustomMaterialModuleModule,
-    HttpModule, 
+    HttpClientModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
-        deps: [Http]
+        deps: [HttpClient]
       }
     })
   ],
