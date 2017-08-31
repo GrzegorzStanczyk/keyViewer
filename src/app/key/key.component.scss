@@ -1,14 +1,33 @@
+md-card {
+    font-size: 16px;
+    text-align: center;    
+    
+}
+
 .key-code {
     font-size: 16px;
-    height: auto;
+    // height: auto;
     margin-top: 35px;
     word-wrap: normal;
     word-break: break-all;
     white-space: normal;
-    text-align: center;
-    @media(max-width: 600px) {
-        line-height: 1.4;
+    
+}
+
+.key-street {
+    padding: 10px;
+    
+}
+
+@media(max-width: 600px) {
+    .key-code {
+        line-height: 1;
         font-size: calc(4vw + 4vh + 2vmin);
-         margin-top: 0px;        
+        margin-top: 0px;
+        padding: 10px;
+    }
+    .key-street {
+        line-height: 1;
+        padding: 6px 4px;        
     }
 }

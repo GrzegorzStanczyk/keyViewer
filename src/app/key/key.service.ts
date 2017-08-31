@@ -6,6 +6,7 @@ import { KEYS } from './key-mock';
 @Injectable()
 export class KeyService {
   getKeys(): Promise<Key[]> {
+    console.log(JSON.stringify(KEYS));
     return Promise.resolve(KEYS);
   }
   constructor() { }
