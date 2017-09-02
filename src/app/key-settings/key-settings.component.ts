@@ -2,12 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { slideInDownAnimation, slideInOutAnimation, slideToTop } from '../router.animations';
 
 import { Key } from '../key/key.model';
-import { KEYS } from '../key/key-mock';
 
 import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 import { DataStorageService } from './data-storage.service';
 import { KeyService } from '../key/key.service';
-import { MapLoaderService } from '../map/map-loader.service';
 
 
 @Component({
@@ -18,19 +16,16 @@ import { MapLoaderService } from '../map/map-loader.service';
   host: { '[@routerTransition]': '' }
 })
 export class KeySettingsComponent implements OnInit {
-  key: Key;
+  key$: Promise<Key>;  
 
   constructor(
     private sidenavOpenService: SidenavOpenService,
     private dataStorageService: DataStorageService,
     private keyService: KeyService) { 
-      if(this.keyService.keyToEdit !== null) {   
-        this.keyService.keyToEdit
-          .then((data)=>{
-            this.key = data;
-          })        
+      if(this.keyService.keyToEdit !== null) {
+        this.key$ = this.keyService.keyToEdit     
       } else {
-        this.key = new Key('', null, null, null, '');
+        this.key$ = new Promise(resolve=>resolve(new Key('', null, null, null, '')));
       }
     }
   
