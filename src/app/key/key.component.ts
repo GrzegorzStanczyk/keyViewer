@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import { Router } from '@angular/router';
 
 import { KeyService } from './key.service';
 import { MapLoaderService } from '../map/map-loader.service';
@@ -9,40 +10,33 @@ import { Key } from './key.model';
 @Component({
   selector: 'app-key',
   templateUrl: './key.component.html',
-  styleUrls: ['./key.component.scss'],
-  providers: [KeyService]
+  styleUrls: ['./key.component.scss']
 })
-export class KeyComponent implements OnInit, OnDestroy {  
-  markerFiltered: Promise<{}> | null = null; 
-   
+export class KeyComponent implements OnInit, OnDestroy {
+  markerFiltered: Promise<Key> | null = null;
+
   subscriptionToGetCoords: Subscription;
 
   constructor(
-    private keyService: KeyService, 
-    private mapLoaderService: MapLoaderService, 
-    private zone:NgZone) { 
+    private keyService: KeyService,
+    private mapLoaderService: MapLoaderService,
+    private zone: NgZone,
+    private router: Router) {
 
     this.subscriptionToGetCoords = this.mapLoaderService.getCoords()
-      .subscribe(coords => { 
-        this.zone.run(() => this.findNearest(coords));
+      .subscribe(coords => {
+        this.zone.run(() => this.markerFiltered = this.keyService.findNearest(coords));
       })
   }
 
-  public findNearest(coords): Promise<{}> {
-    const userLatLng = new google.maps.LatLng(coords.lat, coords.lng);
-    return this.markerFiltered = this.keyService.getKeys()    
-      .then(keys => {
-         return keys.reduce(function (prev, curr) {
-          let location1 = new google.maps.LatLng(prev.lat, prev.lng)
-          let location2 = new google.maps.LatLng(curr.lat, curr.lng)
-          let ppos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location1);
-          let cpos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location2);
-          return cpos < ppos ? curr : prev;
-        })
-      })
+  goToKeySettings(): void {
+    if (this.markerFiltered) {
+      this.keyService.keyToEdit = this.markerFiltered;
+      this.router.navigate(['/key-settings']);
+    }
   }
 
-  ngOnInit() { 
+  ngOnInit() {
   }
 
   ngOnDestroy() {
