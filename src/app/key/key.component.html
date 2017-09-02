@@ -13,6 +13,7 @@
         {{(markerFiltered | async)?.key}}
     </md-card>
     <button 
+        (click)="addNewKey()"
         md-button
         attr.aria-label="{{'key-component.accessibilityInfo' | translate}}"
         mdTooltip="{{'key-component.tooltip' | translate}}">

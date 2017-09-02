@@ -11,7 +11,6 @@ export class KeyService {
   constructor() { }
 
   public getKeys(): Promise<Key[]> {
-    console.log(JSON.stringify(KEYS));
     return Promise.resolve(KEYS);
   }
 

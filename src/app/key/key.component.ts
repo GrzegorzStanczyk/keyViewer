@@ -25,13 +25,20 @@ export class KeyComponent implements OnInit, OnDestroy {
 
     this.subscriptionToGetCoords = this.mapLoaderService.getCoords()
       .subscribe(coords => {
-        this.zone.run(() => this.markerFiltered = this.keyService.findNearest(coords));
+        this.zone.run(() => {
+          this.markerFiltered = this.keyService.findNearest(coords);
+        });
       })
+  }
+
+  addNewKey(): void {
+    this.router.navigate(['/key-settings']);
   }
 
   goToKeySettings(): void {
     if (this.markerFiltered) {
-      this.keyService.keyToEdit = this.markerFiltered;
+      // Provide nearest key to global variable keyToEdit 
+      this.keyService.keyToEdit = this.markerFiltered;      
       this.router.navigate(['/key-settings']);
     }
   }
