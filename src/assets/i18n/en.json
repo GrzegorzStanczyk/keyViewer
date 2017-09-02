@@ -37,6 +37,10 @@
   "keys-list": {
     "title": "List of keys"
   },
+  "key-component": {
+    "accessibilityInfo": "Add key",
+    "tooltip": "Add key"
+  },
   "about": {
     "title": "About"
   },

@@ -1,13 +1,25 @@
 md-card {
     font-size: 16px;
-    text-align: center;    
-    
+    text-align: center; 
+}
+
+.mat-icon {
+    font-size: 45px;
+    height: 100%;
+    width: 100%;
+    line-height: 100%;
+    vertical-align: middle;
+}
+
+.key-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 35px;
 }
 
 .key-code {
+    flex-grow: 1;
     font-size: 16px;
-    // height: auto;
-    margin-top: 35px;
     word-wrap: normal;
     word-break: break-all;
     white-space: normal;
@@ -15,17 +27,27 @@ md-card {
 
 .key-street {
     padding: 10px;
-    
 }
 
 @media(max-width: 600px) {
+    .mat-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        min-width: 50px;
+    }
+    .key-container {
+        margin-top: 0px;
+    }
     .key-code {
+        box-shadow: none;        
         line-height: 1;
         font-size: calc(4vw + 4vh + 2vmin);
-        margin-top: 0px;
         padding: 10px;
     }
     .key-street {
+        box-shadow: none;        
         line-height: 1;
         padding: 2px;        
     }

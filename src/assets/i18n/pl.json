@@ -37,6 +37,10 @@
   "keys-list": {
     "title": "Lista kluczy"
   },
+  "key-component": {
+    "accessibilityInfo": "Dodaj klucz",
+    "tooltip": "Dodaj klucz"
+  },
   "about": {
     "title": "O programie",
     "p1": "Witaj drogi użytkowiku.",

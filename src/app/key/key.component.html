@@ -4,10 +4,20 @@
     >
     {{(markerFiltered | async)?.streetName}}
 </md-card>
-<md-card
-    (click)="goToKeySettings()"
-    class="key-code" 
-    tabindex="0"
-    >
-    {{(markerFiltered | async)?.key}}
-</md-card>
+<div class="key-container">
+    <md-card
+        (click)="goToKeySettings()"
+        class="key-code" 
+        tabindex="0"
+        >
+        {{(markerFiltered | async)?.key}}
+    </md-card>
+    <button 
+        md-button
+        attr.aria-label="{{'key-component.accessibilityInfo' | translate}}"
+        mdTooltip="{{'key-component.tooltip' | translate}}">
+        <md-icon>add_box</md-icon>
+        <span class="cdk-visually-hidden">{{'key-component.accessibilityInfo' | translate}}</span>
+    </button>
+</div>
+
