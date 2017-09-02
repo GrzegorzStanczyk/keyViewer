@@ -34,6 +34,9 @@
       "close": "Zamknij"
     }    
   },
+  "keys-list": {
+    "title": "Lista kluczy"
+  },
   "about": {
     "title": "O programie",
     "p1": "Witaj drogi użytkowiku.",

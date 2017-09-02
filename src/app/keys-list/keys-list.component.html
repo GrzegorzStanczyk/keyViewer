@@ -1,0 +1,15 @@
+<!-- <h1>{{ (items | async)?.key }}</h1> -->
+<md-paginator [length]="100"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]">
+</md-paginator>
+<ul>
+    <li *ngFor="let item of items | async">
+       {{ item | json }}
+    </li>
+  </ul>
+
+  <button (click)="addItem()">addItem()</button>
+  <button (click)="updateItem()">updateItem()</button>
+  <button (click)="deleteItem()">deleteItem()</button>
+  <button (click)="deleteEverything()">deleteEverything()</button>
