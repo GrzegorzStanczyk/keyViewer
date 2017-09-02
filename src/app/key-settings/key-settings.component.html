@@ -7,25 +7,25 @@
   <md-card-content>
     <form>
       <md-input-container class="key--fotn-size">
-        <input mdInput placeholder="{{'key-settings.keyInputPlaceholder' | translate}}" value="KEY">
+        <input mdInput placeholder="{{'key-settings.keyInputPlaceholder' | translate}}" [(ngModel)]="key.key" name="key">
       </md-input-container>
       <md-input-container>
-        <input mdInput placeholder="{{'key-settings.streetInputPlaceholder' | translate}}" value="STREET">
+        <input mdInput placeholder="{{'key-settings.streetInputPlaceholder' | translate}}" [(ngModel)]="key.streetName" name="streetName">
       </md-input-container>
       <md-input-container class="example-full-width">
-        <input mdInput #message maxlength="256" placeholder="{{'key-settings.note' | translate}}">
+        <input mdInput #message maxlength="256" placeholder="{{'key-settings.note' | translate}}" [(ngModel)]="key.note"  name="note">
         <md-hint align="end">{{message.value.length}} / 256</md-hint>
       </md-input-container>
       <table cellspacing="0">
         <tr>
           <td>
             <md-input-container>
-              <input mdInput placeholder="{{'key-settings.latitudePlaceholder' | translate}}" disabled value="lat">
+              <input mdInput placeholder="{{'key-settings.latitudePlaceholder' | translate}}" disabled [value]="key.lat">
             </md-input-container>
           </td>
           <td>
             <md-input-container>
-              <input mdInput placeholder="{{'key-settings.longitudePlaceholder' | translate}}" disabled value="lng">
+              <input mdInput placeholder="{{'key-settings.longitudePlaceholder' | translate}}" disabled [value]="key.lng">
             </md-input-container>
           </td>
         </tr>
@@ -33,11 +33,11 @@
     </form>
   </md-card-content>
   <md-card-actions>
-    <button color="primary" type="button" md-raised-button attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" (click)=closeAndGoToMain() mdTooltip="{{'key-settings.tooltip.save' | translate}}">
+    <button color="primary" type="button" md-raised-button attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" (click)=getKey() mdTooltip="{{'key-settings.tooltip.save' | translate}}">
       <md-icon>save</md-icon>
       <span class="cdk-visually-hidden">{{'key-settings.accessibilityInfo.save' | translate}}</span>
     </button>
-    <button color="accent" type="button" md-raised-button attr.aria-label="{{'key-settings.accessibilityInfo.edit' | translate}}" (click)=closeAndGoToMain() mdTooltip="{{'key-settings.tooltip.edit' | translate}}">
+    <button color="accent" type="button" md-raised-button attr.aria-label="{{'key-settings.accessibilityInfo.edit' | translate}}" (click)=getKey() mdTooltip="{{'key-settings.tooltip.edit' | translate}}">
       <md-icon>edit</md-icon>
       <span class="cdk-visually-hidden">{{'key-settings.accessibilityInfo.edit' | translate}}</span>
     </button>
