@@ -10,7 +10,8 @@ import {
   MdTooltipModule,
   MdCardModule,
   MdInputModule,
-  MdProgressSpinnerModule } from '@angular/material';
+  MdProgressSpinnerModule,
+  MdPaginatorModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import {
     MdTooltipModule,
     MdCardModule,
     MdInputModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdPaginatorModule
   ],
   exports: [
     MdButtonModule, 
@@ -36,7 +38,8 @@ import {
     MdTooltipModule,
     MdCardModule,
     MdInputModule,
-    MdProgressSpinnerModule
+    MdProgressSpinnerModule,
+    MdPaginatorModule
   ],
   declarations: []
 })
