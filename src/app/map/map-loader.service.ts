@@ -2,9 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject }    from 'rxjs/Subject';
 
-import { KEYS } from '../key/key-mock';
-import { Key } from '../key/key.model';
-
 
 const url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
 
