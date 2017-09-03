@@ -83,17 +83,6 @@ export class MapComponent implements OnInit {
     });
   }
   
-  // init(): void {
-  //   this.mapLoaderService.getCurrentPosition()
-  //   .then(coords => {
-  //     //Send coordinates to the key.component
-  //     this.mapLoaderService.sendCoords({ lat: coords.lat, lng: coords.lng });
-      
-  //     this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
-  //     this.loadMap(coords);
-  //   });
-  // }
-  
   ngOnInit() {
     if (typeof google !== 'undefined') {
       this.localizateMe()
