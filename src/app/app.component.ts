@@ -6,7 +6,7 @@ import { Observable, Subject } from "rxjs/Rx";
 
 import { SidenavOpenService } from './sidenav/sidenav-open.service';
 import { ThemePickerService } from './app-settings/theme-picker.service';
-import { DataStorageService } from './key-settings/data-storage.service';
+import { DataStorageService } from './data-storage.service';
 import { KeyService } from './key/key.service';
 import { MapLoaderService } from './map/map-loader.service';
 
