@@ -56,18 +56,20 @@
   </md-card-content>
   <md-card-actions>
     <button 
+      *ngIf="!(key$ | async)?.key"
       color="primary" 
       type="button"
-       md-raised-button 
-       attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
-       (click)=getKey() 
-       mdTooltip="{{'key-settings.tooltip.save' | translate}}">
+      md-raised-button 
+      attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
+      (click)=saveKey()
+      mdTooltip="{{'key-settings.tooltip.save' | translate}}">
       <md-icon>save</md-icon>
       <span 
         class="cdk-visually-hidden">
         {{'key-settings.accessibilityInfo.save' | translate}}</span>
     </button>
     <button 
+      *ngIf="(key$ | async)?.key"
       color="accent" 
       type="button" 
       md-raised-button 
