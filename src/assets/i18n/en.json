@@ -57,7 +57,8 @@
   "navbar" : {
     "accessibilityInfo": "Open/close menu",
     "tooltip": {
-      "menu": "Menu"
+      "menu": "Menu",
+      "languagePicker": "Choose language"
     }
   }
 }

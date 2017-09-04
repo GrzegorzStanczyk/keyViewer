@@ -60,7 +60,9 @@
   "navbar" : {
     "accessibilityInfo": "Otwórz/Zamknij nawigację",
     "tooltip": {
-      "menu": "Navigacja"
+      "menu": "Navigacja",
+      "languagePicker": "Wybierz język"
+      
     }
   } 
 }
