@@ -1,24 +1,22 @@
 import { Injectable } from '@angular/core';
 
 import { Key } from './key.model';
-import { KEYS } from './key-mock';
+
+import { DataStorageService } from '../data-storage.service';
 
 
 @Injectable()
 export class KeyService {
+  // Variable available for key-settings.component
   public keyToEdit: Promise<Key> | null = null;
 
-  constructor() { }
-
-  public getKeys(): Promise<Key[]> {
-    return Promise.resolve(KEYS);
-  }
+  constructor(private dataStorageService: DataStorageService) { }
 
   public findNearest(coords): Promise<Key> {
     const userLatLng = new google.maps.LatLng(coords.lat, coords.lng);
-    return this.getKeys()    
+    return this.dataStorageService.getKeys()
       .then(keys => {
-         return keys.reduce(function (prev, curr) {
+          return keys.reduce(function (prev, curr) {
           let location1 = new google.maps.LatLng(prev.lat, prev.lng)
           let location2 = new google.maps.LatLng(curr.lat, curr.lng)
           let ppos = google.maps.geometry.spherical.computeDistanceBetween(userLatLng, location1);
