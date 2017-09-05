@@ -9,6 +9,7 @@ import { DataStorageService } from '../data-storage.service';
 export class KeyService {
   // Variable available for key-settings.component
   public keyToEdit: Promise<Key> | null = null;
+  public isItANewKey: boolean = true;
 
   constructor(private dataStorageService: DataStorageService) { }
 
