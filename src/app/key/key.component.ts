@@ -32,11 +32,14 @@ export class KeyComponent implements OnInit, OnDestroy {
   }
 
   addNewKey(): void {
+    this.keyService.isItANewKey = true;
     this.router.navigate(['/key-settings']);
   }
 
   goToKeySettings(): void {
     if (this.markerFiltered) {
+      this.keyService.isItANewKey = false;
+    
       // Provide nearest key to global variable keyToEdit 
       this.keyService.keyToEdit = this.markerFiltered;      
       this.router.navigate(['/key-settings']);

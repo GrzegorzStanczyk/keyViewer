@@ -17,7 +17,8 @@ import { KeyService } from '../key/key.service';
 })
 export class KeySettingsComponent implements OnInit {
   key$: Promise<Key>;
-  
+  newKey: boolean = true;
+
   constructor(
     private sidenavOpenService: SidenavOpenService,
     private dataStorageService: DataStorageService,
@@ -27,23 +28,24 @@ export class KeySettingsComponent implements OnInit {
     } else {
       this.key$ = Promise.resolve(new Key(null, null, null, null, null, null));
     }
+    this.newKey = this.keyService.isItANewKey;
   }
 
   saveKey(): void {
-    this.dataStorageService.storeKey()
     // .then(data => console.log(data));
-    
+    this.key$.then(key => this.dataStorageService.storeKey(key))
     // .subscribe(data => console.log(data));
   }
-  
-  getKey() {
+
+  editKey() {
+    this.dataStorageService.editKey()
     
-    this.dataStorageService.getKeys()
+    // this.dataStorageService.getKeys()
+    // this.key$.then(key => this.dataStorageService.storeKey(key))    
   }
 
   closeAndGoToMain(): void {
-    // this.sidenavOpenService.sendKeySettings();
-    console.log(this.dataStorageService.keys)
+    this.sidenavOpenService.sendKeySettings();
   }
 
 
