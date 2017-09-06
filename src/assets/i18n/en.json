@@ -32,7 +32,12 @@
       "save": "Save",
       "edit": "Edit",
       "close": "Close"
-    }
+    },
+    "error": {
+      "required": "required",
+      "key": "Key is",
+      "street": "Street name is"
+    } 
   },
   "keys-list": {
     "title": "List of keys"

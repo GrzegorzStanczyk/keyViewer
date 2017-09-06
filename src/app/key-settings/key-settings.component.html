@@ -5,20 +5,36 @@
 </md-card>
 <md-card class="card__key-settings">
   <md-card-content>
-    <form *ngIf="key$ | async as key">
+    <form 
+      *ngIf="key$ | async as key" 
+      #f="ngForm">
       <md-input-container class="key--fotn-size">
         <input 
+          required
           mdInput 
           placeholder="{{'key-settings.keyInputPlaceholder' | translate}}"
           [(ngModel)]="key.key"
+          ngModel
+          #keyInput="ngModel"
           name="key">
+        <md-error *ngIf="!keyInput.valid && keyInput.touched">
+          {{'key-settings.error.key' | translate}} 
+          <strong>{{'key-settings.error.required' | translate}}</strong>
+        </md-error>
       </md-input-container>
       <md-input-container>
         <input 
+          required 
           mdInput 
           placeholder="{{'key-settings.streetInputPlaceholder' | translate}}"
           [(ngModel)]="key.streetName" 
+          ngModel
+          #streetName="ngModel"
           name="streetName">
+        <md-error *ngIf="!streetName.valid && streetName.touched">
+          {{'key-settings.error.street' | translate}} 
+          <strong>{{'key-settings.error.required' | translate}}</strong>
+        </md-error>
       </md-input-container>
       <md-input-container class="example-full-width">
         <input 
@@ -52,46 +68,48 @@
           </td>
         </tr>
       </table>
+      <div class="action-container">
+        <button 
+          *ngIf="newKey"
+          color="primary" 
+          type="submit"
+          md-raised-button 
+          attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
+          (click)="saveKey()"
+          mdTooltip="{{'key-settings.tooltip.save' | translate}}"
+          [disabled]="!f.valid">
+          <md-icon>save</md-icon>
+          <span 
+            class="cdk-visually-hidden">
+            {{'key-settings.accessibilityInfo.save' | translate}}</span>
+        </button>
+        <button 
+          *ngIf="!newKey"
+          color="accent" 
+          type="button" 
+          md-raised-button 
+          attr.aria-label="{{'key-settings.accessibilityInfo.edit' | translate}}" 
+          (click)="saveKey() "
+          mdTooltip="{{'key-settings.tooltip.edit' | translate}}"
+          [disabled]="!f.valid">
+          <md-icon>edit</md-icon>
+          <span 
+            class="cdk-visually-hidden">
+            {{'key-settings.accessibilityInfo.edit' | translate}}</span>
+        </button>
+        <button 
+          color="warn" 
+          type="button"
+          md-raised-button 
+          attr.aria-label="{{'key-settings.accessibilityInfo.close' | translate}}" 
+          (click)=closeAndGoToMain() 
+          mdTooltip="{{'key-settings.tooltip.close' | translate}}">
+          <md-icon>cancel</md-icon>
+          <span 
+            class="cdk-visually-hidden">
+            {{'key-settings.accessibilityInfo.close' | translate}}</span>
+        </button>
+      </div>      
     </form>
   </md-card-content>
-  <md-card-actions>
-    <button 
-      *ngIf="newKey"
-      color="primary" 
-      type="button"
-      md-raised-button 
-      attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
-      (click)=saveKey()
-      mdTooltip="{{'key-settings.tooltip.save' | translate}}">
-      <md-icon>save</md-icon>
-      <span 
-        class="cdk-visually-hidden">
-        {{'key-settings.accessibilityInfo.save' | translate}}</span>
-    </button>
-    <button 
-      *ngIf="!newKey"
-      color="accent" 
-      type="button" 
-      md-raised-button 
-      attr.aria-label="{{'key-settings.accessibilityInfo.edit' | translate}}" 
-      (click)=editKey() 
-      mdTooltip="{{'key-settings.tooltip.edit' | translate}}">
-      <md-icon>edit</md-icon>
-      <span 
-        class="cdk-visually-hidden">
-        {{'key-settings.accessibilityInfo.edit' | translate}}</span>
-    </button>
-    <button 
-      color="warn" 
-      type="button"
-      md-raised-button 
-      attr.aria-label="{{'key-settings.accessibilityInfo.close' | translate}}" 
-      (click)=closeAndGoToMain() 
-      mdTooltip="{{'key-settings.tooltip.close' | translate}}">
-      <md-icon>cancel</md-icon>
-      <span 
-        class="cdk-visually-hidden">
-        {{'key-settings.accessibilityInfo.close' | translate}}</span>
-    </button>
-  </md-card-actions>
 </md-card>

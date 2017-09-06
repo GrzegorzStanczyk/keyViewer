@@ -27,15 +27,16 @@ export class DataStorageService {
 
   storeKey(key: Key) {
     const newKey = new Key(key.streetName, key.lat, key.lng, 10, key.key, key.note);
+    const properStreetName = key.streetName.split(/\.|#|\$|\[|]/gm).join(",");
     
-    this.items.remove();
-    KEYS.forEach(element => {
-      this.items.push(element)
-    });
+    // this.items.remove();
+    // KEYS.forEach(element => {
+    //   this.items.push(element)
+    // });
 
     // return this.items.update("2", { "streetName": "Lazurowa 40, 01-315 Warszawa", "lat": 52.238957, "lng": 20.89739, "radius": 10, "key": "Orlen", note: "notatka"});
     // this.items.push( { "streetName": "Lazurowa 40, 01-315 Warszawa", "lat": 52.238957, "lng": 20.89739, "radius": 10, "key": "Orlen", note: "notatka"});
-    // this.items.update(key.streetName, newKey);
+    this.items.update(properStreetName, newKey);
   }
 
   editKey() {
@@ -46,15 +47,17 @@ export class DataStorageService {
     //   let toSend = this.db.object(`/${element.streetName}`);
     //   toSend.set(element);
     // });
+
+
     // ".", "#", "$", "[", or "]"
-    this.items.remove();
-    KEYS.forEach(element => {
-      // const properStreetName = element.streetName.replace(/\.|#|\$|\[|]/gm,',');
-      const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
+    // this.items.remove();
+    // KEYS.forEach(element => {
+    //   // const properStreetName = element.streetName.replace(/\.|#|\$|\[|]/gm,',');
+    //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
       
-      const toSend = this.db.object(`/${properStreetName}`);
-      toSend.set(element);
-    });
+    //   const toSend = this.db.object(`/${properStreetName}`);
+    //   toSend.set(element);
+    // });
   }
 
   getKeys(): Promise<Key[]> {

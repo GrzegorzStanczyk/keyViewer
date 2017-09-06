@@ -38,7 +38,8 @@ export class KeySettingsComponent implements OnInit {
   }
 
   editKey() {
-    this.dataStorageService.editKey()
+    // this.dataStorageService.editKey()
+    this.key$.then(key => this.dataStorageService.storeKey(key))
     
     // this.dataStorageService.getKeys()
     // this.key$.then(key => this.dataStorageService.storeKey(key))    

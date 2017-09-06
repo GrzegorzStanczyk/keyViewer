@@ -32,6 +32,11 @@
       "save": "Zapisz",
       "edit": "Edytuj",
       "close": "Zamknij"
+    },
+    "error": {
+      "required": "wymagany",
+      "key": "Klucz jest",
+      "street": "Adres jest"
     }    
   },
   "keys-list": {
