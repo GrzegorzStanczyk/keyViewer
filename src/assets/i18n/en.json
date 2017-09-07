@@ -37,7 +37,12 @@
       "required": "required",
       "key": "Key is",
       "street": "Street name is"
-    } 
+    },
+    "snackMessage": {
+      "success": "Data saved",
+      "error": "Record failed",
+      "close": "Close"
+    }
   },
   "keys-list": {
     "title": "List of keys"

@@ -37,6 +37,11 @@
       "required": "wymagany",
       "key": "Klucz jest",
       "street": "Adres jest"
+    },
+    "snackMessage": {
+      "success": "Dane zapisane",
+      "error": "Zapis nie powiódł się",
+      "close": "Zamknij"
     }    
   },
   "keys-list": {

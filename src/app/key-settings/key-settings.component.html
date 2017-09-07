@@ -50,20 +50,26 @@
         <tr>
           <td>
             <md-input-container>
-              <input 
+              <input
                 mdInput 
+                disabled
                 placeholder="{{'key-settings.latitudePlaceholder' | translate}}" 
-                disabled 
-                [value]="key.lat">
+                ngModel
+                #keyLat="ngModel"
+                name="lat" 
+                [ngModel]="key.lat">
             </md-input-container>
           </td>
           <td>
             <md-input-container>
-              <input 
-                mdInput 
-                placeholder="{{'key-settings.longitudePlaceholder' | translate}}" 
+              <input
+                mdInput
                 disabled 
-                [value]="key.lng">
+                placeholder="{{'key-settings.longitudePlaceholder' | translate}}" 
+                ngModel
+                #keyLng="ngModel"
+                name="lng" 
+                [ngModel]="key.lng">
             </md-input-container>
           </td>
         </tr>

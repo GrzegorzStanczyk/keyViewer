@@ -11,7 +11,8 @@ import {
   MdCardModule,
   MdInputModule,
   MdProgressSpinnerModule,
-  MdPaginatorModule } from '@angular/material';
+  MdPaginatorModule,
+  MdSnackBarModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import {
     MdCardModule,
     MdInputModule,
     MdProgressSpinnerModule,
-    MdPaginatorModule
+    MdPaginatorModule,
+    MdSnackBarModule
   ],
   exports: [
     MdButtonModule, 
@@ -39,7 +41,8 @@ import {
     MdCardModule,
     MdInputModule,
     MdProgressSpinnerModule,
-    MdPaginatorModule
+    MdPaginatorModule,
+    MdSnackBarModule
   ],
   declarations: []
 })
