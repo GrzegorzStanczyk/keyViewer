@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
 
 import { SidenavOpenService } from './sidenav-open.service';
 import { NavbarComponent } from '../navbar/navbar.component';
@@ -12,43 +11,43 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav') sidenav;
+  @ViewChild('sidenavLeft') sidenavLeft;
   @ViewChild('sidenavKey') sidenavKey;  
+
   subscription: Subscription;
-  subscriptionToKeySettings: Subscription;
+  // subscriptionToKeySettings: Subscription;
 
-  constructor(private sidenavOpenService: SidenavOpenService,
-              private router: Router) { 
-    this.subscriptionToKeySettings = this.sidenavOpenService.getKeySettings()
-      .subscribe(() => { this.router.navigate(['/main']); })
+  constructor(private sidenavOpenService: SidenavOpenService) { 
+    // this.subscriptionToKeySettings = this.sidenavOpenService.getKeySettings()
+    //   .subscribe(() => { this.router.navigate(['/main']); })
     this.subscription = this.sidenavOpenService.getMessage()
-      .subscribe(() => { this.sidenav.toggle(); });
+      .subscribe(() => { this.sidenavLeft.toggle(); });
   }
-
-  ngOnInit() {
-    // this.isMobile();
-  }
-
+  
   mode(): string {
     if(!this.isMobile()) {
       return "side";
     }
   }
-
+  
   opened(): string {
     if(!this.isMobile()) {
       return "true";
     }
   }
-
+  
   isMobile(): boolean {
     if(window.innerWidth <= 960) {
       return true;
     }
   }
 
+  ngOnInit() {
+    // this.isMobile();
+  }
+  
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.subscriptionToKeySettings.unsubscribe();
+    // this.subscriptionToKeySettings.unsubscribe();
   }
 }

@@ -3,12 +3,12 @@ import { slideInDownAnimation, slideInOutAnimation, slideToTop } from '../router
 
 import { Key } from '../key/key.model';
 
-import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 import { DataStorageService } from '../data-storage.service';
 import { KeyService } from '../key/key.service';
 
 import { MdSnackBar } from '@angular/material';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -24,11 +24,11 @@ export class KeySettingsComponent implements OnInit {
   snackBarMessage: any;
 
   constructor(
-    private sidenavOpenService: SidenavOpenService,
     private dataStorageService: DataStorageService,
     private keyService: KeyService,
     private snackBar: MdSnackBar,
-    private translate: TranslateService ) {
+    private translate: TranslateService,
+    private router: Router) {
     if (this.keyService.keyToEdit !== null) {
       this.key$ = this.keyService.keyToEdit
     } else {
@@ -71,7 +71,8 @@ export class KeySettingsComponent implements OnInit {
   }
 
   closeAndGoToMain(): void {
-    this.sidenavOpenService.sendKeySettings();
+    // this.sidenavOpenService.sendKeySettings();
+    this.router.navigate(['/main']);
   }
 
 

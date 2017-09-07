@@ -12,16 +12,16 @@ export class SidenavOpenService {
     this.subjectSource.next();
   }
 
-  public sendKeySettings(): void {
-    this.keySettingsSource.next();
-  }
+  // public sendKeySettings(): void {
+  //   this.keySettingsSource.next();
+  // }
 
   public getMessage(): Observable<any> {
     return this.subjectSource.asObservable();
   }
 
-  public getKeySettings(): Observable<any> {
-    return this.keySettingsSource.asObservable();
-  }
+  // public getKeySettings(): Observable<any> {
+  //   return this.keySettingsSource.asObservable();
+  // }
 
 }
