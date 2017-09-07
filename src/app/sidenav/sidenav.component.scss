@@ -3,12 +3,12 @@
   display: flex;
 }
 
-.example-container {
+.sidenav-container {
   width: 100%;
   min-width: 265px;
 }
 
-.example-sidenav {
+.sidenav-menu {
   @media (max-width: 600px) {
     min-width: 100%;
   }
@@ -16,8 +16,8 @@
   padding: 20px;
 }
 
-.example-sidenav-content {
-  min-height: 100%;
+.sidenav-key-settings {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
 }

@@ -5,23 +5,17 @@ import { Subject }    from 'rxjs/Subject';
 @Injectable()
 export class SidenavOpenService {
 
-  public subjectSource = new Subject<any>();
-  public keySettingsSource = new Subject<any>();
-
-  public sendMessage(): void {
-    this.subjectSource.next();
+  public toggleSidenavMenuSource = new Subject<any>();
+  public toggleSidenavKeySettingsSource = new Subject<any>();
+  
+  toggleSidenavMenu$ = this.toggleSidenavMenuSource.asObservable();
+  toggleSidenavKeySettingsSource$ = this.toggleSidenavKeySettingsSource.asObservable();
+  
+  public toggleSidenavMenu(): void {
+    this.toggleSidenavMenuSource.next();
   }
 
-  // public sendKeySettings(): void {
-  //   this.keySettingsSource.next();
-  // }
-
-  public getMessage(): Observable<any> {
-    return this.subjectSource.asObservable();
+  public toggleSidenavKeySettings(): void {
+    this.toggleSidenavKeySettingsSource.next();
   }
-
-  // public getKeySettings(): Observable<any> {
-  //   return this.keySettingsSource.asObservable();
-  // }
-
 }

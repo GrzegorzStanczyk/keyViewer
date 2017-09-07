@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private sidenavOpenService: SidenavOpenService) {}
   
   toggleSidenav(): void {
-    this.sidenavOpenService.sendMessage();
+    this.sidenavOpenService.toggleSidenavMenu();
   }
 
   ngOnInit() {

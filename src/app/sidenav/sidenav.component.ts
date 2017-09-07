@@ -11,17 +11,19 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenavLeft') sidenavLeft;
-  @ViewChild('sidenavKey') sidenavKey;  
+  @ViewChild('sidenavMenu') sidenavMenu;
+  @ViewChild('sidenavKeySettings') sidenavKeySettings;  
 
-  subscription: Subscription;
-  // subscriptionToKeySettings: Subscription;
+  subscriptionToMenu: Subscription;
+  subscriptionToKeySettings: Subscription;
 
   constructor(private sidenavOpenService: SidenavOpenService) { 
     // this.subscriptionToKeySettings = this.sidenavOpenService.getKeySettings()
     //   .subscribe(() => { this.router.navigate(['/main']); })
-    this.subscription = this.sidenavOpenService.getMessage()
-      .subscribe(() => { this.sidenavLeft.toggle(); });
+    this.subscriptionToMenu = this.sidenavOpenService.toggleSidenavMenu$
+      .subscribe(() => { this.sidenavMenu.toggle(); });
+    this.subscriptionToKeySettings = this.sidenavOpenService.toggleSidenavKeySettingsSource$
+    .subscribe(() => { this.sidenavKeySettings.toggle(); });
   }
   
   mode(): string {
@@ -47,7 +49,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
   
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    // this.subscriptionToKeySettings.unsubscribe();
+    this.subscriptionToMenu.unsubscribe();
+    this.subscriptionToKeySettings.unsubscribe();
   }
 }

@@ -12,7 +12,6 @@ const routes: Routes = [
   { path: 'main',  component: MainComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'keys-list', component: KeysListComponent }, 
-  { path: 'key-settings', component: KeySettingsComponent },
   { path: 'app-settings', component: AppSettingsComponent },
   { path: 'about',  component: AboutComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },

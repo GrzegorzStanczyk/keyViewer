@@ -3,6 +3,7 @@ import { slideInDownAnimation, slideInOutAnimation, slideToTop } from '../router
 
 import { Key } from '../key/key.model';
 
+import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 import { DataStorageService } from '../data-storage.service';
 import { KeyService } from '../key/key.service';
 
@@ -28,12 +29,15 @@ export class KeySettingsComponent implements OnInit {
     private keyService: KeyService,
     private snackBar: MdSnackBar,
     private translate: TranslateService,
-    private router: Router) {
-    if (this.keyService.keyToEdit !== null) {
-      this.key$ = this.keyService.keyToEdit
-    } else {
-      this.key$ = Promise.resolve(new Key(null, null, null, null, null, null));
-    }
+    private router: Router,
+    private sidenavOpenService: SidenavOpenService) {
+      keyService.keyToEditO$.subscribe(key => this.key$ = key)
+      // this.key$ = this.keyService.keyToEdit
+    // if (this.keyService.keyToEdit !== null) {
+    //   this.key$ = this.keyService.keyToEdit
+    // } else {
+    //   this.key$ = Promise.resolve(new Key(null, null, null, null, null, null));
+    // }
     this.newKey = this.keyService.isItANewKey;
 
     // Subscribe for current language to show message in snackBar
@@ -71,8 +75,8 @@ export class KeySettingsComponent implements OnInit {
   }
 
   closeAndGoToMain(): void {
-    // this.sidenavOpenService.sendKeySettings();
-    this.router.navigate(['/main']);
+    this.sidenavOpenService.toggleSidenavKeySettings();
+    // this.router.navigate(['/main']);
   }
 
 

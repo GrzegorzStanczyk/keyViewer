@@ -52,7 +52,10 @@ export class MapComponent implements OnInit {
     // Send coordinates to the key.component    
     this.mapLoaderService.sendCoords(coords);
     // Provide street name and coords to global variable keyToEdit
-    this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
+    // this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
+    let data = this.mapLoaderService.getStreetName(coords);
+    this.keyService.setKeyToEdit(data);  
+    
   }
 
   loadMap(coords): void {
@@ -78,7 +81,10 @@ export class MapComponent implements OnInit {
       //Send coordinates to the key.component
       this.mapLoaderService.sendCoords({ lat: coords.lat, lng: coords.lng });
       
-      this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
+      // this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
+      let data = this.mapLoaderService.getStreetName(coords);
+      this.keyService.setKeyToEdit(data);  
+
       this.loadMap(coords);
     });
   }

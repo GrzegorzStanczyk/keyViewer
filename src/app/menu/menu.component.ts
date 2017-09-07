@@ -13,7 +13,7 @@ export class MenuComponent {
   
   closeSidenav() {
     if(window.innerWidth <= 960) {
-      this.sidenavOpenService.sendMessage();
+      this.sidenavOpenService.toggleSidenavMenu();
     }
   }
 

@@ -1,6 +1,17 @@
-<md-sidenav-container class="example-container">
+<md-sidenav-container class="sidenav-container">
   <app-component-viewer></app-component-viewer>
-  <md-sidenav #sidenav class="example-sidenav" [mode]="mode()" [opened]="opened()">
+  <md-sidenav 
+    #sidenavMenu
+    class="sidenav-menu" 
+    [mode]="mode()" 
+    [opened]="opened()">
     <app-menu></app-menu>
   </md-sidenav>
+  <md-sidenav 
+    align="end"
+    #sidenavKeySettings
+    class="sidenav-key-settings" 
+    [mode]="mode()">
+    <app-key-settings></app-key-settings>  
+  </md-sidenav>  
 </md-sidenav-container>
