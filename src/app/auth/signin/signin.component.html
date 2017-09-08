@@ -1,46 +1,48 @@
 <md-card class="card__profile">
-    <md-card-content>
-      <form 
-        #f="ngForm">
-        <label 
-          class="fotn-size--large" 
-          for="email">{{'profile.signIn' | translate}}</label>
-        <p class="fotn-size--small" >Please login</p>
-        <md-input-container>
-          <input 
-            id="email"
-            mdInput 
-            placeholder="Email"
-            [formControl]="emailFormControl">
-          <md-error *ngIf="emailFormControl.hasError('pattern')">
-            Please enter a valid email address
-          </md-error>
-          <md-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </md-error>
-        </md-input-container>
-        <md-input-container>
-          <input 
-            mdInput
-            #message 
-            type="password"
-            placeholder="Password">
-        </md-input-container>
-        <div class="action-container">
-          <button 
-            type="button"
-            md-button
-            attr.aria-label="{{'profile.signUp' | translate}}">{{'profile.signUp' | translate}}
-          </button>
-          <button 
-            color="primary" 
-            type="submit"
-            md-raised-button 
-            attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
-            (click)="saveKey()"
-            mdTooltip="{{'key-settings.tooltip.save' | translate}}"
-            [disabled]="!f.valid">{{'profile.signIn' | translate}}
-          </button>
-        </div>      
-      </form>
-    </md-card-content>
+  <md-card-content>
+    <form 
+      #f="ngForm">
+      <label 
+        class="fotn-size--large" 
+        for="email">{{'profile.signIn' | translate}}</label>
+      <p class="fotn-size--small" >Please login</p>
+      <md-input-container>
+        <input 
+          id="email"
+          mdInput 
+          placeholder="Email"
+          [formControl]="emailFormControl">
+        <md-error *ngIf="emailFormControl.hasError('pattern')">
+          Please enter a valid email address
+        </md-error>
+        <md-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </md-error>
+      </md-input-container>
+      <md-input-container>
+        <input 
+          mdInput
+          #message 
+          type="password"
+          placeholder="Password">
+      </md-input-container>
+      <div class="action-container">
+        <button 
+          type="button"
+          (click)="openDialog()"
+          md-button
+          attr.aria-label="{{'profile.signUp' | translate}}">{{'profile.signUp' | translate}}
+        </button>
+        <button 
+          color="primary" 
+          type="submit"
+          md-raised-button 
+          attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
+          (click)="saveKey()"
+          mdTooltip="{{'key-settings.tooltip.save' | translate}}"
+          [disabled]="!f.valid">{{'profile.signIn' | translate}}
+        </button>
+      </div>      
+    </form>
+  </md-card-content>
+</md-card>

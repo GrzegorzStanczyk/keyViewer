@@ -1,0 +1,26 @@
+.signup__form {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.fotn-size--small {
+  font-size: 12px;
+}
+
+.fotn-size--large {
+  font-size: 20px;
+}
+
+md-input-container {
+  width: 100%;
+}
+
+.action-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 600px) {
+  md-input-container {
+    margin-bottom: 5px;
+  }
+}
