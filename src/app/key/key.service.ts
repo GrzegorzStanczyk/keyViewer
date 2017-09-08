@@ -13,7 +13,6 @@ export class KeyService {
   public keyToEdit = new Subject<any>();
   public keyToEdit$ = this.keyToEdit.asObservable();
   public newKeyToEdit: Key;
-  public isItANewKey: boolean = true;
 
   constructor(private dataStorageService: DataStorageService) { }
 

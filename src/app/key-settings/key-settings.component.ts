@@ -23,7 +23,6 @@ import { Router } from '@angular/router';
 })
 export class KeySettingsComponent implements OnInit {
   key$: Promise<Key>;
-  newKey: boolean = true;
   snackBarMessage: any;
 
   constructor(
@@ -33,16 +32,17 @@ export class KeySettingsComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private sidenavOpenService: SidenavOpenService) {
+
       keyService.keyToEdit$.subscribe(key => this.key$ = key)
-
+      
     // Subscribe for current language to show message in snackBar
-    this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
-          this.snackBarMessage = res;
-      });
-
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.snackBarMessage = event.translations['key-settings'].snackMessage;
-    });    
+      this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
+            this.snackBarMessage = res;
+        });
+  
+      this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        this.snackBarMessage = event.translations['key-settings'].snackMessage;
+      });    
   }
 
   openSnackBar(message: string) {
@@ -66,6 +66,5 @@ export class KeySettingsComponent implements OnInit {
   }
 
   ngOnInit() { 
-    this.newKey = this.keyService.isItANewKey;    
   }
 }

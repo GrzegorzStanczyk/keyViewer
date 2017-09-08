@@ -34,14 +34,12 @@ export class KeyComponent implements OnDestroy {
   }
 
   addNewKey(): void {
-    this.keyService.isItANewKey = true;
-    this.keyService.addNewKey();      
+    this.keyService.addNewKey();
     this.sidenavOpenService.toggleSidenavKeySettings();
   }
 
   goToKeySettings(): void {
     if (this.markerFiltered) {
-      this.keyService.isItANewKey = false;
     
       // Provide nearest key to global variable keyToEdit 
       this.keyService.setKeyToEdit(this.markerFiltered);

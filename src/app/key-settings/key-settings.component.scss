@@ -1,6 +1,5 @@
 :host {
   width: 100%;
-  max-width: 1220px;
   display: flex;
   flex-direction: column;
 }
@@ -14,6 +13,7 @@
 
 .card__title {
   @extend %card;
+  position: relative;
   margin-top: 50px;
   margin-bottom: 35px;
   display: flex;
@@ -21,6 +21,13 @@
   & md-card-title {
     margin: 0;
   }
+}
+
+.back-button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate3d(50%, -50%, 0);
 }
 
 .card__key-settings {
@@ -33,7 +40,7 @@ md-input-container {
 
 .action-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 table {
