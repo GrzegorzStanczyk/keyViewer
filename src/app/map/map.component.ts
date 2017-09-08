@@ -49,13 +49,8 @@ export class MapComponent implements OnInit {
       lat: place.geometry.location.lat(), 
       lng: place.geometry.location.lng()
     }
-    // Send coordinates to the key.component    
-    this.mapLoaderService.sendCoords(coords);
-    // Provide street name and coords to global variable keyToEdit
-    // this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
-    let data = this.mapLoaderService.getStreetName(coords);
-    this.keyService.setKeyToEdit(data);  
-    
+
+    this.storeLocalization(coords);
   }
 
   loadMap(coords): void {
@@ -78,15 +73,19 @@ export class MapComponent implements OnInit {
   localizateMe(): void {
     this.mapLoaderService.getCurrentPosition()
     .then(coords => {
-      //Send coordinates to the key.component
-      this.mapLoaderService.sendCoords({ lat: coords.lat, lng: coords.lng });
-      
-      // this.keyService.keyToEdit = this.mapLoaderService.getStreetName(coords);
-      let data = this.mapLoaderService.getStreetName(coords);
-      this.keyService.setKeyToEdit(data);  
-
+      this.storeLocalization(coords);
       this.loadMap(coords);
     });
+  }
+
+  storeLocalization(coords): void {
+    //Send coordinates to the key.component    
+    this.mapLoaderService.sendCoords(coords);
+    
+    // Provide data for edit or add new key
+    let data = this.mapLoaderService.getDataForNewKey(coords);
+    this.keyService.setKeyToEdit(data);  
+    this.keyService.setNewKeyToEdit(data);  
   }
   
   ngOnInit() {

@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
+import { KeyService } from '../key/key.service';
+
 import { Key } from '../key/key.model';
 
 const url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
@@ -10,6 +12,11 @@ const url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPW
 export class MapLoaderService {
   public static promise: Promise<any>;
   public mapSubjectSource = new Subject<any>();
+  public dataForNewKey: Key;
+
+  constructor(private keyService: KeyService) {
+    // keyService.setKeyToEdit(this.dataForNewKey); 
+  }
 
   public sendCoords(obj): void {
     this.mapSubjectSource.next(obj);
@@ -75,14 +82,15 @@ export class MapLoaderService {
     }
   }  
 
-  public getStreetName(cords): Promise<Key> {
+  public getDataForNewKey(cords): Promise<Key> {
     const geocoder = new google.maps.Geocoder;
 
     return new Promise(resolve => {
       geocoder.geocode({ 'location': { lat: cords.lat, lng: cords.lng } }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
-          if (results[0]) {
-            resolve(new Key(results[0].formatted_address, cords.lat, cords.lng, null, null, null));
+          if (results[0]) {            
+            this.dataForNewKey = new Key(results[0].formatted_address, cords.lat, cords.lng, null, null, null);
+            resolve(this.dataForNewKey);
           } else {
             window.alert('No results found');
           }

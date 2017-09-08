@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { slideInDownAnimation, slideInOutAnimation, slideToTop } from '../router.animations';
+import { Observable } from 'rxjs/Observable';
 
 import { Key } from '../key/key.model';
 
@@ -10,6 +11,7 @@ import { KeyService } from '../key/key.service';
 import { MdSnackBar } from '@angular/material';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-translate/core';
 import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -31,14 +33,7 @@ export class KeySettingsComponent implements OnInit {
     private translate: TranslateService,
     private router: Router,
     private sidenavOpenService: SidenavOpenService) {
-      keyService.keyToEditO$.subscribe(key => this.key$ = key)
-      // this.key$ = this.keyService.keyToEdit
-    // if (this.keyService.keyToEdit !== null) {
-    //   this.key$ = this.keyService.keyToEdit
-    // } else {
-    //   this.key$ = Promise.resolve(new Key(null, null, null, null, null, null));
-    // }
-    this.newKey = this.keyService.isItANewKey;
+      keyService.keyToEdit$.subscribe(key => this.key$ = key)
 
     // Subscribe for current language to show message in snackBar
     this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
@@ -66,20 +61,11 @@ export class KeySettingsComponent implements OnInit {
     });
   }
 
-  editKey() {
-    // this.dataStorageService.editKey()
-    this.key$.then(key => this.dataStorageService.storeKey(key))
-    
-    // this.dataStorageService.getKeys()
-    // this.key$.then(key => this.dataStorageService.storeKey(key))    
-  }
-
   closeAndGoToMain(): void {
     this.sidenavOpenService.toggleSidenavKeySettings();
-    // this.router.navigate(['/main']);
   }
 
-
-  ngOnInit() { }
-
+  ngOnInit() { 
+    this.newKey = this.keyService.isItANewKey;    
+  }
 }

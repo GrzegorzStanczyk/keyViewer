@@ -13,7 +13,7 @@ import { Key } from './key.model';
   templateUrl: './key.component.html',
   styleUrls: ['./key.component.scss']
 })
-export class KeyComponent implements OnInit, OnDestroy {
+export class KeyComponent implements OnDestroy {
   markerFiltered: Promise<Key> | null = null;
 
   subscriptionToGetCoords: Subscription;
@@ -35,14 +35,7 @@ export class KeyComponent implements OnInit, OnDestroy {
 
   addNewKey(): void {
     this.keyService.isItANewKey = true;
-    // this.router.navigate(['/key-settings']);
-    
-    this.mapLoaderService.getCurrentPosition()
-    .then(coords => {
-      let data = this.mapLoaderService.getStreetName(coords);
-      this.keyService.setKeyToEdit(data);  
-    });
-    
+    this.keyService.addNewKey();      
     this.sidenavOpenService.toggleSidenavKeySettings();
   }
 
@@ -51,16 +44,12 @@ export class KeyComponent implements OnInit, OnDestroy {
       this.keyService.isItANewKey = false;
     
       // Provide nearest key to global variable keyToEdit 
-      // this.keyService.keyToEdit = this.markerFiltered;  
-      this.keyService.setKeyToEdit(this.markerFiltered);  
-      
-      // this.router.navigate(['/key-settings']);    
-      this.sidenavOpenService.toggleSidenavKeySettings();
-      
-    }
-  }
+      this.keyService.setKeyToEdit(this.markerFiltered);
 
-  ngOnInit() {
+      this.sidenavOpenService.toggleSidenavKeySettings();
+    } else {
+      this.addNewKey();
+    }
   }
 
   ngOnDestroy() {

@@ -10,17 +10,23 @@ import { DataStorageService } from '../data-storage.service';
 @Injectable()
 export class KeyService {
   // Variable available for key-settings.component
-  // public keyToEdit: Promise<Key> | null = null;
-  public keyToEditO = new Subject<any>();
-
-  keyToEditO$ = this.keyToEditO.asObservable();
-  
+  public keyToEdit = new Subject<any>();
+  public keyToEdit$ = this.keyToEdit.asObservable();
+  public newKeyToEdit: Key;
   public isItANewKey: boolean = true;
 
   constructor(private dataStorageService: DataStorageService) { }
 
+  public addNewKey():void {
+    this.setKeyToEdit(this.newKeyToEdit);
+  }
+
+  public setNewKeyToEdit(key): void {
+    this.newKeyToEdit = key;
+  }
+
   public setKeyToEdit(key): void {
-    this.keyToEditO.next(key);
+    this.keyToEdit.next(key);
   }
 
   public findNearest(coords): Promise<Key> {
@@ -36,5 +42,4 @@ export class KeyService {
         })
       })
   }
-
 }
