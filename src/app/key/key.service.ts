@@ -10,25 +10,25 @@ import { DataStorageService } from '../data-storage.service';
 @Injectable()
 export class KeyService {
   // Variable available for key-settings.component
-  public keyToEdit = new Subject<any>();
-  public keyToEdit$ = this.keyToEdit.asObservable();
-  public newKeyToEdit: Key;
+  private keyToEdit = new Subject<any>();
+  private newKeyToEdit: Key;
+  keyToEdit$ = this.keyToEdit.asObservable();
 
   constructor(private dataStorageService: DataStorageService) { }
 
-  public addNewKey():void {
+  addNewKey():void {
     this.setKeyToEdit(this.newKeyToEdit);
   }
 
-  public setNewKeyToEdit(key): void {
+  setNewKeyToEdit(key): void {
     this.newKeyToEdit = key;
   }
 
-  public setKeyToEdit(key): void {
+  setKeyToEdit(key): void {
     this.keyToEdit.next(key);
   }
 
-  public findNearest(coords): Promise<Key> {
+  findNearest(coords): Promise<Key> {
     const userLatLng = new google.maps.LatLng(coords.lat, coords.lng);
     return this.dataStorageService.getKeys()
       .then(keys => {
