@@ -1,14 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
 import { OverlayContainer } from '@angular/material';
 import { Subscription } from 'rxjs/Subscription';
-import { Observable, Subject } from "rxjs/Rx";
 
 import { SidenavOpenService } from './sidenav/sidenav-open.service';
 import { ThemePickerService } from './app-settings/theme-picker.service';
 import { DataStorageService } from './data-storage.service';
 import { KeyService } from './key/key.service';
 import { MapLoaderService } from './map/map-loader.service';
+import { AuthService } from './auth/auth.service';
 
 
 @Component({
@@ -20,7 +19,8 @@ import { MapLoaderService } from './map/map-loader.service';
     ThemePickerService, 
     DataStorageService, 
     KeyService, 
-    MapLoaderService]
+    MapLoaderService,
+    AuthService]
 })
 
 export class AppComponent implements OnInit, OnDestroy {
@@ -29,7 +29,6 @@ export class AppComponent implements OnInit, OnDestroy {
   subscription: Subscription; 
 
   constructor(
-    private router: Router,
     private overlayContainer: OverlayContainer,
     private themePickerService: ThemePickerService) {}
 
