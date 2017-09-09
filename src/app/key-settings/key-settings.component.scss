@@ -18,16 +18,16 @@
   margin-bottom: 35px;
   display: flex;
   justify-content: center;
-  & md-card-title {
+  align-items: center;
+  .title {
     margin: 0;
   }
 }
 
 .back-button {
   position: absolute;
-  top: 50%;
   left: 0;
-  transform: translate3d(50%, -50%, 0);
+  transform: translate3d(50%, 0, 0);
 }
 
 .card__key-settings {
@@ -51,6 +51,7 @@ table {
   .card__title {
     margin-top: 0px;
     margin-bottom: 0px;
+
   }
   .card__key-settings {
     height: 100%;
