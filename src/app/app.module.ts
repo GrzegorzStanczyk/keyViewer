@@ -9,7 +9,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
 import 'hammerjs';
 import {} from '@types/googlemaps';
@@ -33,6 +33,8 @@ import { AutocompleteDirective } from './map/autocomplete.directive';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { KeysListComponent } from './keys-list/keys-list.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -55,14 +57,18 @@ export function createTranslateLoader(http: HttpClient) {
     MapComponent,
     AutocompleteDirective,
     LanguageSwitcherComponent,
-    KeysListComponent    
+    KeysListComponent,
+    SigninComponent,
+    SignupComponent    
   ],
+  entryComponents: [SignupComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MyOwnCustomMaterialModuleModule,
     HttpClientModule,
+    ReactiveFormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
