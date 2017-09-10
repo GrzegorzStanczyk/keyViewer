@@ -4,10 +4,28 @@
     "title": "Main"
   },
   "profile": {
-    "title": "Profile",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "signOut": "Sign Out"
+    "title": "Profile"
+  },
+  "signIn": {
+    "title": "Sign In",
+    "info": "Please login",
+    "emailValidInfo": "Please enter a valid email address",
+    "emailReauiredInfo": "Email is",
+    "emailReauiredInfoStrong": "required",
+    "passwordPlaceholder": "Password",
+    "signInButton": "Sign In",
+    "signOutButton": "Sign Up",
+    "tooltip": {
+      "signIn": "Sign in to aplication",
+      "signUp": "Sign up to aplication"
+    },
+    "accessibilityInfo": {
+      "signIn": "Sign in to aplication",
+      "signUp": "Sign up to aplication"
+    }
+  },
+  "signUp": {
+
   },
   "app-settings": {
     "title": "App settings",

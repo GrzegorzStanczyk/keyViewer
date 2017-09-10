@@ -4,10 +4,28 @@
     "title": "Główny"
   },
   "profile": {
-    "title": "Profil",
-    "signIn": "Zaloguj",
-    "signUp": "Dodaj konto",
-    "signOut": "Wyloguj"
+    "title": "Profil"
+  },
+  "signIn": {
+    "title": "Zaloguj",
+    "info": "Proszę się zalogować",
+    "emailValidInfo": "Proszę wpisać prawidłowy adres email",
+    "emailReauiredInfo": "Email jest",
+    "emailReauiredInfoStrong": "wymagany",
+    "passwordPlaceholder": "Hasło",
+    "signInButton": "Zaloguj",
+    "signOutButton": "Dodaj konto",
+    "tooltip": {
+      "signIn": "Zaloguj się do aplikacji",
+      "signUp": "Zarejestruj się do aplikacji"
+    },
+    "accessibilityInfo": {
+      "signIn": "Zaloguj się do aplikacji",
+      "signUp": "Zarejestruj się do aplikacji"
+    }
+  },
+  "signUp": {
+
   },
   "app-settings": {
     "title": "Ustawienia aplikacji",

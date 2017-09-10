@@ -4,8 +4,9 @@
       #f="ngForm">
       <label 
         class="fotn-size--large" 
-        for="email">{{'profile.signIn' | translate}}</label>
-      <p class="fotn-size--small" >Please login</p>
+        for="email">{{'signIn.title' | translate}}
+        <p class="fotn-size--small" >{{'signIn.info' | translate}}</p>
+      </label>
       <md-input-container>
         <input 
           id="email"
@@ -13,10 +14,10 @@
           placeholder="Email"
           [formControl]="emailFormControl">
         <md-error *ngIf="emailFormControl.hasError('pattern')">
-          Please enter a valid email address
+          {{'signIn.emailValidInfo' | translate}}
         </md-error>
         <md-error *ngIf="emailFormControl.hasError('required')">
-          Email is <strong>required</strong>
+          {{'signIn.emailReauiredInfo' | translate}} <em>{{'signIn.emailReauiredInfoStrong' | translate}}</em>
         </md-error>
       </md-input-container>
       <md-input-container>
@@ -24,22 +25,23 @@
           mdInput
           #message 
           type="password"
-          placeholder="Password">
+          placeholder="{{'signIn.passwordPlaceholder' | translate}}">
       </md-input-container>
       <div class="action-container">
         <button 
           type="button"
           (click)="openDialog()"
           md-button
-          attr.aria-label="{{'profile.signUp' | translate}}">{{'profile.signUp' | translate}}
+          mdTooltip="{{'signIn.tooltip.signUp' | translate}}"
+          attr.aria-label="{{'signIn.accessibilityInfo.signUp' | translate}}">{{'signIn.signOutButton' | translate}}
         </button>
         <button 
           color="primary" 
           type="submit"
           md-raised-button 
-          attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
-          mdTooltip="{{'key-settings.tooltip.save' | translate}}"
-          [disabled]="!f.valid">{{'profile.signIn' | translate}}
+          mdTooltip="{{'signIn.tooltip.signIn' | translate}}"
+          attr.aria-label="{{'signIn.accessibilityInfo.signIn' | translate}}" 
+          [disabled]="!f.valid">{{'signIn.signInButton' | translate}}
         </button>
       </div>      
     </form>
