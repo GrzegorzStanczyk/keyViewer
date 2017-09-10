@@ -25,7 +25,21 @@
     }
   },
   "signUp": {
-
+    "title": "Rejestracja",
+    "info": "Proszę się zarejestrować",
+    "emailReauiredInfo": "Email jest",
+    "emailReauiredInfoStrong": "wymagany",
+    "passwordPlaceholder": "Hasło",
+    "cancel": "Anuluj",
+    "signOutButton": "Rejestruj",
+    "tooltip": {
+      "signIn": "Zaloguj się do aplikacji",
+      "signUp": "Zarejestruj się do aplikacji"
+    },
+    "accessibilityInfo": {
+      "signIn": "Zaloguj się do aplikacji",
+      "signUp": "Zarejestruj się do aplikacji"
+    }
   },
   "app-settings": {
     "title": "Ustawienia aplikacji",

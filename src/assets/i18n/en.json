@@ -25,7 +25,22 @@
     }
   },
   "signUp": {
-
+    "title": "Register",
+    "info": "Please register",
+    "emailValidInfo": "Please enter a valid email address",
+    "emailReauiredInfo": "Email is",
+    "emailReauiredInfoStrong": "required",
+    "passwordPlaceholder": "Password",
+    "cancel": "Cancel",
+    "signOutButton": "Register",
+    "tooltip": {
+      "signIn": "Sign in to aplication",
+      "signUp": "Sign up to aplication"
+    },
+    "accessibilityInfo": {
+      "signIn": "Sign in to aplication",
+      "signUp": "Sign up to aplication"
+    }
   },
   "app-settings": {
     "title": "App settings",

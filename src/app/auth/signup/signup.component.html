@@ -3,8 +3,9 @@
   class="signup__form">
   <label 
       class="fotn-size--large" 
-      for="email">{{'profile.signIn' | translate}}</label>
-  <p class="fotn-size--small" >Please login</p>
+      for="email">{{'signUp.title' | translate}}
+      <p class="fotn-size--small" >{{'signUp.info' | translate}}</p>
+  </label>
   <md-input-container>
     <input 
       id="email"
@@ -12,10 +13,10 @@
       placeholder="Email"
       [formControl]="emailFormControl">
     <md-error *ngIf="emailFormControl.hasError('pattern')">
-    Please enter a valid email address
+      {{'signUp.emailValidInfo' | translate}}
     </md-error>
     <md-error *ngIf="emailFormControl.hasError('required')">
-    Email is <strong>required</strong>
+      {{'signUp.emailReauiredInfo' | translate}} <em>{{'signUp.emailReauiredInfoStrong' | translate}}</em>
     </md-error>
   </md-input-container>
   <md-input-container>
@@ -28,18 +29,19 @@
   <div class="action-container">
     <button 
       type="button"
+      md-dialog-close
       color="primary" 
       type="submit"
       md-button
-      attr.aria-label="{{'profile.signUp' | translate}}">{{'profile.signUp' | translate}}
+      mdTooltip="{{'signUp.tooltip.signUp' | translate}}"
+      attr.aria-label="{{'signUp.tooltip.signUp' | translate}}">{{'signUp.cancel' | translate}}
     </button>
     <button 
       color="primary" 
-      md-dialog-close
       md-button 
-      attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
-      mdTooltip="{{'key-settings.tooltip.save' | translate}}"
-      [disabled]="!f.valid">{{'profile.signIn' | translate}}
+      mdTooltip="{{'signUp.tooltip.signUp' | translate}}"
+      attr.aria-label="{{'signUp.tooltip.signUp' | translate}}"
+      [disabled]="!f.valid">{{'signUp.signOutButton' | translate}}
     </button>
   </div>      
 </form>
