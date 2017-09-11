@@ -39,6 +39,12 @@ md-input-container {
   width: 100%;
 }
 
+.providers-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .action-container {
   display: flex;
   justify-content: space-between;

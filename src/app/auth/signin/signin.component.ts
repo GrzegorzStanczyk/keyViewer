@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, NgForm } from '@angular/forms';
 import { MdDialog } from '@angular/material';
 
 import { SignupComponent } from '../signup/signup.component';
+
+import { AuthService } from '../auth.service';
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -16,9 +18,18 @@ export class SigninComponent implements OnInit {
   Validators.required,
   Validators.pattern(EMAIL_REGEX)]);
 
-  constructor(public dialog: MdDialog) { }
+  constructor(
+    private dialog: MdDialog, 
+    private authService: AuthService) { }
 
-  openDialog() {
+  onSingIn(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+
+    this.authService.signInUser(email, password);
+  }
+
+  openRegister() {
     const dialogRef = this.dialog.open(SignupComponent, {
       height: 'auto'
     });
@@ -26,6 +37,10 @@ export class SigninComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  onLogOut() {
+    this.authService.logout();
   }
 
   ngOnInit() {
