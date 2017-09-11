@@ -9,6 +9,7 @@
   "signIn": {
     "title": "Zaloguj",
     "info": "Proszę się zalogować",
+    "signInWith": "Zaloguj się korzystając z",
     "emailValidInfo": "Proszę wpisać prawidłowy adres email",
     "emailReauiredInfo": "Email jest",
     "emailReauiredInfoStrong": "wymagany",
@@ -21,14 +22,19 @@
     },
     "accessibilityInfo": {
       "signIn": "Zaloguj się do aplikacji",
+      "signInGoogle": "Zaloguj się do aplikacji za pomocą Google",
+      "signInGitHub": "Zaloguj się do aplikacji za pomocą GitHub",
       "signUp": "Zarejestruj się do aplikacji"
     }
   },
   "signUp": {
     "title": "Rejestracja",
     "info": "Proszę się zarejestrować",
+    "emailValidInfo": "Proszę wpisać poprawny adres email",
     "emailReauiredInfo": "Email jest",
     "emailReauiredInfoStrong": "wymagany",
+    "passwordReauiredInfo": "Hasło jest",
+    "passwordReauiredInfoStrong": "wymagane",
     "passwordPlaceholder": "Hasło",
     "cancel": "Anuluj",
     "signOutButton": "Rejestruj",
