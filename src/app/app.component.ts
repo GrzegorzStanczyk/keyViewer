@@ -7,7 +7,6 @@ import { ThemePickerService } from './app-settings/theme-picker.service';
 import { DataStorageService } from './data-storage.service';
 import { KeyService } from './key/key.service';
 import { MapLoaderService } from './map/map-loader.service';
-import { AuthService } from './auth/auth.service';
 
 
 @Component({
@@ -19,8 +18,7 @@ import { AuthService } from './auth/auth.service';
     ThemePickerService, 
     DataStorageService, 
     KeyService, 
-    MapLoaderService,
-    AuthService]
+    MapLoaderService]
 })
 
 export class AppComponent implements OnInit, OnDestroy {

@@ -36,6 +36,8 @@ import { KeysListComponent } from './keys-list/keys-list.component';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 
+import { AuthService } from './auth/auth.service';
+
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -81,7 +83,7 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     FormsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
