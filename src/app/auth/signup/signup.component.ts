@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl, Validators, NgForm } from '@angular/forms';
+
+import { AuthService } from '../auth.service';
+
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -13,7 +16,14 @@ export class SignupComponent implements OnInit {
   Validators.required,
   Validators.pattern(EMAIL_REGEX)]);
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
+  
+  onSignUp(form: NgForm) {
+    const email = form.value.email;
+    const password = form.value.password;
+    
+    this.authService.signUpUser(email, password);
+  }
 
   ngOnInit() {
   }
