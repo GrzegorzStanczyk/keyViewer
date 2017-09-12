@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
+  token: string;
 
   constructor(public afAuth: AngularFireAuth) {
     this.user = afAuth.authState;
@@ -18,7 +19,10 @@ export class AuthService {
 
   signInUser(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(response => console.log(response))
+      .then(response => {
+        return this.afAuth.auth.currentUser.getIdToken();
+      })
+      .then((token: string) => this.token = token)
       .catch(error => console.log(error))
   };
   // this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
@@ -70,15 +74,12 @@ export class AuthService {
     this.signInWithPopup(provider);
   }
 
-
   logOut() {
-    // this.afAuth.auth.signOut();
-
-    this.afAuth.auth.signOut().then(function () {
-      // Sign-out successful.
-      console.log('Sign-out successful')
-    }).catch(error => console.log(error));
+    this.afAuth.auth.signOut().then(() => this.token = null)
+      .catch(error => console.log(error));
   }
-
-
+  
+  isAuthenticated(): boolean {
+    return this.token != null;
+  }
 }
