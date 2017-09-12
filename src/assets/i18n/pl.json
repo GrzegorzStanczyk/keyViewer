@@ -9,7 +9,7 @@
   "signIn": {
     "title": "Zaloguj",
     "info": "Proszę się zalogować",
-    "signInWith": "Zaloguj się korzystając z",
+    "signInWith": "Zaloguj się z",
     "emailValidInfo": "Proszę wpisać prawidłowy adres email",
     "emailReauiredInfo": "Email jest",
     "emailReauiredInfoStrong": "wymagany",
