@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators, NgForm } from '@angular/forms';
+
+import { MdDialogRef } from '@angular/material';
 
 import { AuthService } from '../auth.service';
 
@@ -16,13 +18,16 @@ export class SignupComponent implements OnInit {
   Validators.required,
   Validators.pattern(EMAIL_REGEX)]);
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    public dialogRef: MdDialogRef<SignupComponent>) { }
   
   onSignUp(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
     
     this.authService.signUpUser(email, password);
+    this.dialogRef.close();
   }
 
   ngOnInit() {
