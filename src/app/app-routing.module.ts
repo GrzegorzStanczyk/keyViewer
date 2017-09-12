@@ -7,15 +7,17 @@ import { KeySettingsComponent } from './key-settings/key-settings.component';
 import { AppSettingsComponent } from './app-settings/app-settings.component';
 import { AboutComponent } from './about/about.component';
 import { KeysListComponent } from './keys-list/keys-list.component';
+import { AuthGuardService } from './auth/auth-guard.service';
+
 
 const routes: Routes = [
-  { path: 'main',  component: MainComponent },
+  { path: 'main',  component: MainComponent, canActivate: [AuthGuardService] },
   { path: 'profile', component: ProfileComponent },
-  { path: 'keys-list', component: KeysListComponent }, 
-  { path: 'app-settings', component: AppSettingsComponent },
-  { path: 'about',  component: AboutComponent },
-  { path: '', redirectTo: '/main', pathMatch: 'full' },
-  { path: '**', redirectTo: '/main', pathMatch: 'full' }
+  { path: 'keys-list', component: KeysListComponent, canActivate: [AuthGuardService] }, 
+  { path: 'app-settings', component: AppSettingsComponent, canActivate: [AuthGuardService] },
+  { path: 'about',  component: AboutComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: '/profile', pathMatch: 'full' },
+  { path: '**', redirectTo: '/profile', pathMatch: 'full' }
 ];
 
 @NgModule({

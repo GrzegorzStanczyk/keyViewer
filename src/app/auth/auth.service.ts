@@ -25,7 +25,7 @@ export class AuthService {
           .then(token => {
             localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
             this.token = token;
-            this.router.navigate(['/']);
+            this.router.navigate(['/main']);
           });
       })
       .catch(error => console.log(error))
@@ -38,7 +38,7 @@ export class AuthService {
           .then(token => {
             localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
             this.token = token;
-            this.router.navigate(['/']);
+            this.router.navigate(['/main']);
           });
       })
       .catch(error => console.log(error))
