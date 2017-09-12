@@ -77,7 +77,7 @@
       class="back-button"
       type="button"
       md-button
-      (click)="login(google)"
+      (click)="onSingInGoogle()"
       attr.aria-label="{{'signIn.accessibilityInfo.signInGoogle' | translate}}" 
       >Google
       <!-- <svg width="46px" height="46px" viewBox="0 0 46 46" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
@@ -126,7 +126,7 @@
       class="back-button"
       type="button"
       md-button
-      (click)="login(github)"
+      (click)="onSingInGitHub()"
       attr.aria-label="{{'signIn.accessibilityInfo.signInGitHub' | translate}}"
       >GitHub
       <!-- <md-icon aria-hidden="true">mail</md-icon>
@@ -134,9 +134,9 @@
         class="cdk-visually-hidden">
         {{'key-settings.accessibilityInfo.close' | translate}}</span> -->
     </button>
-    <button
+    <!-- <button
       md-button
       (click)="onLogOut()">Log out       
-    </button>
+    </button> -->
   </md-card-actions>  
 </md-card>

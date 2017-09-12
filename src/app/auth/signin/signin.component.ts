@@ -39,8 +39,16 @@ export class SigninComponent implements OnInit {
     });
   }
 
+  onSingInGoogle() {
+    this.authService.signInUserGoogle();
+  }
+
+  onSingInGitHub() {
+    this.authService.signInUserGitHub();
+  }
+
   onLogOut() {
-    this.authService.logout();
+    this.authService.logOut();
   }
 
   ngOnInit() {
