@@ -40,5 +40,8 @@ export class KeyService {
           return cpos < ppos ? curr : prev;
         })
       })
+      .catch(error => {
+        return new Key('', null, null, null, 'Welcome', null);
+      })
   }
 }
