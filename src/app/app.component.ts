@@ -4,7 +4,6 @@ import { Subscription } from 'rxjs/Subscription';
 
 import { SidenavOpenService } from './sidenav/sidenav-open.service';
 import { ThemePickerService } from './app-settings/theme-picker.service';
-import { DataStorageService } from './data-storage.service';
 import { KeyService } from './key/key.service';
 import { MapLoaderService } from './map/map-loader.service';
 
@@ -15,8 +14,7 @@ import { MapLoaderService } from './map/map-loader.service';
   styleUrls: ['./app.component.scss'],
   providers: [
     SidenavOpenService, 
-    ThemePickerService, 
-    DataStorageService, 
+    ThemePickerService,
     KeyService, 
     MapLoaderService]
 })

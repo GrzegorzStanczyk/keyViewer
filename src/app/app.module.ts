@@ -38,6 +38,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
+import { DataStorageService } from './data-storage.service';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -84,7 +85,10 @@ export function createTranslateLoader(http: HttpClient) {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     FormsModule
   ],
-  providers: [AuthService, AuthGuardService],
+  providers: [
+    DataStorageService,
+    AuthService, 
+    AuthGuardService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
