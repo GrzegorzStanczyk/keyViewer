@@ -1,27 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 
 import { Key } from './key/key.model';
-import { KEYS } from './key/key-mock';
-
+// import { KEYS } from './key/key-mock';
+import { Subscription }   from 'rxjs/Subscription';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-
+import { AuthService } from './auth/auth.service';
 
 @Injectable()
-export class DataStorageService {
+export class DataStorageService implements OnDestroy {
   items: FirebaseListObservable<any>;
   
   item: FirebaseObjectObservable<any>;
   keys: Promise<Key[]> | null = null;
 
+  userId: Subscription;
+
   constructor(
-    private db: AngularFireDatabase) {
-      this.items = db.list('/', { preserveSnapshot: true });
-      // this.items
-      // .subscribe(items => {
-      //   this.keys = items.map(item => {
-      //       return item.val();
-      //   });
-      // });
+    private db: AngularFireDatabase,
+    private authService: AuthService) {
+      this.userId = authService.userId$.subscribe(userId => {
+        this.items = db.list('/users/' + userId, { preserveSnapshot: true });
+      })
   }
   
 
@@ -31,33 +30,22 @@ export class DataStorageService {
     
     // this.items.remove();
     // KEYS.forEach(element => {
-    //   this.items.push(element)
+    //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
+    //   const toSend = this.db.object(`/users/${this.id}/${properStreetName}`);
+    //   toSend.set(element);
+    //   // this.items.push(element)
     // });
 
-    // return this.items.update("2", { "streetName": "Lazurowa 40, 01-315 Warszawa", "lat": 52.238957, "lng": 20.89739, "radius": 10, "key": "Orlen", note: "notatka"});
+    // this.items.remove();
+    // KEYS.forEach(element => {
+    //   let toSend = this.db.object(`/users/${this.userId}/${element.streetName}`);
+    //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
+    //   this.items.update(properStreetName, element);
+      
+    // });
+
     // this.items.push( { "streetName": "Lazurowa 40, 01-315 Warszawa", "lat": 52.238957, "lng": 20.89739, "radius": 10, "key": "Orlen", note: "notatka"});
     this.items.update(properStreetName, newKey);
-  }
-
-  editKey() {
-    const newKey =new Key('Amfiteatr im. Michaela Jacksona', 52.233631, 20.906177, 10, '100#2580', null);
-    
-    // this.items.remove();
-    // KEYS.forEach(element => {
-    //   let toSend = this.db.object(`/${element.streetName}`);
-    //   toSend.set(element);
-    // });
-
-
-    // ".", "#", "$", "[", or "]"
-    // this.items.remove();
-    // KEYS.forEach(element => {
-    //   // const properStreetName = element.streetName.replace(/\.|#|\$|\[|]/gm,',');
-    //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
-      
-    //   const toSend = this.db.object(`/${properStreetName}`);
-    //   toSend.set(element);
-    // });
   }
 
   getKeys(): Promise<Key[]> {
@@ -68,6 +56,10 @@ export class DataStorageService {
         resolve(this.keys)
       })
     })    
-  }  
+  }
+
+  ngOnDestroy() {
+    this.userId.unsubscribe();
+  }
 }
 

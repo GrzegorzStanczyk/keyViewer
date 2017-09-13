@@ -16,14 +16,6 @@ export class AuthGuardService implements CanActivate {
     private router: Router) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-    // if (this.authService.isAuthenticated()) { 
-    //   console.log('acces allowed');
-    //   return true; 
-    // } else {
-    //   console.log('acces not allowed');
-    //   return false
-    // }
-  
     if (this.authService.isAuthenticated()) { return true; }
 
     return this.afAuth.authState
@@ -31,25 +23,11 @@ export class AuthGuardService implements CanActivate {
       .map(user => !!user)
       .do(loggedIn => {
         console.log("loggedIn", loggedIn)
-        // .subscribe(loggedIn => {
         if (!loggedIn) {
           console.log("access denied")
           this.router.navigate(['/profile']);
           return false;
         }
     })
-
-
-    // this.afAuth.auth.onAuthStateChanged(function(user) {
-    //   if (user) {
-    //     console.log('acces allowed');
-    //     return true;
-    //   } else {
-    //     console.log("access denied")
-    //     this.router.navigate(['/profile']);
-    //     return false;
-    //   }
-    // });
-
   }
 }

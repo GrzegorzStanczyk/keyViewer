@@ -1,50 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subject }    from 'rxjs/Subject';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { Key } from '../key/key.model';
 
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthService {
+  private userIdSource = new Subject<string>();
+  userId$ = this.userIdSource.asObservable();
+
   user: Observable<firebase.User>;
-  token = null;
   
+  token = null;
 
   constructor(
     private afAuth: AngularFireAuth,
-    private router: Router) {
-      
-    // this.user = afAuth.authState;
-    afAuth.auth.onAuthStateChanged(user => {      
+    private router: Router) {      
+    afAuth.auth.onAuthStateChanged(user => {  
       if (user) {
         // User is signed in.
+        // Announce user id for connect proper user database in data-storage.service
+        this.announceUserId(user.uid);
         this.token = true;
-        // this.router.navigate(['/main']);
-        console.log("loegedin", this.token)
-      } else {
-        // this.router.navigate(['/profile']);
-        // No user is signed in.
-        console.log("loggedout", this.token)
-        
-      }
+      } 
     });
+  }
 
-    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    // this.token = currentUser && currentUser.token;
+  announceUserId(userId: string) {
+    this.userIdSource.next(userId);
   }
 
   signUpUser(email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(response => {
-        // return this.afAuth.auth.currentUser.getIdToken()
-        //   .then(token => {
-        //     // localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
-        //     this.token = token;
-        //     this.router.navigate(['/main']);
-        //   });
           this.router.navigate(['/main']);
-          
       })
       .catch(error => console.log(error))
   }
@@ -52,12 +44,6 @@ export class AuthService {
   signInUser(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(response => {
-        // return this.afAuth.auth.currentUser.getIdToken()
-        //   .then(token => {
-        //     // localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
-        //     // this.token = token;
-        //     this.router.navigate(['/main']);
-        //   });
           this.router.navigate(['/main']);
       })
       .catch(error => console.log(error))
@@ -66,13 +52,9 @@ export class AuthService {
   signInWithPopup(provider) {
     this.afAuth.auth.signInWithPopup(provider).then(result => {
       console.log("signInWithPopupResult", result)
-      // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-      var token = result.credential.accessToken;
-      // The signed-in user info.
-      var user = result.user;
+
     }).catch(error => {
       console.log("signInWithPopupError", error)
-      var errorMessage = error.message;
     });
   }
 
@@ -89,7 +71,6 @@ export class AuthService {
   logOut() {
     this.afAuth.auth.signOut().then(() => {
       this.token = null;
-      localStorage.removeItem('currentUser');
     })
       .catch(error => console.log(error));
   }
@@ -97,8 +78,4 @@ export class AuthService {
   isAuthenticated(): boolean {
     return this.token !== null;
   }
-
-  // get currentUserObservable(): any {
-  //   return this.afAuth.authState;
-  // }
 }
