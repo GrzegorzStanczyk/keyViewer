@@ -8,7 +8,7 @@ export const KEYS: Array<Key> = [
     new Key('Bolesława Prusa 43 Pruszków ', 52.158335, 20.802447, 10, 'S1369D', null),
     new Key('Lazurowa 40, 01-315 Warszawa', 52.238957, 20.897390, 10, 'Orlen', null),
     new Key('Gałczyńskiego 33 Pruszków', 52.183369, 20.818383, 10, '?', null),
-    new Key('Jana Pawła II Piaseczno', 52.207089, 20.867042, 10, '204#1961', null),
+    // new Key('Jana Pawła II Piaseczno', 52.207089, 20.867042, 10, '204#1961', null),
     new Key('Konotopska 5 Warszawa', 52.207089, 20.867042, 10, '151#8921 51#8921', null),
     new Key('Miernicza 41, Pruszków', 52.182309, 20.822387, 10, '222#2580', null),
     new Key('Postępu 12A', 52.176506, 20.996255, 10, 'Schindler', null),

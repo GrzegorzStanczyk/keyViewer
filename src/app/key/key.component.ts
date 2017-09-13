@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, NgZone } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { Router } from '@angular/router';
 
 import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 import { KeyService } from './key.service';
@@ -22,7 +21,6 @@ export class KeyComponent implements OnDestroy {
     private keyService: KeyService,
     private mapLoaderService: MapLoaderService,
     private zone: NgZone,
-    private router: Router,
     private sidenavOpenService: SidenavOpenService) {
 
     this.subscriptionToGetCoords = this.mapLoaderService.getCoords()
