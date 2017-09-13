@@ -3,14 +3,17 @@ import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
-import { Key } from '../key/key.model';
 
 import { Router } from '@angular/router';
+
 
 @Injectable()
 export class AuthService {
   private userIdSource = new Subject<string>();
   userId$ = this.userIdSource.asObservable();
+
+  private logOutSource = new Subject<boolean>();
+  logOutSource$ = this.logOutSource.asObservable();
 
   user: Observable<firebase.User>;
   
@@ -25,12 +28,19 @@ export class AuthService {
         // Announce user id for connect proper user database in data-storage.service
         this.announceUserId(user.uid);
         this.token = true;
-      } 
+      } else {
+        // Announce user signout to unsubscribe database watching in data-storage.service
+        this.announceUserLogOut();
+      }
     });
   }
 
   announceUserId(userId: string) {
     this.userIdSource.next(userId);
+  }
+
+  announceUserLogOut() {
+    this.logOutSource.next(true);
   }
 
   signUpUser(email: string, password: string) {
@@ -72,7 +82,7 @@ export class AuthService {
     this.afAuth.auth.signOut().then(() => {
       this.token = null;
     })
-      .catch(error => console.log(error));
+      .catch(error => console.log('logOut error', error));
   }
   
   isAuthenticated(): boolean {

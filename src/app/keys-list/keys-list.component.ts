@@ -15,7 +15,7 @@ export class KeysListComponent implements OnInit {
   i = 0;
 
   constructor(private db: AngularFireDatabase) {
-    this.items = db.list('/');
+    // this.items = db.list('/');
     // this.findAllLessons();
   }
 
