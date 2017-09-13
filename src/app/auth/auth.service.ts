@@ -8,25 +8,43 @@ import { Router } from '@angular/router';
 @Injectable()
 export class AuthService {
   user: Observable<firebase.User>;
-  token: string;
+  token = null;
+  
 
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router) {
-    this.user = afAuth.authState;
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.token = currentUser && currentUser.token;
+      
+    // this.user = afAuth.authState;
+    afAuth.auth.onAuthStateChanged(user => {      
+      if (user) {
+        // User is signed in.
+        this.token = true;
+        // this.router.navigate(['/main']);
+        console.log("loegedin", this.token)
+      } else {
+        // this.router.navigate(['/profile']);
+        // No user is signed in.
+        console.log("loggedout", this.token)
+        
+      }
+    });
+
+    // const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    // this.token = currentUser && currentUser.token;
   }
 
   signUpUser(email: string, password: string) {
     this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then(response => {
-        return this.afAuth.auth.currentUser.getIdToken()
-          .then(token => {
-            localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
-            this.token = token;
-            this.router.navigate(['/main']);
-          });
+        // return this.afAuth.auth.currentUser.getIdToken()
+        //   .then(token => {
+        //     // localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
+        //     this.token = token;
+        //     this.router.navigate(['/main']);
+        //   });
+          this.router.navigate(['/main']);
+          
       })
       .catch(error => console.log(error))
   }
@@ -34,12 +52,13 @@ export class AuthService {
   signInUser(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(response => {
-        return this.afAuth.auth.currentUser.getIdToken()
-          .then(token => {
-            localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
-            this.token = token;
-            this.router.navigate(['/main']);
-          });
+        // return this.afAuth.auth.currentUser.getIdToken()
+        //   .then(token => {
+        //     // localStorage.setItem('currentUser', JSON.stringify({ username: response.email, token: token }));
+        //     // this.token = token;
+        //     this.router.navigate(['/main']);
+        //   });
+          this.router.navigate(['/main']);
       })
       .catch(error => console.log(error))
   };
@@ -76,6 +95,10 @@ export class AuthService {
   }
   
   isAuthenticated(): boolean {
-    return this.token != null;
+    return this.token !== null;
   }
+
+  // get currentUserObservable(): any {
+  //   return this.afAuth.authState;
+  // }
 }

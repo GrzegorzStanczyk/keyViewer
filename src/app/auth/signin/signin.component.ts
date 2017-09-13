@@ -20,7 +20,7 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private dialog: MdDialog, 
-    private authService: AuthService) { }
+    public authService: AuthService) { }
 
   onSingIn(form: NgForm) {
     const email = form.value.email;
