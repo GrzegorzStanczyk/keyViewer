@@ -15,7 +15,7 @@ export class AuthService {
   private logOutSource = new Subject<boolean>();
   logOutSource$ = this.logOutSource.asObservable();
 
-  user: Observable<firebase.User>;
+  // user: Observable<firebase.User>;
   
   token = null;
 
@@ -79,9 +79,11 @@ export class AuthService {
   }
 
   logOut() {
-    this.afAuth.auth.signOut().then(() => {
-      this.token = null;
-    })
+    this.announceUserLogOut();
+    this.afAuth.auth.signOut()
+      .then(() => {
+        this.token = null;
+      })
       .catch(error => console.log('logOut error', error));
   }
   

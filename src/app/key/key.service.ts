@@ -43,7 +43,7 @@ export class KeyService {
         })
       })
       .catch(error => {
-        return new Key('', null, null, null, 'Welcome', null);
+        return new Key('', null, null, null, 'Welcome', '');
       })
   }
 }

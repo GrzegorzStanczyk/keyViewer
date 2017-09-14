@@ -12,7 +12,7 @@ export const KEYS: Array<Key> = [
     new Key('Konotopska 5 Warszawa', 52.207089, 20.867042, 10, '151#8921 51#8921', null),
     new Key('Miernicza 41, Pruszków', 52.182309, 20.822387, 10, '222#2580', null),
     new Key('Postępu 12A', 52.176506, 20.996255, 10, 'Schindler', null),
-    new Key('Powstańców 9 Pruszków', 52.207089, 20.867042, 10, '#1315#', null),
+    new Key('Powstańców 9 Pruszków', 52.15959822759032, 20.79727395437658, 10, '#1315#', null),
     new Key('Radnych 9 Pruszków', 52.164606, 20.802489, 10, '#2552#', null),
     new Key('Stalowa 24, Pruszków', 52.164331, 20.792812, 10, '99#1397', 'Plac Mechaników'),
     new Key('Stefana Batorego 5, 05-870 Pass, Polska', 52.21581330522895, 20.56476297788322, 10, 'Delphi', null),

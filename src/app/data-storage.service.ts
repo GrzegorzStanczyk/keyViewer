@@ -2,15 +2,17 @@ import { Injectable, OnDestroy } from '@angular/core';
 
 import { Key } from './key/key.model';
 // import { KEYS } from './key/key-mock';
-import { Subscription }   from 'rxjs/Subscription';
+import { Subscription } from 'rxjs/Subscription';
+
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 import { AuthService } from './auth/auth.service';
+
 
 @Injectable()
 export class DataStorageService implements OnDestroy {
   items: FirebaseListObservable<any>;
-  
-  item: FirebaseObjectObservable<any>;
+
+  // item: FirebaseObjectObservable<any>;
   keys: Promise<Key[]> | null = null;
 
   userId: Subscription;
@@ -18,21 +20,21 @@ export class DataStorageService implements OnDestroy {
 
   constructor(
     private db: AngularFireDatabase,
-    private authService: AuthService) {      
-      this.userId = authService.userId$.subscribe(userId => {
-        this.items = db.list('/users/' + userId, { preserveSnapshot: true });
-      });
-      this.userState = this.authService.logOutSource$.subscribe(userId => {
-        this.userId.unsubscribe();
-      });
+    private authService: AuthService) {
+    this.userId = authService.userId$.subscribe(userId => {
+      this.items = db.list('/users/' + userId, { preserveSnapshot: true });
+    });
+    this.userState = this.authService.logOutSource$.subscribe(userId => {
+      this.userId.unsubscribe();
+    });
   }
-  
+
 
   storeKey(key: Key) {
     const newKey = new Key(key.streetName, key.lat, key.lng, key.radius, key.key, key.note);
     const properStreetName = key.streetName.split(/\.|#|\$|\[|]|\\/gm).join(",");
     this.items.update(properStreetName, newKey);
-    
+
     // this.items.remove();
     // KEYS.forEach(element => {
     //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
@@ -50,13 +52,13 @@ export class DataStorageService implements OnDestroy {
   }
 
   getKeys(): Promise<Key[]> {
-    return new Promise(resolve=>{      
-      this.items
-      .subscribe(items=> {
-        this.keys = items.map(item=>item.val())
-        resolve(this.keys)
-      })
-    })    
+    return new Promise(resolve => {
+        this.items
+        .subscribe(items => {
+          this.keys = items.map(item => item.val())
+          resolve(this.keys)
+        })
+    })
   }
 
   ngOnDestroy() {
