@@ -34,7 +34,7 @@
   @extend %card;
 }
 
-md-input-container {
+.mat-form-field {
   width: 100%;
 }
 
@@ -58,11 +58,5 @@ table {
   }
   .key--fotn-size {
     font-size: 20px;
-  }
-  md-card-content {
-    margin: 0;
-  }
-  md-input-container {
-    margin-bottom: 5px;
   }
 }

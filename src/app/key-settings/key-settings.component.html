@@ -18,7 +18,7 @@
     <form 
       *ngIf="key$ | async as key" 
       #f="ngForm">
-      <md-input-container class="key--fotn-size">
+      <md-form-field class="key--fotn-size">
         <input 
           required
           mdInput 
@@ -31,8 +31,8 @@
           {{'key-settings.error.key' | translate}} 
           <strong>{{'key-settings.error.required' | translate}}</strong>
         </md-error>
-      </md-input-container>
-      <md-input-container>
+      </md-form-field>
+      <md-form-field>
         <input 
           required 
           mdInput 
@@ -45,8 +45,8 @@
           {{'key-settings.error.street' | translate}} 
           <strong>{{'key-settings.error.required' | translate}}</strong>
         </md-error>
-      </md-input-container>
-      <md-input-container class="example-full-width">
+      </md-form-field>
+      <md-form-field class="example-full-width">
         <input 
           mdInput
           #message 
@@ -55,11 +55,11 @@
           [(ngModel)]="key.note"  
           name="note">
         <md-hint align="end">{{message.value.length}} / 256</md-hint>
-      </md-input-container>
+      </md-form-field>
       <table cellspacing="0">
         <tr>
           <td>
-            <md-input-container>
+            <md-form-field>
               <input
                 mdInput 
                 disabled
@@ -68,10 +68,10 @@
                 #keyLat="ngModel"
                 name="lat" 
                 [ngModel]="key.lat">
-            </md-input-container>
+            </md-form-field>
           </td>
           <td>
-            <md-input-container>
+            <md-form-field>
               <input
                 mdInput
                 disabled 
@@ -80,7 +80,7 @@
                 #keyLng="ngModel"
                 name="lng" 
                 [ngModel]="key.lng">
-            </md-input-container>
+            </md-form-field>
           </td>
         </tr>
       </table>
