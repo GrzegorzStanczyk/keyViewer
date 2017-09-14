@@ -20,10 +20,12 @@ export class KeyService {
     this.setKeyToEdit(this.newKeyToEdit);
   }
 
+  // Subject in map.component
   setNewKeyToEdit(key): void {
     this.newKeyToEdit = key;
   }
-
+  
+  // Subject in key.component
   setKeyToEdit(key): void {
     this.keyToEdit.next(key);
   }
