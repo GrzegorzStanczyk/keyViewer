@@ -56,7 +56,8 @@ export class KeySettingsComponent implements OnInit {
       .then(()=>{
         this.openSnackBar(this.snackBarMessage.success)
       })
-      .catch(()=>{
+      .catch((e)=>{
+        console.log(e)
         this.openSnackBar(this.snackBarMessage.error)
     });
   }
