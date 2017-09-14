@@ -89,7 +89,7 @@ export class MapLoaderService {
       geocoder.geocode({ 'location': { lat: cords.lat, lng: cords.lng } }, function (results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
           if (results[0]) {            
-            this.dataForNewKey = new Key(results[0].formatted_address, cords.lat, cords.lng, null, null, null);
+            this.dataForNewKey = new Key(results[0].formatted_address, cords.lat, cords.lng, 10, '', '');
             resolve(this.dataForNewKey);
           } else {
             window.alert('No results found');
