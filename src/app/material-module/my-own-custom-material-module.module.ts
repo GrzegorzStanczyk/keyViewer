@@ -13,7 +13,8 @@ import {
   MdProgressSpinnerModule,
   MdPaginatorModule,
   MdSnackBarModule,
-  MdDialogModule } from '@angular/material';
+  MdDialogModule,
+  MdExpansionModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {
     MdProgressSpinnerModule,
     MdPaginatorModule,
     MdSnackBarModule,
-    MdDialogModule
+    MdDialogModule,
+    MdExpansionModule
   ],
   exports: [
     MdButtonModule, 
@@ -45,7 +47,8 @@ import {
     MdProgressSpinnerModule,
     MdPaginatorModule,
     MdSnackBarModule,
-    MdDialogModule
+    MdDialogModule,
+    MdExpansionModule
   ],
   declarations: []
 })
