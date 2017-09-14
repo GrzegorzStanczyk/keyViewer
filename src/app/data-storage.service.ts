@@ -29,7 +29,7 @@ export class DataStorageService implements OnDestroy {
   
 
   storeKey(key: Key) {
-    const newKey = new Key(key.streetName, key.lat, key.lng, 10, key.key, key.note);
+    const newKey = new Key(key.streetName, key.lat, key.lng, key.radius, key.key, key.note);
     const properStreetName = key.streetName.split(/\.|#|\$|\[|]|\\/gm).join(",");
     this.items.update(properStreetName, newKey);
     
