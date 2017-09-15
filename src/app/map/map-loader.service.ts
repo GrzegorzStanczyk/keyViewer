@@ -19,9 +19,7 @@ export class MapLoaderService {
   private localizateMeSource = new Subject<null>();
   public localizateMeSource$ = this.localizateMeSource.asObservable();
 
-  constructor() {
-    // keyService.setKeyToEdit(this.dataForNewKey); 
-  }
+  constructor() {}
 
   // Subject for map reload after edit/add new key in key-settings.component
   public announceKeyUpdate() {
