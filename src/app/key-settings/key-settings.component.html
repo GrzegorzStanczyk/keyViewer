@@ -18,44 +18,50 @@
     <form 
       *ngIf="key$ | async as key" 
       #f="ngForm">
-      <md-form-field class="key--fotn-size">
-        <input 
-          required
-          mdInput 
-          placeholder="{{'key-settings.keyInputPlaceholder' | translate}}"
-          [(ngModel)]="key.key"
-          ngModel
-          #keyInput="ngModel"
-          name="key">
-        <md-error *ngIf="!keyInput.valid && keyInput.touched">
-          {{'key-settings.error.key' | translate}} 
-          <strong>{{'key-settings.error.required' | translate}}</strong>
-        </md-error>
-      </md-form-field>
-      <md-form-field>
-        <input 
-          required 
-          mdInput 
-          placeholder="{{'key-settings.streetInputPlaceholder' | translate}}"
-          [(ngModel)]="key.streetName" 
-          ngModel
-          #streetName="ngModel"
-          name="streetName">
-        <md-error *ngIf="!streetName.valid && streetName.touched">
-          {{'key-settings.error.street' | translate}} 
-          <strong>{{'key-settings.error.required' | translate}}</strong>
-        </md-error>
-      </md-form-field>
-      <md-form-field class="example-full-width">
-        <input 
-          mdInput
-          #message 
-          maxlength="256" 
-          placeholder="{{'key-settings.note' | translate}}" 
-          [(ngModel)]="key.note"  
-          name="note">
-        <md-hint align="end">{{message.value.length}} / 256</md-hint>
-      </md-form-field>
+      <p>
+        <md-form-field class="key--fotn-size">
+          <input 
+            required
+            mdInput 
+            placeholder="{{'key-settings.keyInputPlaceholder' | translate}}"
+            [(ngModel)]="key.key"
+            ngModel
+            #keyInput="ngModel"
+            name="key">
+          <md-error *ngIf="!keyInput.valid && keyInput.touched">
+            {{'key-settings.error.key' | translate}} 
+            <strong>{{'key-settings.error.required' | translate}}</strong>
+          </md-error>
+        </md-form-field>
+      </p>
+      <p>
+        <md-form-field>
+          <input 
+            required 
+            mdInput 
+            placeholder="{{'key-settings.streetInputPlaceholder' | translate}}"
+            [(ngModel)]="key.streetName" 
+            ngModel
+            #streetName="ngModel"
+            name="streetName">
+          <md-error *ngIf="!streetName.valid && streetName.touched">
+            {{'key-settings.error.street' | translate}} 
+            <strong>{{'key-settings.error.required' | translate}}</strong>
+          </md-error>
+        </md-form-field>
+      </p>
+      <p>
+        <md-form-field class="example-full-width">
+          <input 
+            mdInput
+            #message 
+            maxlength="256" 
+            placeholder="{{'key-settings.note' | translate}}" 
+            [(ngModel)]="key.note"  
+            name="note">
+          <md-hint align="end">{{message.value.length}} / 256</md-hint>
+        </md-form-field>
+      </p>
       <table cellspacing="0">
         <tr>
           <td>
