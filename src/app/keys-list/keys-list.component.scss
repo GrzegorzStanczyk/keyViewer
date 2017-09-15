@@ -1,13 +1,62 @@
 :host {
   width: 100%;
-  max-width: 1220px;
+  max-width: 500px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
 }
 
-md-paginator {
+.card__title {
+  @media (max-width: 600px) {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto 35px;
+  display: flex;
+  justify-content: center;
+  & md-card-title {
+    margin: 0;
+  }
+}
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 500px;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  padding-right: 24px;
+  // font-size: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.accordion .mat-form-field {
+  margin-bottom: 12px;
+}
+
+.paginator {
   width: 100%;
   max-width: 500px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+::ng-deep .accordion {
+  overflow: auto;
+  height: 500px;
+}
+
+@media screen and (max-width: 600px) {
+  .paginator {
+    position: fixed;
+    bottom: 0;
+  }
 }

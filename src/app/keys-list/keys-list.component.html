@@ -1,15 +1,92 @@
 <!-- <h1>{{ (items | async)?.key }}</h1> -->
-<md-paginator [length]="100"
-  [pageSize]="10"
+
+<!-- <ul>
+  <li *ngFor="let item of items | async">
+    {{ item | json }}
+  </li>
+</ul> -->
+<md-card class="card__title">
+  <md-card-header>
+    <md-card-title>{{'keys-list.title' | translate}}</md-card-title>
+  </md-card-header>
+</md-card>
+
+<div class="header">
+  <md-form-field floatPlaceholder="never">
+    <input mdInput #filter placeholder="Filter users">
+  </md-form-field>
+</div>
+
+<md-accordion class="accordion" *ngIf="keys">
+<!-- <md-expansion-panel *ngFor="let key of keys"> -->
+  <md-expansion-panel *ngFor="let key of keys">
+    <md-expansion-panel-header (click)="addItem(key)">
+      {{key.streetName}} 
+    </md-expansion-panel-header>
+    <form 
+      #f="ngForm"
+      (ngSubmit)="onSignUp(f)">
+        <md-form-field class="key--fotn-size">
+          <input 
+            required
+            mdInput 
+            placeholder="{{'key-settings.keyInputPlaceholder' | translate}}"
+            [(ngModel)]="key.key"
+            ngModel
+            #keyInput="ngModel"
+            name="key">
+          <md-error *ngIf="!keyInput.valid && keyInput.touched">
+            {{'key-settings.error.key' | translate}} 
+            <strong>{{'key-settings.error.required' | translate}}</strong>
+          </md-error>
+        </md-form-field>
+        <md-form-field>
+          <input 
+            required 
+            mdInput 
+            placeholder="{{'key-settings.streetInputPlaceholder' | translate}}"
+            [(ngModel)]="key.streetName" 
+            ngModel
+            #streetName="ngModel"
+            name="streetName">
+          <md-error *ngIf="!streetName.valid && streetName.touched">
+            {{'key-settings.error.street' | translate}} 
+            <strong>{{'key-settings.error.required' | translate}}</strong>
+          </md-error>
+        </md-form-field>
+        <div class="action-container">
+          <button
+            md-button>
+            <md-icon>
+              delete_forever
+            </md-icon>
+          </button>
+          <button 
+            color="primary" 
+            type="submit"
+            md-raised-button 
+            attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
+            (click)="saveKey()"
+            mdTooltip="{{'key-settings.tooltip.save' | translate}}"
+            [disabled]="!f.valid">
+            <md-icon>edit</md-icon>
+            <span 
+              class="cdk-visually-hidden">
+              {{'key-settings.accessibilityInfo.save' | translate}}</span>
+          </button>
+        </div>
+    </form>
+  </md-expansion-panel>
+</md-accordion>
+
+<md-paginator class="paginator"
+  #paginator 
+  [length]="keys?.length" 
+  [pageSize]="10" 
+  [pageIndex]="0"
   [pageSizeOptions]="[5, 10, 25, 100]">
 </md-paginator>
-<ul>
-    <li *ngFor="let item of items | async">
-       {{ item | json }}
-    </li>
-  </ul>
-
-  <button (click)="addItem()">addItem()</button>
-  <button (click)="updateItem()">updateItem()</button>
-  <button (click)="deleteItem()">deleteItem()</button>
-  <button (click)="deleteEverything()">deleteEverything()</button>
+<!-- <button (click)="addItem()">addItem()</button> -->
+<!-- <button (click)="updateItem()">updateItem()</button> -->
+<!-- <button (click)="deleteItem()">deleteItem()</button> -->
+<!-- <button (click)="deleteEverything()">deleteEverything()</button> -->
