@@ -54,7 +54,11 @@ export class KeySettingsComponent implements OnInit {
   saveKey(): void {
     this.key$.then(key => this.dataStorageService.storeKey(key))
       .then(()=>{
+        const timeout = 2000;
         this.openSnackBar(this.snackBarMessage.success)
+        setTimeout(() => {
+          this.closeAndGoToMain();
+        }, timeout);
       })
       .catch((e)=>{
         console.log(e)
