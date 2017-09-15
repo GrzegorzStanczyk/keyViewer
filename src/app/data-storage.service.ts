@@ -11,6 +11,7 @@ import { AuthService } from './auth/auth.service';
 @Injectable()
 export class DataStorageService implements OnDestroy {
   items: FirebaseListObservable<any>;
+  
 
   // item: FirebaseObjectObservable<any>;
   keys: Promise<Key[]> | null = null;
@@ -21,12 +22,13 @@ export class DataStorageService implements OnDestroy {
   constructor(
     private db: AngularFireDatabase,
     private authService: AuthService) {
-    this.userId = authService.userId$.subscribe(userId => {
-      this.items = db.list('/users/' + userId, { preserveSnapshot: true });
-    });
-    this.userState = this.authService.logOutSource$.subscribe(userId => {
-      this.userId.unsubscribe();
-    });
+      this.userId = this.authService.userId$.subscribe(userId => {
+        this.items = this.db.list('/users/' + userId, { preserveSnapshot: true });
+      });
+      this.userState = this.authService.logOutSource$.subscribe(userId => {
+        // Unsubscribe from listening route
+        this.items.$ref.off()
+      });
   }
 
 
@@ -60,6 +62,8 @@ export class DataStorageService implements OnDestroy {
         })
     })
   }
+
+  ngOnInit() {}
 
   ngOnDestroy() {
     this.userId.unsubscribe();

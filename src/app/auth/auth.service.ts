@@ -15,8 +15,6 @@ export class AuthService {
   private logOutSource = new Subject<boolean>();
   logOutSource$ = this.logOutSource.asObservable();
 
-  // user: Observable<firebase.User>;
-  
   token = null;
 
   constructor(
@@ -28,9 +26,6 @@ export class AuthService {
         // Announce user id for connect proper user database in data-storage.service
         this.announceUserId(user.uid);
         this.token = true;
-      } else {
-        // Announce user signout to unsubscribe database watching in data-storage.service
-        this.announceUserLogOut();
       }
     });
   }
@@ -79,12 +74,13 @@ export class AuthService {
   }
 
   logOut() {
+    // Announce user signout to unsubscribe database watching in data-storage.service
     this.announceUserLogOut();
     this.afAuth.auth.signOut()
-      .then(() => {
-        this.token = null;
-      })
-      .catch(error => console.log('logOut error', error));
+    .then(() => {
+      this.token = null;
+    })
+    .catch(error => console.log('logOut error', error));
   }
   
   isAuthenticated(): boolean {
