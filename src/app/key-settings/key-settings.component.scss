@@ -27,7 +27,8 @@
 .back-button {
   position: absolute;
   left: 0;
-  transform: translate3d(50%, 0, 0);
+  top: 0;
+  transform: translate3d(50%, 50%, 0);
 }
 
 .card__key-settings {
