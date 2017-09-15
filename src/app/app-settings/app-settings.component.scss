@@ -117,6 +117,10 @@
   height: 80px;
 }
 
+:host /deep/ .mat-button-wrapper{
+  padding: 0;
+}
+
 .btn {
   position: absolute;
   box-shadow: none;
