@@ -9,7 +9,6 @@
           for="email">{{'signIn.title' | translate}}
           <p class="fotn-size--small" >{{'signIn.info' | translate}}</p>
         </label>
-        <p>
           <md-form-field>
             <input 
               name="email"
@@ -37,8 +36,6 @@
               {{'signIn.emailReauiredInfo' | translate}} <em>{{'signIn.emailReauiredInfoStrong' | translate}}</em>
             </md-error> -->
           </md-form-field>
-        </p>
-        <p>
           <md-form-field>
             <input 
               name="password"
@@ -54,7 +51,6 @@
               {{'signUp.passwordReauiredInfo' | translate}} <em>{{'signUp.passwordReauiredInfoStrong' | translate}}</em>
             </md-error>
           </md-form-field>
-        </p>
         <div class="action-container">
           <button 
             type="button"
@@ -94,11 +90,11 @@
       </button>
     </md-card-actions>  
   </ng-template>
-  <md-card-actions class="sign-out__btn">
+  <div class="sign-out__btn">
     <button
       *ngIf="authService.isAuthenticated()"
       md-button
       (click)="onLogOut()">Log out       
     </button>
-  </md-card-actions>
+  </div>
 </md-card>

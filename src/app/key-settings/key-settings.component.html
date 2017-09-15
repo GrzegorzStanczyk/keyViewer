@@ -18,7 +18,6 @@
     <form 
       *ngIf="key$ | async as key" 
       #f="ngForm">
-      <p>
         <md-form-field class="key--fotn-size">
           <input 
             required
@@ -33,8 +32,6 @@
             <strong>{{'key-settings.error.required' | translate}}</strong>
           </md-error>
         </md-form-field>
-      </p>
-      <p>
         <md-form-field>
           <input 
             required 
@@ -49,8 +46,6 @@
             <strong>{{'key-settings.error.required' | translate}}</strong>
           </md-error>
         </md-form-field>
-      </p>
-      <p>
         <md-form-field class="example-full-width">
           <input 
             mdInput
@@ -61,7 +56,6 @@
             name="note">
           <md-hint align="end">{{message.value.length}} / 256</md-hint>
         </md-form-field>
-      </p>
       <table cellspacing="0">
         <tr>
           <td>
