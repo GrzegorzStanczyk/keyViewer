@@ -4,13 +4,17 @@
   flex-direction: column;
 }
 
+.mat-form-field {
+  width: 100%;
+}
+
 .fotn-size--small {
   font-size: 12px;
 }
 
 .fotn-size--large {
-    font-size: 20px;
-  }
+  font-size: 20px;
+}
 
 %card {
   width: 100%;
@@ -35,11 +39,7 @@
   @extend %card;
 }
 
-md-input-container {
-  width: 100%;
-}
-
-.providers-container {
+.providers-container, .sign-out__btn {
   display: flex;
   justify-content: center;
   align-items: center;

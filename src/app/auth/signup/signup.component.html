@@ -7,43 +7,43 @@
       for="email">{{'signUp.title' | translate}}
       <p class="fotn-size--small" >{{'signUp.info' | translate}}</p>
   </label>
-  <md-input-container>
-    <input 
-      name="email"
-      ngModel
-      mdInput 
-      type="email"
-      placeholder="Email"
-      required
-      email
-      #email="ngModel">
-      <!-- [formControl]="emailFormControl" -->
-    <md-error *ngIf="!email.valid">
-      {{'signUp.emailValidInfo' | translate}}
-    </md-error>
-    <!-- <md-error *ngIf="email.touched && !email.valid">
-      {{'signUp.emailReauiredInfo' | translate}} <em>{{'signUp.emailReauiredInfoStrong' | translate}}</em>
-    </md-error> -->
-  </md-input-container>
-  <md-input-container>
-    <input 
-      name="password"
-      ngModel
-      mdInput
-      type="password"
-      placeholder="Password"
-      required
-      password
-      #password="ngModel"
-      [minlength]="6"
-      placeholder="{{'signUp.passwordPlaceholder' | translate}}">
-    <!-- <md-error *ngIf="!email.valid">
-      {{'signUp.emailValidInfo' | translate}}
-    </md-error> -->
-    <md-error *ngIf="password.touched && !password.valid">
-      {{'signUp.passwordReauiredInfo' | translate}} <em>{{'signUp.passwordReauiredInfoStrong' | translate}}</em>
-    </md-error>
-  </md-input-container>
+    <md-form-field>
+      <input 
+        name="email"
+        ngModel
+        mdInput 
+        type="email"
+        placeholder="Email"
+        required
+        email
+        #email="ngModel">
+        <!-- [formControl]="emailFormControl" -->
+      <md-error *ngIf="!email.valid">
+        {{'signUp.emailValidInfo' | translate}}
+      </md-error>
+      <!-- <md-error *ngIf="email.touched && !email.valid">
+        {{'signUp.emailReauiredInfo' | translate}} <em>{{'signUp.emailReauiredInfoStrong' | translate}}</em>
+      </md-error> -->
+    </md-form-field>
+    <md-form-field>
+      <input 
+        name="password"
+        ngModel
+        mdInput
+        type="password"
+        placeholder="Password"
+        required
+        password
+        #password="ngModel"
+        [minlength]="6"
+        placeholder="{{'signUp.passwordPlaceholder' | translate}}">
+      <!-- <md-error *ngIf="!email.valid">
+        {{'signUp.emailValidInfo' | translate}}
+      </md-error> -->
+      <md-error *ngIf="password.touched && !password.valid">
+        {{'signUp.passwordReauiredInfo' | translate}} <em>{{'signUp.passwordReauiredInfoStrong' | translate}}</em>
+      </md-error>
+    </md-form-field>
   <div class="action-container">
     <button 
       type="button"

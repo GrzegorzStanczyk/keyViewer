@@ -2,16 +2,17 @@
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
 .fotn-size--small {
   font-size: 12px;
 }
 
 .fotn-size--large {
   font-size: 20px;
-}
-
-md-input-container {
-  width: 100%;
 }
 
 .action-container {
