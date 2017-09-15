@@ -92,6 +92,9 @@ export class MapComponent implements OnInit {
     if (typeof google !== 'undefined') {
       this.localizateMe()
     }
+    // Subscription for map reload after edit/add new key
+    this.mapLoaderService.localizateMeSource$
+      .subscribe(()=>this.localizateMe())
   }
 
 }

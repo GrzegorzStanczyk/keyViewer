@@ -7,10 +7,10 @@ import { Key } from '../key/key.model';
 import { SidenavOpenService } from '../sidenav/sidenav-open.service';
 import { DataStorageService } from '../data-storage.service';
 import { KeyService } from '../key/key.service';
+import { MapLoaderService } from '../map/map-loader.service';
 
 import { MdSnackBar } from '@angular/material';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 
 
 
@@ -30,7 +30,7 @@ export class KeySettingsComponent implements OnInit {
     private keyService: KeyService,
     private snackBar: MdSnackBar,
     private translate: TranslateService,
-    private router: Router,
+    private mapLoaderService: MapLoaderService,
     private sidenavOpenService: SidenavOpenService) {
 
       keyService.keyToEdit$.subscribe(key => this.key$ = key)
@@ -54,10 +54,14 @@ export class KeySettingsComponent implements OnInit {
   saveKey(): void {
     this.key$.then(key => this.dataStorageService.storeKey(key))
       .then(()=>{
-        const timeout = 2000;
+        const timeout = 2500;
         this.openSnackBar(this.snackBarMessage.success)
         setTimeout(() => {
           this.closeAndGoToMain();
+          setTimeout(() => {
+            // Subject for map reload after edit/add new key
+            this.mapLoaderService.announceKeyUpdate();
+          }, 100);
         }, timeout);
       })
       .catch((e)=>{

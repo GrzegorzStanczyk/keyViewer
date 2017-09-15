@@ -6,16 +6,26 @@ import { KeyService } from '../key/key.service';
 
 import { Key } from '../key/key.model';
 
+
 const url = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAYHIBJW0pmB5AYDPWsugpqzMN2Ugg_yqU&libraries=places,geometry&callback=__onGoogleLoaded';
 
 @Injectable()
 export class MapLoaderService {
   public static promise: Promise<any>;
-  public mapSubjectSource = new Subject<any>();
+  private mapSubjectSource = new Subject<any>();
   public dataForNewKey: Key;
 
-  constructor(private keyService: KeyService) {
+  // Subject for map reload after edit/add new key
+  private localizateMeSource = new Subject<null>();
+  public localizateMeSource$ = this.localizateMeSource.asObservable();
+
+  constructor() {
     // keyService.setKeyToEdit(this.dataForNewKey); 
+  }
+
+  // Subject for map reload after edit/add new key in key-settings.component
+  public announceKeyUpdate() {
+    this.localizateMeSource.next();
   }
 
   public sendCoords(obj): void {
