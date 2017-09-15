@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'keys-list', component: KeysListComponent, canActivate: [AuthGuardService] }, 
   { path: 'app-settings', component: AppSettingsComponent },
-  { path: 'about',  component: AboutComponent, canActivate: [AuthGuardService] },
+  { path: 'about',  component: AboutComponent },
   { path: '', redirectTo: '/main', pathMatch: 'full' },
   { path: '**', redirectTo: '/main', pathMatch: 'full' }
 ];
