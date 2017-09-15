@@ -49,18 +49,18 @@ export class AuthService {
   signInUser(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then(response => {
-          this.router.navigate(['/main']);
+        this.router.navigate(['/main']);
       })
       .catch(error => console.log(error))
   };
 
   signInWithPopup(provider) {
-    this.afAuth.auth.signInWithPopup(provider).then(result => {
-      console.log("signInWithPopupResult", result)
-
-    }).catch(error => {
-      console.log("signInWithPopupError", error)
-    });
+    this.afAuth.auth.signInWithPopup(provider)
+      .then(result => {
+        this.router.navigate(['/main']);
+        console.log("signInWithPopupResult", result)
+      })
+      .catch(error => console.log("signInWithPopupError", error));
   }
 
   signInUserGoogle() {
