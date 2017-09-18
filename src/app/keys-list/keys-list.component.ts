@@ -5,11 +5,11 @@ import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable }
 import { DataStorageService } from '../data-storage.service';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-translate/core';
 
-import {MdPaginatorIntl, MdPaginator} from '@angular/material';
+import { MdPaginatorIntl, MdPaginator } from '@angular/material';
 
 import { Key } from '../key/key.model';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/fromEvent';
@@ -27,30 +27,31 @@ export class KeysListComponent implements OnInit {
   items: FirebaseListObservable<any[]>;
   // item: FirebaseObjectObservable<any>;
   private keys: Key[] = null;
-  keysCopy: Key[] = null;
+  private keysCopy: Key[] = null;
+  private keysLength: number;
 
   constructor(
     private db: AngularFireDatabase,
     private dataStorageService: DataStorageService,
     private paginatorIntl: MdPaginatorIntl,
     private translate: TranslateService) {
-      paginatorIntl.itemsPerPageLabel = "Przedmiotów na stronę";
-      paginatorIntl.nextPageLabel = "Przedmiotów na stronę";
-      paginatorIntl.previousPageLabel = "Przedmiotów na stronę";
-      // paginatorIntl.getRangeLabel();
+    paginatorIntl.itemsPerPageLabel = "Przedmiotów na stronę";
+    paginatorIntl.nextPageLabel = "Przedmiotów na stronę";
+    paginatorIntl.previousPageLabel = "Przedmiotów na stronę";
+    // paginatorIntl.getRangeLabel();
     // this.findAllLessons();
     this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
       // this.snackBarMessage = res;
-  });
+    });
 
-this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-  // this.snackBarMessage = event.translations['key-settings'].snackMessage;
-});    
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      // this.snackBarMessage = event.translations['key-settings'].snackMessage;
+    });
   }
 
   findAllLessons() {
     console.log(this.items)
-    
+
     // return this.db.list('/keys')
     //     .subscribe(v => console.log("v", v));
   }
@@ -74,56 +75,62 @@ this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
     // this.items.remove();
   }
 
-  onPaginateChange(event){
-    // this.keysCopy = this.keys.slice();
-    // this.keys = this.keysCopy.splice(event.pageIndex, this.paginator.pageSize);
-    this.setPage(0);
-
-    // this.dataStorageService.getKeys()
-    // .then(keys=>{
-    //   this.keys = this.keys.splice(event.pageIndex, this.paginator.pageSize);
-    //   // console.log('startIndex', startIndex, 'pageSize', this.paginator.pageSize)
-    //   // console.log('keys', keys)
-    // });
+  onPaginateChange(event) {
+    this.setPage();
   }
 
   isMobile(): boolean {
-    if(window.innerWidth <= 960) return true;
+    if (window.innerWidth <= 960) return true;
     return false;
   }
 
   disableForMobile(): number[] {
-    if(this.isMobile()) return [5];
+    if (this.isMobile()) return [5];
     return [5, 10, 25, 100];
   }
 
   pageSize() {
-    if(this.isMobile()) return 5;
+    if (this.isMobile()) return 5;
     return 10;
   }
 
-  setPage(page: number) {
+  setPage(filteredKeys?) {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     const endIndex = startIndex + this.paginator.pageSize;
-    this.keysCopy = this.keys.slice(startIndex, endIndex);
+    if (filteredKeys) {
+      console.log('filteredKeys', filteredKeys.keysLength)
+      console.log('filteredKeys[]', filteredKeys)
+      this.keysCopy = filteredKeys.slice(startIndex, endIndex);
+    } else {
+      console.log('notfilteredKeys')
+      // this.keysCopy = this.keys.slice(startIndex, endIndex);
+      this.keysCopy = filteredKeys.slice(startIndex, endIndex);
+    }
   }
 
   ngOnInit() {
     this.dataStorageService.getKeys()
-      .then(keys=>{
+      .then(keys => {
         this.keys = keys;
-        this.setPage(0);
+        this.keysLength = keys.length;
+        this.setPage();
+
+        this.setPage(keys)
       });
-    
+
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
-    .debounceTime(150)
-    .distinctUntilChanged()
-    .subscribe((data) => {
-      if (!this.keysCopy) { return; }
-          this.keysCopy = this.keys.filter(key=>{
-            return key.streetName.toLowerCase()
-              .indexOf(this.filter.nativeElement.value.toLowerCase()) != -1;
-          })
-    });
+      .debounceTime(150)
+      .distinctUntilChanged()
+      .subscribe((data) => {
+        if (!this.keys) { return; }
+        const filteredKeys = this.keys.filter(key => {
+          // this.keysCopy = this.keys.filter(key=>{
+          return key.streetName.toLowerCase()
+            .indexOf(this.filter.nativeElement.value.toLowerCase()) != -1;
+        })
+        // Change paginator length when filtering results
+        this.keysLength = filteredKeys.length;
+        this.setPage(filteredKeys)
+      });
   }
 }
