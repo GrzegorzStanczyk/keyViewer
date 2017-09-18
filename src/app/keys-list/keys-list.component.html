@@ -17,9 +17,9 @@
   </md-form-field>
 </div>
 
-<md-accordion class="accordion" *ngIf="keysCopy">
+<md-accordion class="accordion" *ngIf="keysToRender">
 <!-- <md-expansion-panel *ngFor="let key of keys"> -->
-  <md-expansion-panel *ngFor="let key of keysCopy">
+  <md-expansion-panel *ngFor="let key of keysToRender">
     <md-expansion-panel-header (click)="addItem(key)">
       {{key.streetName}} 
     </md-expansion-panel-header>

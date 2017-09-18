@@ -27,7 +27,8 @@ export class KeysListComponent implements OnInit {
   items: FirebaseListObservable<any[]>;
   // item: FirebaseObjectObservable<any>;
   private keys: Key[] = null;
-  private keysCopy: Key[] = null;
+  private keysToRender: Key[] = null;
+  private filteredKeys: Key[] = null;
   private keysLength: number;
 
   constructor(
@@ -76,7 +77,7 @@ export class KeysListComponent implements OnInit {
   }
 
   onPaginateChange(event) {
-    this.setPage();
+    this.setPage(this.filteredKeys);
   }
 
   isMobile(): boolean {
@@ -98,13 +99,9 @@ export class KeysListComponent implements OnInit {
     const startIndex = this.paginator.pageIndex * this.paginator.pageSize;
     const endIndex = startIndex + this.paginator.pageSize;
     if (filteredKeys) {
-      console.log('filteredKeys', filteredKeys.keysLength)
-      console.log('filteredKeys[]', filteredKeys)
-      this.keysCopy = filteredKeys.slice(startIndex, endIndex);
+      this.keysToRender = filteredKeys.slice(startIndex, endIndex);
     } else {
-      console.log('notfilteredKeys')
-      // this.keysCopy = this.keys.slice(startIndex, endIndex);
-      this.keysCopy = filteredKeys.slice(startIndex, endIndex);
+      this.keysToRender = this.keys.slice(startIndex, endIndex);
     }
   }
 
@@ -113,9 +110,7 @@ export class KeysListComponent implements OnInit {
       .then(keys => {
         this.keys = keys;
         this.keysLength = keys.length;
-        this.setPage();
-
-        this.setPage(keys)
+        this.setPage(this.filteredKeys);
       });
 
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
@@ -123,14 +118,16 @@ export class KeysListComponent implements OnInit {
       .distinctUntilChanged()
       .subscribe((data) => {
         if (!this.keys) { return; }
-        const filteredKeys = this.keys.filter(key => {
-          // this.keysCopy = this.keys.filter(key=>{
+        this.filteredKeys = this.keys.filter(key => {
           return key.streetName.toLowerCase()
             .indexOf(this.filter.nativeElement.value.toLowerCase()) != -1;
         })
         // Change paginator length when filtering results
-        this.keysLength = filteredKeys.length;
-        this.setPage(filteredKeys)
+        this.keysLength = this.filteredKeys.length;
+        if(this.filter.nativeElement.value === "") {
+          this.filteredKeys = null
+        }
+        this.setPage(this.filteredKeys)
       });
   }
 }
