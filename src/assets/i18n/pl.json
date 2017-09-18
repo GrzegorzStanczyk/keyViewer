@@ -83,7 +83,13 @@
     }    
   },
   "keys-list": {
-    "title": "Lista kluczy"
+    "title": "Lista kluczy",   
+    "filter": "Filtruj klucze",
+    "paginator": {
+      "itemsPerPageLabel": "Kluczy na stronę:",
+      "nextPageLabel": "Nastepna strona",
+      "previousPageLabel": "Poprzednia strona"
+    }
   },
   "key-component": {
     "accessibilityInfo": "Dodaj klucz",

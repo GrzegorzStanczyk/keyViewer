@@ -24,34 +24,37 @@ import 'rxjs/add/observable/fromEvent';
 export class KeysListComponent implements OnInit {
   @ViewChild(MdPaginator) paginator: MdPaginator;
   @ViewChild('filter') filter: ElementRef;
-  items: FirebaseListObservable<any[]>;
-  // item: FirebaseObjectObservable<any>;
+
   private keys: Key[] = null;
   private keysToRender: Key[] = null;
   private filteredKeys: Key[] = null;
   private keysLength: number;
+  private paginatorMessage: any;
 
   constructor(
     private db: AngularFireDatabase,
     private dataStorageService: DataStorageService,
     private paginatorIntl: MdPaginatorIntl,
     private translate: TranslateService) {
-    paginatorIntl.itemsPerPageLabel = "Przedmiotów na stronę";
-    paginatorIntl.nextPageLabel = "Przedmiotów na stronę";
-    paginatorIntl.previousPageLabel = "Przedmiotów na stronę";
-    // paginatorIntl.getRangeLabel();
-    // this.findAllLessons();
-    this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
-      // this.snackBarMessage = res;
+    
+      this.translate.get(`keys-list.paginator`).subscribe((res: TranslationChangeEvent) => {
+      this.paginatorTranslate(res)
     });
 
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      // this.snackBarMessage = event.translations['key-settings'].snackMessage;
+      const paginatorMessage = event.translations['keys-list'].paginator;
+      this.paginatorTranslate(paginatorMessage)
     });
   }
 
+  paginatorTranslate(paginatorMessage) {
+    this.paginatorIntl.itemsPerPageLabel = paginatorMessage.itemsPerPageLabel;
+    this.paginatorIntl.nextPageLabel = paginatorMessage.nextPageLabel;
+    this.paginatorIntl.previousPageLabel = paginatorMessage.previousPageLabel;
+  }
+
   findAllLessons() {
-    console.log(this.items)
+    // console.log(this.items)
 
     // return this.db.list('/keys')
     //     .subscribe(v => console.log("v", v));
@@ -81,12 +84,11 @@ export class KeysListComponent implements OnInit {
   }
 
   isMobile(): boolean {
-    if (window.innerWidth <= 960) return true;
-    return false;
+    if (window.innerWidth <= 520) return true;
   }
 
   disableForMobile(): number[] {
-    if (this.isMobile()) return [5];
+    // if (this.isMobile()) return [5];
     return [5, 10, 25, 100];
   }
 
@@ -129,5 +131,7 @@ export class KeysListComponent implements OnInit {
         }
         this.setPage(this.filteredKeys)
       });
+
+    
   }
 }

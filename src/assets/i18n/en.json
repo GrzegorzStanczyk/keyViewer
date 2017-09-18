@@ -83,7 +83,13 @@
     }
   },
   "keys-list": {
-    "title": "List of keys"
+    "title": "List of keys",
+    "filter": "Filter keys",
+    "paginator": {
+      "itemsPerPageLabel": "Keys per page:",
+      "nextPageLabel": "Next page",
+      "previousPageLabel": "Previous page"
+    }
   },
   "key-component": {
     "accessibilityInfo": "Add key",
