@@ -17,9 +17,9 @@
   </md-form-field>
 </div>
 
-<md-accordion class="accordion" *ngIf="keys">
+<md-accordion class="accordion" *ngIf="keysCopy">
 <!-- <md-expansion-panel *ngFor="let key of keys"> -->
-  <md-expansion-panel *ngFor="let key of keys">
+  <md-expansion-panel *ngFor="let key of keysCopy">
     <md-expansion-panel-header (click)="addItem(key)">
       {{key.streetName}} 
     </md-expansion-panel-header>
@@ -82,11 +82,8 @@
 <md-paginator class="paginator"
   #paginator 
   [length]="keys?.length" 
-  [pageSize]="10" 
+  [pageSize]="pageSize()" 
   [pageIndex]="0"
-  [pageSizeOptions]="[5, 10, 25, 100]">
+  [pageSizeOptions]="disableForMobile()"
+  (page)="onPaginateChange()">
 </md-paginator>
-<!-- <button (click)="addItem()">addItem()</button> -->
-<!-- <button (click)="updateItem()">updateItem()</button> -->
-<!-- <button (click)="deleteItem()">deleteItem()</button> -->
-<!-- <button (click)="deleteEverything()">deleteEverything()</button> -->
