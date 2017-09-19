@@ -21,7 +21,10 @@
 }
 
 @media (max-width: 600px) {
-  md-input-container {
-    margin-bottom: 5px;
+  // md-input-container {
+  //   margin-bottom: 5px;
+  // }
+  .mat-form-field {
+    margin-bottom: 6px;
   }
 }

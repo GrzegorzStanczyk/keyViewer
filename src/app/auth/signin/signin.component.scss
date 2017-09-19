@@ -59,10 +59,13 @@
   .card__profile {
     height: 100%;
   }
+  .mat-form-field {
+    margin-bottom: 6px;
+  }
   md-card-content {
     margin: 0;
   }
-  md-input-container {
-    margin-bottom: 5px;
-  }
+  // md-input-container {
+  //   margin-bottom: 5px;
+  // }
 }
