@@ -49,6 +49,11 @@
   box-sizing: border-box;
 }
 
+.action-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 ::ng-deep .accordion {
   overflow: auto;
   height: 500px;
