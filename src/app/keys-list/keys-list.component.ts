@@ -26,9 +26,9 @@ export class KeysListComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
 
   private keys: Key[] = null;
-  private keysToRender: Key[] = null;
+  keysToRender: Key[] = null;
   private filteredKeys: Key[] = null;
-  private keysLength: number;
+  keysLength: number;
   private paginatorMessage: any;
 
   constructor(
@@ -79,7 +79,7 @@ export class KeysListComponent implements OnInit {
     // this.items.remove();
   }
 
-  onPaginateChange(event) {
+  onPaginateChange() {
     this.setPage(this.filteredKeys);
   }
 
@@ -131,7 +131,5 @@ export class KeysListComponent implements OnInit {
         }
         this.setPage(this.filteredKeys)
       });
-
-    
   }
 }
