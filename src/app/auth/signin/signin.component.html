@@ -57,7 +57,7 @@
             (click)="openRegister()"
             md-button
             mdTooltip="{{'signIn.tooltip.signUp' | translate}}"
-            attr.aria-label="{{'signIn.accessibilityInfo.signUp' | translate}}">{{'signIn.signOutButton' | translate}}
+            attr.aria-label="{{'signIn.accessibilityInfo.signUp' | translate}}">{{'signIn.signUpButton' | translate}}
           </button>
           <button 
             color="primary" 
@@ -93,8 +93,11 @@
   <div class="sign-out__btn">
     <button
       *ngIf="authService.isAuthenticated()"
+      type="button"
       md-button
-      (click)="onLogOut()">Log out       
+      (click)="onLogOut()"
+      attr.aria-label="{{'signIn.accessibilityInfo.signOut' | translate}}"
+      >{{'signIn.signOutButton' | translate}}     
     </button>
   </div>
 </md-card>

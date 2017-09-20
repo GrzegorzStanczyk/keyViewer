@@ -17,7 +17,8 @@
     "passwordReauiredInfoStrong": "required",
     "passwordPlaceholder": "Password",
     "signInButton": "Sign In",
-    "signOutButton": "Sign Up",
+    "signUptButton": "Sign Up",
+    "signOutButton": "Sign Out",
     "tooltip": {
       "signIn": "Sign in to aplication",
       "signUp": "Sign up to aplication"
@@ -26,7 +27,8 @@
       "signIn": "Sign in to aplication",
       "signInGoogle": "Sign in to aplication via Google",
       "signInGitHub": "Sign in to aplication via GitHub",
-      "signUp": "Sign up to aplication"
+      "signUp": "Sign up to aplication",
+      "signOut": "Sign out from aplication"
     }
   },
   "signUp": {

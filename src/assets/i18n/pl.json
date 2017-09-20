@@ -15,7 +15,8 @@
     "emailReauiredInfoStrong": "wymagany",
     "passwordPlaceholder": "Hasło",
     "signInButton": "Zaloguj",
-    "signOutButton": "Dodaj konto",
+    "signUpButton": "Dodaj konto",
+    "signOutButton": "Wyloguj",
     "tooltip": {
       "signIn": "Zaloguj się do aplikacji",
       "signUp": "Zarejestruj się do aplikacji"
@@ -24,7 +25,8 @@
       "signIn": "Zaloguj się do aplikacji",
       "signInGoogle": "Zaloguj się do aplikacji za pomocą Google",
       "signInGitHub": "Zaloguj się do aplikacji za pomocą GitHub",
-      "signUp": "Zarejestruj się do aplikacji"
+      "signUp": "Zarejestruj się do aplikacji",
+      "signOut": "Wyloguj się z aplikacji"
     }
   },
   "signUp": {
