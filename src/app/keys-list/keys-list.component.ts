@@ -75,13 +75,14 @@ export class KeysListComponent implements OnInit {
     });
   }
 
-  editKey(key: Key) {
+  editKey(key) {
+    console.log(key.$key);
     try {
       this.dataStorageService.storeKey(key);
       this.openSnackBar(this.snackBarMessage.success);
     } catch (e) {
-      console.log(e)
-      this.openSnackBar(this.snackBarMessage.error)
+      console.log(e);
+      this.openSnackBar(this.snackBarMessage.error);
     }
   }
 
@@ -89,8 +90,10 @@ export class KeysListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteMessageComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result) this.deleteKey(key);
-      this.prepareData()
+      if(result) {
+        this.deleteKey(key);
+        this.prepareData();
+      }
     });
   }
 

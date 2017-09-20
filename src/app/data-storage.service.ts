@@ -32,13 +32,32 @@ export class DataStorageService implements OnDestroy {
     const newKey = new Key(key.streetName, key.lat, key.lng, key.radius, key.key, key.note);
     const properStreetName = key.streetName.split(/\.|#|\$|\[|]|\\/gm).join(",").trim();
     this.items.update(properStreetName, newKey);
+
+    // this.items.remove();
+     // KEYS.forEach(element => {
+     //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
+     //   const toSend = this.db.object(`/users/${this.id}/${properStreetName}`);
+     //   toSend.set(element);
+     //   // this.items.push(element)
+     // });
+
+       // this.items.remove();
+     // KEYS.forEach(element => {
+     //   let toSend = this.db.object(`/users/${this.userId}/${element.streetName}`);
+     //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
+     //   this.items.update(properStreetName, element);
+     // });
   }
 
   getKeys(): Promise<Key[]> {
     return new Promise(resolve => {
         this.items
         .subscribe(items => {
-          this.keys = items.map(item => item.val())
+          this.keys = items.map(item => {
+            let key = item.val();
+            key.$key = item.key;
+            return key;
+          })
           resolve(this.keys)
         })
     })
