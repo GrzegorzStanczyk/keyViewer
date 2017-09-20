@@ -128,10 +128,24 @@ export class KeysListComponent implements OnInit {
     }
   }
 
+  sortKeys(keys: Key[]) {
+    return keys.sort((a,b) => {
+      var A = a.streetName.toLowerCase();
+      var B = b.streetName.toLowerCase();
+      if (A < B){
+         return -1;
+      }else if (A > B){
+        return  1;
+      }else{
+        return 0;
+      }
+    })
+  }
+
   prepareData() {
     this.dataStorageService.getKeys()
     .then(keys => {
-      this.keys = keys;
+      this.keys = this.sortKeys(keys);
       this.keysLength = keys.length;
       this.setPage(this.filteredKeys);
     });
