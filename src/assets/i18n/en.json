@@ -87,10 +87,36 @@
   "keys-list": {
     "title": "List of keys",
     "filter": "Filter keys",
+    "streetInputPlaceholder" : "Street",
+    "keyInputPlaceholder": "Key",
     "paginator": {
       "itemsPerPageLabel": "Keys per page:",
       "nextPageLabel": "Next page",
       "previousPageLabel": "Previous page"
+    },
+    "accessibilityInfo": {
+      "save": "Save key",
+      "delete": "Delete key"
+    },
+    "tooltip": {
+      "save": "Save changes",
+      "delete": "Delete key"
+    },
+    "error": {
+      "required": "required",
+      "key": "Key is",
+      "street": "Street name is"
+    }
+  },
+  "delete-message": {
+    "title": "Are you sure you want to delete the key?",
+    "accessibilityInfo": {
+      "cancel": "Cancel deletion",
+      "accept": "Confirm deletion"
+    },
+    "tooltip": {
+      "cancel": "Cancel",
+      "accept": "Confirm"
     }
   },
   "key-component": {

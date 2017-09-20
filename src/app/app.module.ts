@@ -27,14 +27,15 @@ import { ComponentViewerComponent } from './component-viewer/component-viewer.co
 import { KeyComponent } from './key/key.component';
 import { LanguageSwitcherComponent } from './language-switcher/language-switcher.component';
 import { MapComponent } from './map/map.component';
+import { SigninComponent } from './auth/signin/signin.component';
+import { SignupComponent } from './auth/signup/signup.component';
+import { KeysListComponent } from './keys-list/keys-list.component';
+import { DeleteMessageComponent } from './delete-message/delete-message.component';
 
 import { AutocompleteDirective } from './map/autocomplete.directive';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { KeysListComponent } from './keys-list/keys-list.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { SignupComponent } from './auth/signup/signup.component';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuardService } from './auth/auth-guard.service';
@@ -63,9 +64,10 @@ export function createTranslateLoader(http: HttpClient) {
     LanguageSwitcherComponent,
     KeysListComponent,
     SigninComponent,
-    SignupComponent    
+    SignupComponent,
+    DeleteMessageComponent    
   ],
-  entryComponents: [SignupComponent],
+  entryComponents: [SignupComponent, DeleteMessageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

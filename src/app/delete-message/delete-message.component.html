@@ -1,0 +1,29 @@
+<md-dialog-content class="md-dialog-content">
+  <p>{{'delete-message.title' | translate}}</p>
+</md-dialog-content>
+<md-dialog-actions class="md-dialog-actions">
+  <button 
+    [md-dialog-close]="false"
+    color="primary" 
+    type="button"
+    md-raised-button 
+    attr.aria-label="{{'delete-message.accessibilityInfo.cancel' | translate}}" 
+    mdTooltip="{{'delete-message.tooltip.cancel' | translate}}">
+    <md-icon>backspace</md-icon>
+    <span 
+      class="cdk-visually-hidden">
+      {{'delete-message.accessibilityInfo.cancel' | translate}}</span>
+  </button>
+  <button 
+    [md-dialog-close]="true"
+    color="primary" 
+    type="button"
+    md-raised-button 
+    attr.aria-label="{{'delete-message.accessibilityInfo.accept' | translate}}" 
+    mdTooltip="{{'delete-message.tooltip.accept' | translate}}">
+    <md-icon>done</md-icon>
+    <span 
+      class="cdk-visually-hidden">
+      {{'delete-message.accessibilityInfo.accept' | translate}}</span>
+  </button>
+</md-dialog-actions>
