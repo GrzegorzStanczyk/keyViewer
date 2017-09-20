@@ -89,29 +89,30 @@ export class KeysListComponent implements OnInit {
     const dialogRef = this.dialog.open(DeleteMessageComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result) this.deleteKey(key)
+      if(result) this.deleteKey(key);
+      this.prepareData()
     });
   }
 
   deleteKey(key: Key) {
     this.dataStorageService.deleteKey(key);
   }
-
-  onPaginateChange() {
-    this.setPage(this.filteredKeys);
-  }
-
+  
   isMobile(): boolean {
     if (window.innerWidth <= 520) return true;
   }
-
+  
   disableForMobile(): number[] {
     return [5, 10, 25, 100];
   }
-
+  
   pageSize() {
     if (this.isMobile()) return 5;
     return 10;
+  }
+
+  onPaginateChange() {
+    this.setPage(this.filteredKeys);
   }
 
   setPage(filteredKeys?) {
@@ -124,29 +125,36 @@ export class KeysListComponent implements OnInit {
     }
   }
 
-  ngOnInit() {
+  prepareData() {
     this.dataStorageService.getKeys()
-      .then(keys => {
-        this.keys = keys;
-        this.keysLength = keys.length;
-        this.setPage(this.filteredKeys);
-      });
+    .then(keys => {
+      this.keys = keys;
+      this.keysLength = keys.length;
+      this.setPage(this.filteredKeys);
+    });
+  }
 
+  filterKeys() {
     Observable.fromEvent(this.filter.nativeElement, 'keyup')
-      .debounceTime(150)
-      .distinctUntilChanged()
-      .subscribe((data) => {
-        if (!this.keys) { return; }
-        this.filteredKeys = this.keys.filter(key => {
-          return key.streetName.toLowerCase()
-            .indexOf(this.filter.nativeElement.value.toLowerCase()) != -1;
-        })
-        // Change paginator length when filtering results
-        this.keysLength = this.filteredKeys.length;
-        if(this.filter.nativeElement.value === "") {
-          this.filteredKeys = null
-        }
-        this.setPage(this.filteredKeys)
-      });
+    .debounceTime(150)
+    .distinctUntilChanged()
+    .subscribe((data) => {
+      if (!this.keys) { return; }
+      this.filteredKeys = this.keys.filter(key => {
+        return key.streetName.toLowerCase()
+          .indexOf(this.filter.nativeElement.value.toLowerCase()) != -1;
+      })
+      // Change paginator length when filtering results
+      this.keysLength = this.filteredKeys.length;
+      if(this.filter.nativeElement.value === "") {
+        this.filteredKeys = null
+      }
+      this.setPage(this.filteredKeys)
+    });
+  }
+
+  ngOnInit() {
+    this.prepareData();
+    this.filterKeys();
   }
 }
