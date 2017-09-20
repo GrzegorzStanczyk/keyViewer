@@ -57,6 +57,10 @@ export class KeysListComponent implements OnInit {
     this.paginatorIntl.previousPageLabel = paginatorMessage.previousPageLabel;
   }
 
+  editKey(key: Key) {
+    this.dataStorageService.storeKey(key);
+  }
+
   onDeleteItem(key: Key) {
     const dialogRef = this.dialog.open(DeleteMessageComponent);
 
@@ -66,7 +70,7 @@ export class KeysListComponent implements OnInit {
   }
 
   deleteKey(key: Key) {
-    this.dataStorageService.deleteKey(key)
+    this.dataStorageService.deleteKey(key);
   }
 
   onPaginateChange() {

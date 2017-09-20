@@ -23,8 +23,7 @@
       {{key.streetName}} 
     </md-expansion-panel-header>
     <form 
-      #f="ngForm"
-      (ngSubmit)="onSignUp(f)">
+      #f="ngForm">
         <md-form-field class="key--fotn-size">
           <input 
             required
@@ -69,10 +68,10 @@
           </button>
           <button 
             color="primary" 
-            type="submit"
+            type="button"
             md-raised-button 
             attr.aria-label="{{'keys-list.accessibilityInfo.save' | translate}}" 
-            (click)="saveKey()"
+            (click)="editKey(key)"
             mdTooltip="{{'keys-list.tooltip.save' | translate}}"
             [disabled]="!f.valid">
             <md-icon>edit</md-icon>
