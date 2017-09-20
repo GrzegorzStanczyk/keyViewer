@@ -57,3 +57,10 @@
   opacity: 1;
   z-index: 500000;
 }
+
+.progress-bar {
+  position: absolute;
+  z-index: 500000;
+  top: 0;
+  width: 100%;
+}

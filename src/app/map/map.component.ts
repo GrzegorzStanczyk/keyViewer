@@ -12,6 +12,7 @@ export class MapComponent implements OnInit {
   @ViewChild('googleMap') el: ElementRef;
 
   mapReady: boolean = null;
+  localizatoionProgresBar: boolean = null;
 
   constructor(
     private mapLoaderService: MapLoaderService,
@@ -63,14 +64,17 @@ export class MapComponent implements OnInit {
     };
     
     const map = new google.maps.Map(this.el.nativeElement, mapProp);
+    
     this.mapReady = true;
-    const marker = this.setMarker(map);
+    this.localizatoionProgresBar = false;
 
+    const marker = this.setMarker(map);
     marker.setPosition(mapProp.center);
     marker.setVisible(true);
   }
 
-  localizateMe(): void {
+  localizateMe(showProgrssBar?: string): void {
+    if(showProgrssBar) this.localizatoionProgresBar = true;
     this.mapLoaderService.getCurrentPosition()
     .then(coords => {
       this.storeLocalization(coords);

@@ -1,3 +1,6 @@
+<div *ngIf="localizatoionProgresBar" class="progress-bar">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+</div>
 <md-card class="search-form">
     <md-input-container class="search-full-width">
         <input mdInput
@@ -11,7 +14,7 @@
     type="button" 
     md-button 
     aria-label="toggle navigation"
-    (click)="localizateMe()"
+    (click)="localizateMe('showProgrssBar')"
     class="my-location__button--posiiton"
     mdTooltip="{{'map.tooltip.myLocation' | translate}}">
     <md-icon class="my_location__icon">my_location</md-icon>
