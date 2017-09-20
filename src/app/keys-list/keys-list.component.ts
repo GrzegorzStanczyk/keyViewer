@@ -9,6 +9,7 @@ import { DataStorageService } from '../data-storage.service';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-translate/core';
 
 import { MdPaginatorIntl, MdPaginator } from '@angular/material';
+import { MdSnackBar } from '@angular/material';
 
 import { Key } from '../key/key.model';
 
@@ -27,28 +28,39 @@ import 'rxjs/add/observable/fromEvent';
 export class KeysListComponent implements OnInit {
   @ViewChild(MdPaginator) paginator: MdPaginator;
   @ViewChild('filter') filter: ElementRef;
-
+  
   private keys: Key[] = null;
   private filteredKeys: Key[] = null;
   // private paginatorMessage: any;
   keysToRender: Key[] = null;
   keysLength: number;
+  snackBarMessage: any;
 
   constructor(
     private db: AngularFireDatabase,
     private dataStorageService: DataStorageService,
     private paginatorIntl: MdPaginatorIntl,
     private translate: TranslateService,
-    private dialog: MdDialog) {
+    private dialog: MdDialog,
+    private snackBar: MdSnackBar) {
     
       this.translate.get(`keys-list.paginator`).subscribe((res: TranslationChangeEvent) => {
-      this.paginatorTranslate(res)
-    });
-
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      const paginatorMessage = event.translations['keys-list'].paginator;
-      this.paginatorTranslate(paginatorMessage)
-    });
+        this.paginatorTranslate(res)
+      });
+  
+      this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        const paginatorMessage = event.translations['keys-list'].paginator;
+        this.paginatorTranslate(paginatorMessage)
+      });
+      
+      // Subscribe for current language to show message in snackBar
+      this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
+        this.snackBarMessage = res;
+      });
+  
+      this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        this.snackBarMessage = event.translations['key-settings'].snackMessage;
+      });    
   }
 
   paginatorTranslate(paginatorMessage) {
@@ -57,8 +69,20 @@ export class KeysListComponent implements OnInit {
     this.paginatorIntl.previousPageLabel = paginatorMessage.previousPageLabel;
   }
 
+  openSnackBar(message: string) {
+    this.snackBar.open(message, this.snackBarMessage.close, {
+      duration: 2000,
+    });
+  }
+
   editKey(key: Key) {
-    this.dataStorageService.storeKey(key);
+    try {
+      this.dataStorageService.storeKey(key);
+      this.openSnackBar(this.snackBarMessage.success);
+    } catch (e) {
+      console.log(e)
+      this.openSnackBar(this.snackBarMessage.error)
+    }
   }
 
   onDeleteItem(key: Key) {

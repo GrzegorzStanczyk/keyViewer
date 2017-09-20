@@ -13,7 +13,6 @@ import { MdSnackBar } from '@angular/material';
 import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-translate/core';
 
 
-
 @Component({
   selector: 'app-key-settings',
   templateUrl: './key-settings.component.html',
@@ -21,6 +20,7 @@ import { TranslateService, TranslationChangeEvent, LangChangeEvent } from '@ngx-
   animations: [slideToTop],
   host: { '[@routerTransition]': '' }
 })
+
 export class KeySettingsComponent implements OnInit {
   key$: Promise<Key>;
   snackBarMessage: any;
@@ -37,8 +37,8 @@ export class KeySettingsComponent implements OnInit {
       
     // Subscribe for current language to show message in snackBar
       this.translate.get(`key-settings.snackMessage`).subscribe((res: TranslationChangeEvent) => {
-            this.snackBarMessage = res;
-        });
+        this.snackBarMessage = res;
+      });
   
       this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
         this.snackBarMessage = event.translations['key-settings'].snackMessage;
@@ -67,7 +67,7 @@ export class KeySettingsComponent implements OnInit {
       .catch((e)=>{
         console.log(e)
         this.openSnackBar(this.snackBarMessage.error)
-    });
+      });
   }
 
   closeAndGoToMain(): void {
