@@ -18,9 +18,8 @@
 </div>
 
 <md-accordion class="accordion" *ngIf="keysToRender">
-<!-- <md-expansion-panel *ngFor="let key of keys"> -->
   <md-expansion-panel *ngFor="let key of keysToRender">
-    <md-expansion-panel-header (click)="addItem(key)">
+    <md-expansion-panel-header>
       {{key.streetName}} 
     </md-expansion-panel-header>
     <form 
@@ -30,49 +29,56 @@
           <input 
             required
             mdInput 
-            placeholder="{{'key-settings.keyInputPlaceholder' | translate}}"
+            placeholder="{{'keys-list.keyInputPlaceholder' | translate}}"
             [(ngModel)]="key.key"
             ngModel
             #keyInput="ngModel"
             name="key">
           <md-error *ngIf="!keyInput.valid && keyInput.touched">
-            {{'key-settings.error.key' | translate}} 
-            <strong>{{'key-settings.error.required' | translate}}</strong>
+            {{'keys-list.error.key' | translate}} 
+            <strong>{{'keys-list.error.required' | translate}}</strong>
           </md-error>
         </md-form-field>
         <md-form-field>
           <input 
             required 
             mdInput 
-            placeholder="{{'key-settings.streetInputPlaceholder' | translate}}"
+            placeholder="{{'keys-list.streetInputPlaceholder' | translate}}"
             [(ngModel)]="key.streetName" 
             ngModel
             #streetName="ngModel"
             name="streetName">
           <md-error *ngIf="!streetName.valid && streetName.touched">
-            {{'key-settings.error.street' | translate}} 
-            <strong>{{'key-settings.error.required' | translate}}</strong>
+            {{'keys-list.error.street' | translate}} 
+            <strong>{{'keys-list.error.required' | translate}}</strong>
           </md-error>
         </md-form-field>
         <div class="action-container">
           <button
-            md-button>
+            type="button"
+            md-button
+            attr.aria-label="{{'keys-list.accessibilityInfo.delete' | translate}}" 
+            mdTooltip="{{'keys-list.tooltip.delete' | translate}}"
+            (click)="onDeleteItem(key)">
             <md-icon>
               delete_forever
             </md-icon>
+            <span 
+              class="cdk-visually-hidden">
+              {{'keys-list.accessibilityInfo.delete' | translate}}</span>
           </button>
           <button 
             color="primary" 
             type="submit"
             md-raised-button 
-            attr.aria-label="{{'key-settings.accessibilityInfo.save' | translate}}" 
+            attr.aria-label="{{'keys-list.accessibilityInfo.save' | translate}}" 
             (click)="saveKey()"
-            mdTooltip="{{'key-settings.tooltip.save' | translate}}"
+            mdTooltip="{{'keys-list.tooltip.save' | translate}}"
             [disabled]="!f.valid">
             <md-icon>edit</md-icon>
             <span 
               class="cdk-visually-hidden">
-              {{'key-settings.accessibilityInfo.save' | translate}}</span>
+              {{'keys-list.accessibilityInfo.save' | translate}}</span>
           </button>
         </div>
     </form>

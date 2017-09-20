@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { MdDialog, MdDialogRef } from '@angular/material';
+
+import { DeleteMessageComponent } from '../delete-message/delete-message.component';
 
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
@@ -26,16 +29,17 @@ export class KeysListComponent implements OnInit {
   @ViewChild('filter') filter: ElementRef;
 
   private keys: Key[] = null;
-  keysToRender: Key[] = null;
   private filteredKeys: Key[] = null;
+  // private paginatorMessage: any;
+  keysToRender: Key[] = null;
   keysLength: number;
-  private paginatorMessage: any;
 
   constructor(
     private db: AngularFireDatabase,
     private dataStorageService: DataStorageService,
     private paginatorIntl: MdPaginatorIntl,
-    private translate: TranslateService) {
+    private translate: TranslateService,
+    private dialog: MdDialog) {
     
       this.translate.get(`keys-list.paginator`).subscribe((res: TranslationChangeEvent) => {
       this.paginatorTranslate(res)
@@ -53,30 +57,16 @@ export class KeysListComponent implements OnInit {
     this.paginatorIntl.previousPageLabel = paginatorMessage.previousPageLabel;
   }
 
-  findAllLessons() {
-    // console.log(this.items)
+  onDeleteItem(key: Key) {
+    const dialogRef = this.dialog.open(DeleteMessageComponent);
 
-    // return this.db.list('/keys')
-    //     .subscribe(v => console.log("v", v));
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) this.deleteKey(key)
+    });
   }
 
-  addItem(item) {
-    console.log(item)
-    // const key = this.db.object(`/${this.i}`);
-    // key.set({ "streetName": "Lazurowa 40, 01-315 Warszawa", "lat": 52.238957, "lng": 20.89739, "radius": 10, "key": "Orlen" });
-    // this.items.push({"streetName":"Lazurowa 40, 01-315 Warszawa","lat":52.238957,"lng":20.89739,"radius":10,"key":"Orlen"});
-  }
-  updateItem() {
-    // this.items.update(this.i.toString(), { "streetName": "Lazurowa 40, 01-315 Warszawa", "lat": 52.238957, "lng": 20.89739, "radius": 10, "key": "Orlen" });
-  }
-  deleteItem() {
-    // const key = this.db.object(`/keys/${this.i}`);
-    // key.remove();
-
-    // this.items.remove(key); 
-  }
-  deleteEverything() {
-    // this.items.remove();
+  deleteKey(key: Key) {
+    this.dataStorageService.deleteKey(key)
   }
 
   onPaginateChange() {
@@ -88,7 +78,6 @@ export class KeysListComponent implements OnInit {
   }
 
   disableForMobile(): number[] {
-    // if (this.isMobile()) return [5];
     return [5, 10, 25, 100];
   }
 
