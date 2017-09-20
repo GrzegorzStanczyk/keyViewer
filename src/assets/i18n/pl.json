@@ -87,10 +87,36 @@
   "keys-list": {
     "title": "Lista kluczy",   
     "filter": "Filtruj klucze",
+    "streetInputPlaceholder": "Ulica",
+    "keyInputPlaceholder": "Klucz",
     "paginator": {
       "itemsPerPageLabel": "Kluczy na stronę:",
       "nextPageLabel": "Nastepna strona",
       "previousPageLabel": "Poprzednia strona"
+    },
+    "accessibilityInfo": {
+      "save": "Zapisz klucz",
+      "delete": "Usuń klucz"
+    },
+    "tooltip": {
+      "save": "Zapisz zmiany",
+      "delete": "Usuń klucz"
+    },
+    "error": {
+      "required": "wymagany",
+      "key": "Klucz jest",
+      "street": "Adres jest"
+    }
+  },
+  "delete-message": {
+    "title": "Czy jesteś pewien, że chcesz usunąć klucz?",
+    "accessibilityInfo": {
+      "cancel": "Anuluj usunięcie",
+      "accept": "Potwierdź usunięcie"
+    },
+    "tooltip": {
+      "cancel": "Anuluj",
+      "accept": "Potwierdź"
     }
   },
   "key-component": {
