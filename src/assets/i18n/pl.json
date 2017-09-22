@@ -120,6 +120,7 @@
     }
   },
   "key-component": {
+    "welcomeMessage": "Witaj!",
     "accessibilityInfo": "Dodaj klucz",
     "tooltip": "Dodaj klucz"
   },
