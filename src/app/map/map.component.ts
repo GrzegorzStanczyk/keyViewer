@@ -98,7 +98,7 @@ export class MapComponent implements OnInit {
     }
     // Subscription for map reload after edit/add new key
     this.mapLoaderService.localizateMeSource$
-      .subscribe(()=>this.localizateMe())
+      .subscribe(()=>this.localizateMe('showProgrssBar'))
   }
 
 }
