@@ -38,8 +38,11 @@
   width: 100%;
 }
 
-.accordion .mat-form-field {
-  margin-bottom: 12px;
+.accordion {
+  margin-bottom: 72px;
+  &.mat-form-field {
+    margin-bottom: 12px;
+  }
 }
 
 .paginator {
