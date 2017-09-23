@@ -6,19 +6,26 @@
 </md-card>
 <div class="key-container">
     <md-card
+        *ngIf="(markerFiltered | async)?.lng; else welcomeMessage"
         (click)="goToKeySettings()"
         class="key-code" 
-        tabindex="0"
-        >
+        tabindex="0">
         {{(markerFiltered | async)?.key}}
     </md-card>
+    <ng-template #welcomeMessage>
+            <md-card
+            class="key-code" 
+            tabindex="0">
+            {{'key-component.welcomeMessage' | translate}}
+        </md-card>
+    </ng-template>
     <button 
-        (click)="addNewKey()"
-        md-button
-        attr.aria-label="{{'key-component.accessibilityInfo' | translate}}"
-        mdTooltip="{{'key-component.tooltip' | translate}}">
-        <md-icon>add_box</md-icon>
-        <span class="cdk-visually-hidden">{{'key-component.accessibilityInfo' | translate}}</span>
+    (click)="addNewKey()"
+    md-button
+    attr.aria-label="{{'key-component.accessibilityInfo' | translate}}"
+    mdTooltip="{{'key-component.tooltip' | translate}}">
+    <md-icon>add_box</md-icon>
+    <span class="cdk-visually-hidden">{{'key-component.accessibilityInfo' | translate}}</span>
     </button>
 </div>
 

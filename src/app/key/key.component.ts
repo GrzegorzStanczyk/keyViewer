@@ -26,10 +26,10 @@ export class KeyComponent implements OnDestroy {
     private sidenavOpenService: SidenavOpenService,
     private translate: TranslateService) {
       
-    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-      this.welcomeMessage = event.translations['key-component'].welcomeMessage;
-      this.markerFiltered = this.isInit();
-    });
+    // this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+    //   this.welcomeMessage = event.translations['key-component'].welcomeMessage;
+    //   this.markerFiltered = this.isInit();
+    // });
 
     this.subscriptionToGetCoords = this.mapLoaderService.getCoords()
       .subscribe(coords => {
@@ -37,17 +37,18 @@ export class KeyComponent implements OnDestroy {
           this.markerFiltered = this.keyService.findNearest(coords)
             .catch(e=>{
               // Subscribe for current language to show welcome message
-              this.translate.get(`key-component.welcomeMessage`).subscribe((res: TranslationChangeEvent) => {
-              this.welcomeMessage = res.toString();
-            });
+            //   this.translate.get(`key-component.welcomeMessage`).subscribe((res: TranslationChangeEvent) => {
+            //   this.welcomeMessage = res.toString();
+            // });
             return this.isInit();
+            // return null;
             });
         });
       })
   }
 
   isInit(): Promise<Key> {
-    return Promise.resolve(new Key('', null, null, null, this.welcomeMessage, ''));
+    return Promise.resolve(new Key('', null, null, null, '', ''));
   }
 
   addNewKey(): void {
