@@ -50,8 +50,8 @@
       md-dialog-close
       color="primary" 
       md-button
-      mdTooltip="{{'signUp.tooltip.signUp' | translate}}"
-      attr.aria-label="{{'signUp.tooltip.signUp' | translate}}">{{'signUp.cancel' | translate}}
+      mdTooltip="{{'signUp.tooltip.cancel' | translate}}"
+      attr.aria-label="{{'signUp.accessibilityInfo.cancel' | translate}}">{{'signUp.cancel' | translate}}
     </button>
     <button 
       type="submit"
@@ -59,7 +59,7 @@
       [disabled]="!f.valid" 
       md-button
       mdTooltip="{{'signUp.tooltip.signUp' | translate}}"
-      attr.aria-label="{{'signUp.tooltip.signUp' | translate}}"
+      attr.aria-label="{{'signUp.accessibilityInfo.signUp' | translate}}"
       [disabled]="!f.valid">{{'signUp.signOutButton' | translate}}
     </button>
   </div>      

@@ -42,11 +42,13 @@
     "signOutButton": "Rejestruj",
     "tooltip": {
       "signIn": "Zaloguj się do aplikacji",
-      "signUp": "Zarejestruj się do aplikacji"
+      "signUp": "Zarejestruj się do aplikacji",
+      "cancel": "Anuluj"
     },
     "accessibilityInfo": {
       "signIn": "Zaloguj się do aplikacji",
-      "signUp": "Zarejestruj się do aplikacji"
+      "signUp": "Zarejestruj się do aplikacji",
+      "cancel": "Anuluj rejestrację"
     }
   },
   "app-settings": {

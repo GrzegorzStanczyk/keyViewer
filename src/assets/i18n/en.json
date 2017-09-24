@@ -17,7 +17,7 @@
     "passwordReauiredInfoStrong": "required",
     "passwordPlaceholder": "Password",
     "signInButton": "Sign In",
-    "signUptButton": "Sign Up",
+    "signUpButton": "Sign Up",
     "signOutButton": "Sign Out",
     "tooltip": {
       "signIn": "Sign in to aplication",
@@ -37,16 +37,20 @@
     "emailValidInfo": "Please enter a valid email address",
     "emailReauiredInfo": "Email is",
     "emailReauiredInfoStrong": "required",
+    "passwordReauiredInfo": "Password is",
+    "passwordReauiredInfoStrong": "required",
     "passwordPlaceholder": "Password",
     "cancel": "Cancel",
     "signOutButton": "Register",
     "tooltip": {
       "signIn": "Sign in to aplication",
-      "signUp": "Sign up to aplication"
+      "signUp": "Sign up to aplication",
+      "cancel": "Cancel"
     },
     "accessibilityInfo": {
       "signIn": "Sign in to aplication",
-      "signUp": "Sign up to aplication"
+      "signUp": "Sign up to aplication",
+      "cancel": "Cancel sign up"
     }
   },
   "app-settings": {
