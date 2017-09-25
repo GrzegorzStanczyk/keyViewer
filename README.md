@@ -4,7 +4,7 @@
 ## Introduction
 [Live preview](https://keyviewer-d5825.firebaseapp.com/)
 
-##App purpose
+## App purpose
 Created to help me with my work. In short words. 
 I create a note based on location.
 And app shows me the note/key which is nearest to my current location.
