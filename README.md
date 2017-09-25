@@ -1,8 +1,40 @@
 ![Logo of the project](./images/logo.sample.png)
 # keyViewer
-> Additional information or tag line
+> Hello! Feel free to sign up to the application, and use it to make your life easier :)
 
-A brief description of your project, what it is used for.
+## Introduction
+[Live preview](https://keyviewer-d5825.firebaseapp.com/)
+
+###App purpose
+
+Created to help me with my work. In short words. 
+I create a note based on location.
+And app shows me the note/key which is nearest to my current location.
+And that is it. App is simple, good looking, and save my time.
+
+## Showcase
+Get acces to the app
+![Gif Showing how to sign up / sign in to the app](./src/static/gif/signin.gif)
+
+Add new items
+![Gif Showing how to add new items](./src/static/gif/addnew.gif)
+
+Edit item
+![Gif Showing how to edit item](./src/static/gif/edit.gif)
+
+Edit item from the items list
+![Gif Showing how to edit item from the items list](./src/static/gif/editlist.gif)
+
+Delete item
+![Gif Showing how to delete item](./src/static/gif/delete.gif)
+
+Filtering the list of items
+![Gif Showing how filter the list of items](./src/static/gif/filter.gif)
+
+Change app theme
+![Gif Showing how change app theme](./src/static/gif/settings.gif)
+
+# Repository documentation
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
 
