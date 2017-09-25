@@ -1,12 +1,10 @@
-![Logo of the project](./images/logo.sample.png)
 # keyViewer
 > Hello! Feel free to sign up to the application, and use it to make your life easier :)
 
 ## Introduction
 [Live preview](https://keyviewer-d5825.firebaseapp.com/)
 
-###App purpose
-
+##App purpose
 Created to help me with my work. In short words. 
 I create a note based on location.
 And app shows me the note/key which is nearest to my current location.
@@ -40,14 +38,23 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Installing / Getting started
 
-A quick introduction of the minimal setup you need to get a hello world up &
-running.
-
-```shell
-commands here
+If you have not yet installed the angular-cli run `npm install -g @angular/cli`, next  
+Run `npm install` to install dependencies  
+You must add `environment` file containing your own firebase enviorment to path `./src/app/environments/environment.ts`
 ```
-
-Here you should say what actually happens when you execute the code above.
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: '<your-key>',
+    authDomain: '<your-project-authdomain>',
+    databaseURL: '<your-database-URL>',
+    projectId: '<your-project-id>',
+    storageBucket: '<your-storage-bucket>',
+    messagingSenderId: '<your-messaging-sender-id>'
+  }
+};
+```
+You can found in your project at the [Firebase Console](https://console.firebase.google.com)
 
 ## Development server
 
@@ -61,27 +68,16 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Style guide
-
-Explain your code style and show how to check it.
-
 ## Api Reference
 
-If the api is external, link to api documentation. If not describe your api including authentication methods as well as explaining all the endpoints with their required parameters.
+1. [Google Maps APIs](https://developers.google.com/maps/)
+2. [Material Design](https://material.angular.io/)
+3. [AngularFire2](https://github.com/angular/angularfire2)
+4. [ngx-translate](http://www.ngx-translate.com/) - The internationalization (i18n) library for Angular 2+
 
 ## Database
 
-Explaining what database (and version) has been used. Provide download links.
-Documents your database design and schemas, relations etc... 
+[Firebase](https://firebase.google.com/) - Every user have its own database
 
 ## Further help
 
@@ -89,5 +85,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Licensing
 
-State what the license is and how to find the text version of the license.
-
+Please contact me if you want use or modify application to your purposes.
