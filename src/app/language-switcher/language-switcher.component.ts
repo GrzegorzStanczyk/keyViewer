@@ -9,13 +9,21 @@ import { TranslateService } from '@ngx-translate/core';
 export class LanguageSwitcherComponent implements OnInit {
 
   constructor(public translate: TranslateService) {
-        this.translate.addLangs(["en", "pl"]);
-        this.translate.setDefaultLang('en');
+    this.translate.addLangs(["en", "pl"]);
 
-        let browserLang = translate.getBrowserLang();
-        this.translate.use(browserLang.match(/en|pl/) ? browserLang : 'en');
+    if(localStorage.getItem('lang')) {
+      let storageLang = JSON.parse(localStorage.getItem('lang'));
+      this.translate.use(storageLang.toString());
     }
+    
+    let browserLang = translate.getBrowserLang();
+    this.translate.use(browserLang.match(/en|pl/) ? browserLang : 'en');
+  }
+
+  translateUse(langSelect): void {
+    this.translate.use(langSelect.value)
+    localStorage.setItem('lang', JSON.stringify(langSelect.value))
+  }
 
   ngOnInit() {}
-
 }
