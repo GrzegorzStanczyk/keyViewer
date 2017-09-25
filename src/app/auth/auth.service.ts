@@ -51,7 +51,7 @@ export class AuthService {
       .then(response => {
         this.router.navigate(['/main']);
       })
-      .catch(error => console.log(error))
+      .catch(error => alert(error.message))
   };
 
   signInWithPopup(provider) {
