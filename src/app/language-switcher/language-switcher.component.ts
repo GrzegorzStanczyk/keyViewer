@@ -10,14 +10,13 @@ export class LanguageSwitcherComponent implements OnInit {
 
   constructor(public translate: TranslateService) {
     this.translate.addLangs(["en", "pl"]);
-
+    let browserLang = translate.getBrowserLang();
+    this.translate.use(browserLang.match(/en|pl/) ? browserLang : 'en');
+    
     if(localStorage.getItem('lang')) {
       let storageLang = JSON.parse(localStorage.getItem('lang'));
       this.translate.use(storageLang.toString());
     }
-    
-    let browserLang = translate.getBrowserLang();
-    this.translate.use(browserLang.match(/en|pl/) ? browserLang : 'en');
   }
 
   translateUse(langSelect): void {
