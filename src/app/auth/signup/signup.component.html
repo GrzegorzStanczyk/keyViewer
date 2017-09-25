@@ -31,7 +31,6 @@
         ngModel
         mdInput
         type="password"
-        placeholder="Password"
         required
         password
         #password="ngModel"
@@ -42,6 +41,9 @@
       </md-error> -->
       <md-error *ngIf="password.touched && !password.valid">
         {{'signUp.passwordReauiredInfo' | translate}} <em>{{'signUp.passwordReauiredInfoStrong' | translate}}</em>
+      </md-error>
+      <md-error *ngIf="!password.valid">
+        {{'signUp.passwordReauiredLength' | translate}}
       </md-error>
     </md-form-field>
   <div class="action-container">

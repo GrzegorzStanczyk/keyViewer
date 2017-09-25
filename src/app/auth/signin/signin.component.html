@@ -17,6 +17,7 @@
               type="email" 
               placeholder="Email"
               required
+              email
               #email="ngModel">
             <md-error *ngIf="email.touched && !email.valid">
                 {{'signIn.emailReauiredInfo' | translate}} <strong>{{'signIn.emailReauiredInfoStrong' | translate}}</strong>
@@ -42,13 +43,15 @@
               ngModel
               mdInput
               type="password"
-              placeholder="Password"
               required
               #password="ngModel"
               [minlength]="6"
               placeholder="{{'signIn.passwordPlaceholder' | translate}}">
             <md-error *ngIf="password.touched && !password.valid">
-              {{'signUp.passwordReauiredInfo' | translate}} <em>{{'signUp.passwordReauiredInfoStrong' | translate}}</em>
+              {{'signIn.passwordReauiredInfo' | translate}} <em>{{'signIn.passwordReauiredInfoStrong' | translate}}</em>
+            </md-error>
+            <md-error *ngIf="!password.valid">
+              {{'signIn.passwordReauiredLength' | translate}}
             </md-error>
           </md-form-field>
         <div class="action-container">
