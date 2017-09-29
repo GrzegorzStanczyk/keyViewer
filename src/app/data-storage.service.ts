@@ -30,23 +30,11 @@ export class DataStorageService implements OnDestroy {
 
   storeKey(key: Key) {
     const newKey = new Key(key.streetName, key.lat, key.lng, key.radius, key.key, key.note);
-    const properStreetName = key.streetName.split(/\.|#|\$|\[|]|\\/gm).join(",").trim();
-    this.items.update(properStreetName, newKey);
-
-    // this.items.remove();
-     // KEYS.forEach(element => {
-     //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
-     //   const toSend = this.db.object(`/users/${this.id}/${properStreetName}`);
-     //   toSend.set(element);
-     //   // this.items.push(element)
-     // });
-
-       // this.items.remove();
-     // KEYS.forEach(element => {
-     //   let toSend = this.db.object(`/users/${this.userId}/${element.streetName}`);
-     //   const properStreetName = element.streetName.split(/\.|#|\$|\[|]/gm).join(",");
-     //   this.items.update(properStreetName, element);
-     // });
+    if(!key.$key) {
+      this.items.push(newKey);  
+    } else {
+      this.items.update(key.$key, newKey);
+    }
   }
 
   getKeys(): Promise<Key[]> {
@@ -64,7 +52,7 @@ export class DataStorageService implements OnDestroy {
   }
 
   deleteKey(key: Key) {
-    this.items.remove(key.streetName.trim());
+    this.items.remove(key.$key);
   }
 
   ngOnInit() {}

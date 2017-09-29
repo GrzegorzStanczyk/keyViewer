@@ -76,7 +76,6 @@ export class KeysListComponent implements OnInit {
   }
 
   editKey(key) {
-    console.log(key.$key);
     try {
       this.dataStorageService.storeKey(key);
       this.openSnackBar(this.snackBarMessage.success);
