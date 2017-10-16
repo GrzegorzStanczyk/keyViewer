@@ -40,21 +40,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 If you have not yet installed the angular-cli run `npm install -g @angular/cli`, next  
 Run `npm install` to install dependencies  
-You must add `environment` file containing your own firebase enviorment to path `./src/app/environments/environment.ts`
-```
-export const environment = {
-  production: false,
-  firebase: {
-    apiKey: '<your-key>',
-    authDomain: '<your-project-authdomain>',
-    databaseURL: '<your-database-URL>',
-    projectId: '<your-project-id>',
-    storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
-  }
-};
-```
-You can found in your project at the [Firebase Console](https://console.firebase.google.com)
 
 ## Development server
 
