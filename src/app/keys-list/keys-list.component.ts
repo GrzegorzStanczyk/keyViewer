@@ -108,7 +108,7 @@ export class KeysListComponent implements OnInit {
     return [5, 10, 25, 100];
   }
   
-  pageSize() {
+  pageSize(): number {
     if (this.isMobile()) return 5;
     return 10;
   }
@@ -127,7 +127,7 @@ export class KeysListComponent implements OnInit {
     }
   }
 
-  sortKeys(keys: Key[]) {
+  sortKeys(keys: Key[]): Key[] {
     return keys.sort((a,b) => {
       var A = a.streetName.toLowerCase();
       var B = b.streetName.toLowerCase();
@@ -162,6 +162,9 @@ export class KeysListComponent implements OnInit {
       })
       // Change paginator length when filtering results
       this.keysLength = this.filteredKeys.length;
+      console.log('this.paginator.pageSize', this.paginator.pageSize)
+      // Change paginator pageIndex to 0
+      this.paginator.pageIndex = 0;
       if(this.filter.nativeElement.value === "") {
         this.filteredKeys = null
       }
