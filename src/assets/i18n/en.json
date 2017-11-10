@@ -131,7 +131,8 @@
     "tooltip": "Add key"
   },
   "about": {
-    "title": "About"
+    "title": "About",
+    "guide": "Visit the official guide on:"
   },
   "map": {
     "inputPlaceholder": "Search...",

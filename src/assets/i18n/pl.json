@@ -132,9 +132,7 @@
   },
   "about": {
     "title": "O programie",
-    "p1": "Witaj drogi użytkowiku.",
-    "p2": "Aplikacja została stworzona w celu pokazywania kodów dostępu do drzwi wejściowych, w zależności od lokalizacji w której się obecnie znajdujesz. Oczywiście bazę kluczy musisz stworzyć samemu w czym pomoże Ci przyjazny interfejs użytkownika.",
-    "p3": "W zakładce \"Głowny\", w przeważającej części ekranu widnieje mapa pokazująca twoją aktualną pozycję. W górnej części mapy jest pole \"Szukaj\" w którym możesz wyszukajć interesujące cię miejsce i przenieść w nie aktualną pozycje mapy. W zalezności od twojej aktualnej pozycji na mapie, w dolnej częsci strony będzie widniał wyszukany klucz do najbliższej lokalizacji wzgledem twojego położenia."
+    "guide": "Odwiedź oficjalny przewodnik na:"
   },
   "map": {
     "inputPlaceholder": "Wyszukaj...",
