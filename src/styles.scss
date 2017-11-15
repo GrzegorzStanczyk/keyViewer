@@ -12,3 +12,8 @@ app-root {
     display: flex;
     flex-direction: column;
 }
+
+.mat-toolbar, .theme-toggle,
+.mat-sidenav, .sidenav-container {
+    transition: background-color 1s;
+}
